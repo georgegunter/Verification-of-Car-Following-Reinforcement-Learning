@@ -9,8 +9,8 @@ b2 = [1;3;-2;-1];
 W3 = [1 2 3 4]; %1x4
 b3 = [2];
 L1 = LayerS(W1, b1, 'poslin'); 
-L2 = LayerS(W2, b2, 'sigmoid');
-L3 = LayerS(W3, b3, 'sigmoid');
+L2 = LayerS(W2, b2, 'poslin');
+L3 = LayerS(W3, b3, 'poslin');
 
 F = FFNNS([L1 L2 L3]); % construct an NNV FFNN
 %/* construct input set

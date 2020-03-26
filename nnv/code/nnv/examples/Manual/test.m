@@ -1,8 +1,23 @@
 clear y yp x x1 x2 x3
 close all
+
+W1 = [1 -1 0.5; 2 -1 1]; % 2x3
+b1 = [-1; 0.5]; 
+W2 = [-2 1; 0 1; -2 -2; 3 -1];  % 4x2 
+b2 = [1;3;-2;-1];
+W3 = [1 2 3 4]; %1x4
+b3 = [2];
+L1 = LayerS(W1, b1, 'sigmoid'); % sigmoid, purelin, poslin, tanh
+L2 = LayerS(W2, b2, 'sigmoid');
+L3 = LayerS(W3, b3, 'sigmoid');
+
+F = FFNNS([L1 L2 L3]); % construct an NNV FFNN
+lb = [-1; -2; 0]; % lower bound vector
+ub = [1; 1; 2]; % upper bound vector
+
 n = 30;
 
-test_ind = 2;
+test_ind = 3;
 
 switch test_ind
     case 1
@@ -27,7 +42,7 @@ for i = 1:numel(test_var)
     y(i)=F.evaluate(X(:,i));
 end
 
-figure
+figure('Position',[100 100 400 200])
 subplot(121)
 plot(test_var,y,'LineWidth',2);
 xlabel(sprintf('x%d',test_ind)); ylabel('f(x)')
