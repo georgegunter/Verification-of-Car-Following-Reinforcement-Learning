@@ -10,7 +10,7 @@ W3 = [1 2 3 4]; %1x4
 b3 = [2];
 L1 = LayerS(W1, b1, 'poslin'); 
 L2 = LayerS(W2, b2, 'poslin');
-L3 = LayerS(W3, b3, 'poslin');
+% L3 = LayerS(W3, b3, 'poslin');
 
 F = FFNNS([L1 L2 L3]); % construct an NNV FFNN
 %/* construct input set
@@ -28,7 +28,7 @@ P = HalfSpace(1, 0); % P: y1 >= 0.4
 nC = 1; % number of cores
 nS = 0; % number of samples
 
-map_mat = eye(1); % mapping matrix
+map_mat = eye(2); % mapping matrix
 map_vec = []; % mapping vector
 P_poly = Polyhedron('A', P.G, 'b', P.g); % polyhedron obj
 

@@ -7,8 +7,8 @@ W2 = [-2 1; 0 1; -2 -2; 3 -1];  % 4x2
 b2 = [1;3;-2;-1];
 W3 = [1 2 3 4]; %1x4
 b3 = [2];
-L1 = LayerS(W1, b1, 'sigmoid'); % sigmoid, purelin, poslin, tanh
-L2 = LayerS(W2, b2, 'sigmoid');
+L1 = LayerS(W1, b1, 'poslin'); % sigmoid, purelin, poslin, tanh
+L2 = LayerS(W2, b2, 'tanh');
 L3 = LayerS(W3, b3, 'sigmoid');
 
 F = FFNNS([L1 L2 L3]); % construct an NNV FFNN
@@ -17,7 +17,7 @@ ub = [1; 1; 2]; % upper bound vector
 
 n = 30;
 
-test_ind = 3;
+test_ind = 2;
 
 switch test_ind
     case 1
