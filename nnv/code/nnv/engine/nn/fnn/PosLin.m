@@ -16,7 +16,6 @@ classdef PosLin
         % evaluation
         function y = evaluate(x)
             y = poslin(x);
-            disp('!!!!! reach this poslin function !!!!!')
         end
         
         % stepReach method, compute reachable set for a single step
@@ -245,6 +244,7 @@ classdef PosLin
         end
         
                 % exact reachability analysis using star
+
         function S = reach_star_exact_multipleInputs(In, option)
             % @In: star input sets
             % @option: = 'parallel' using parallel computing

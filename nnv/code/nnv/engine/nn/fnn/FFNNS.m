@@ -90,6 +90,10 @@ classdef FFNNS < handle
             end
         end
         
+        % added by Yanbing
+        % Construct the gradient version of itself
+%         function F_prime = toGradient(obj)
+        
         % Evaluation of a FFNN
         function y = evaluate(obj, x)
             % Evaluation of this FFNN
@@ -279,6 +283,7 @@ classdef FFNNS < handle
                 end
                 
                 st = tic;
+                % Yanbing: to be modified to accomodate gradient method
                 In = obj.Layers(i).reach(In, obj.reachMethod, obj.reachOption);
                 t1 = toc(st);
                 
