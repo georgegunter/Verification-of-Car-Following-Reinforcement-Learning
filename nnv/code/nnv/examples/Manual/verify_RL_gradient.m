@@ -39,7 +39,7 @@ I_Zono = B.toZono; % convert to a zonotope
 %/* Properties
 P = HalfSpace(1, 0); % P: y >= 0, safe region
 %/* verify the network
-nC = 1; % number of cores
+nC = 4; % number of cores
 nS = 0; % number of samples
 
 map_mat = eye(1); % mapping matrix

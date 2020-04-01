@@ -92,11 +92,12 @@ classdef FFNNS < handle
         
         % added by Yanbing
         % Compute the gradient of a FFNN symbolically
-        function fPrime = symbolicGradient(obj,y_sym)
+        function fPrime = symbolicGradient(obj)
             fPrime = eye(obj.nI);
+            y = x;
             for i=1:obj.nL
-                fPrime = obj.Layers(i).symbolicGradient(y_sym) * fPrime;
-                y_sym = obj.Layers(i).evaluate(y_sym);
+                fPrime = obj.Layers(i).gradient(y) * fPrime;
+                y = obj.Layers(i).evaluate(y);
             end
         end
         

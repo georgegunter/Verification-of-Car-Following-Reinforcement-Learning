@@ -91,6 +91,30 @@ classdef LayerS
                 yPrime = double(subs(yPrime,a',x));
             end
         end
+        
+        % Added by Yanbing
+        function yPrime = symbolicGradient(obj,y_sym)          
+            
+            if strcmp(obj.f, 'poslin')
+
+                
+            elseif strcmp(obj.f, 'purelin')
+                yPrime = obj.W;
+                
+            elseif strcmp(obj.f, 'sigmoid')
+%                 syms a [3 1] rational
+%                 y_pre = obj.W * y_sym + obj.b;
+                yPrime = jacobian(obj.evaluate(y_sym),y_sym);
+%                 yPrime = exp(-y_pre)./(exp(-y_pre)+1).^2 * obj.W;
+                
+                
+            elseif strcmp(obj.f, 'tanh')
+%                 syms a [1 size(obj.W,2)] rational
+                yPrime = jacobian(obj.evaluate(y_sym),y_sym);
+%                 yPrime = double(subs(yPrime,a',x));
+            end
+        end
+        
     end
     
     
