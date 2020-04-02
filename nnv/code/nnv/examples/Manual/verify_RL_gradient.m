@@ -7,7 +7,7 @@ load('../../../../../DDPG/model_arrays/model1_weights.mat')
 L1 = LayerS(double(weights0), double(biases0)', 'poslin'); % sigmoid, purelin, poslin(relu), tanh
 L2 = LayerS(double(weights1), double(biases1)', 'poslin');
 L3 = LayerS(double(weights2), double(biases2)', 'logsig');
-
+% 
 % W1 = [1 -1 0.5; 2 -1 1]; % 2x3
 % b1 = [-1; 0.5]; 
 % W2 = [-2 1; 0 1; -2 -2; 3 -1];  % 4x2 
@@ -37,7 +37,7 @@ B = Box(lb, ub); % a box input set
 I_Zono = B.toZono; % convert to a zonotope
 
 %/* Properties
-P = HalfSpace(1, 0); % P: y >= 0, safe region
+P = HalfSpace([1], 0); % P: y >= 0, safe region
 %/* verify the network
 nC = 4; % number of cores
 nS = 0; % number of samples
@@ -49,11 +49,12 @@ P_poly = Polyhedron('A', P.G, 'b', P.g); % polyhedron obj
 
 figure;
 % subplot(2, 2, 1);
-[safe1, t1, cE1] = F.verify(I, P, 'exact-star', nC, nS);
-F.visualize(map_mat, map_vec); % plot y1 y2
-hold on;
-plot(P_poly); % plot unsafe region
-title('exact-star', 'FontSize', 13);
+% [safe1, t1, cE1] = F.verify(I, P, 'exact-star', nC, nS);
+% F.visualize(map_mat, map_vec); % plot y1 y2
+% hold on;
+% plot(P_poly); % plot unsafe region
+% legend('output bound','unsafe region')
+% title('exact-star', 'FontSize', 13);
 
 % subplot(2,2,2);
 % [safe2, t2, cE2] = F.verify(I, P, 'approx-star', nC, nS);
@@ -66,7 +67,7 @@ title('exact-star', 'FontSize', 13);
 % [safe3, t3, cE3] = F.verify(I_Zono, P, 'approx-zono', nC, nS);
 % F.visualize(map_mat, map_vec); % plot y1 y2
 % hold on;
-% plot(P_poly); % plot unsafe region
+% % plot(P_poly); % plot unsafe region
 % title('approx-zono', 'FontSize', 13);
 % 
 % subplot(2, 2, 4);

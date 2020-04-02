@@ -84,6 +84,8 @@ classdef LayerS
                 syms a [1 size(obj.W,2)] rational
                 yPrime = jacobian(obj.evaluate(a'),a');
                 yPrime = double(subs(yPrime,a',x));
+%                 y_pre = obj.W * x + obj.b;
+%                 yPrime = diag(obj.evaluate(x)./y_pre) * obj.W;
                 
             elseif strcmp(obj.f, 'tanh')
                 syms a [1 size(obj.W,2)] rational
@@ -99,19 +101,20 @@ classdef LayerS
 
                 
             elseif strcmp(obj.f, 'purelin')
-                yPrime = obj.W;
+                yPrime = obj.W; % correct
                 
             elseif strcmp(obj.f, 'sigmoid')
-%                 syms a [3 1] rational
-                y_pre = obj.W * y_sym + obj.b;
-                yPrime = jacobian(obj.evaluate(y_sym),y_pre);
-%                 yPrime = exp(-y_pre)./(exp(-y_pre)+1).^2 * obj.W;
+                syms a [1 size(obj.W,2)] rational
+                yPrime = jacobian(obj.evaluate(a'),a');
+                yPrime = subs(yPrime,a',y_sym);    
+%                 y_pre = obj.W * y_sym + obj.b;
+%                 yPrime = diag(obj.evaluate(y_sym)./y_pre) * obj.W;
                 
                 
             elseif strcmp(obj.f, 'tanh')
-%                 syms a [1 size(obj.W,2)] rational
-                yPrime = jacobian(obj.evaluate(y_sym),y_sym);
-%                 yPrime = double(subs(yPrime,a',x));
+                syms a [1 size(obj.W,2)] rational
+                yPrime = jacobian(obj.evaluate(a'),a');
+                yPrime = subs(yPrime,a',y_sym);
             end
         end
         

@@ -4,10 +4,10 @@ close all
 % install % only install once!!!
 
 % load('../../../../../DDPG/model_arrays/model1_weights.mat')
-% 
-% L1 = LayerS(weights0, biases0', 'poslin'); % sigmoid, purelin, poslin(relu), tanh
-% L2 = LayerS(weights1, biases1', 'poslin');
-% L3 = LayerS(weights2, biases2', 'sigmoid');
+% L1 = LayerS(double(weights0), double(biases0)', 'poslin'); % sigmoid, purelin, poslin(relu), tanh
+% L2 = LayerS(double(weights1), double(biases1)', 'poslin');
+% L3 = LayerS(double(weights2), double(biases2)', 'logsig');
+
 W1 = [1 -1 0.5; 2 -1 1]; % 2x3
 b1 = [-1; 0.5]; 
 W2 = [-2 1; 0 1; -2 -2; 3 -1];  % 4x2 
@@ -21,11 +21,12 @@ L3 = LayerS(W3, b3, 'logsig');
 F = FFNNS([L1 L2 L3]); % construct an NNV FFNN
 
 % state: s, v, dv
-% lb = [2; 1; -20]; % lower bound on input vector
-% ub = [60; 30; 20]; % upper bound on input vector
-lb = [-10; -20; -10]; % lower bound vector
-ub = [1; 1; 2]; % upper bound vector
+lb = [2; 1; -20]; % lower bound on input vector
+ub = [60; 30; 20]; % upper bound on input vector
+% lb = [-10; -20; -10]; % lower bound vector
+% ub = [10; 10; 20]; % upper bound vector
 
+%/* Compute and plot gradient
 % n =  5 ; % discretization points
 % test_ind = 2; % analyze gradient on which state
 % x_fixed = [30; 15; 0]; % fixed input value to evaluate F.gradient()

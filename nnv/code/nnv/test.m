@@ -1,4 +1,4 @@
-clear y yp x x1 x2 x3
+clear all
 close all
 
 W1 = [1 -1 0.5; 2 -1 1]; % 2x3
@@ -7,8 +7,8 @@ W2 = [-2 1; 0 1; -2 -2; 3 -1];  % 4x2
 b2 = [1;3;-2;-1];
 W3 = [1 2 3 4]; %1x4
 b3 = [2];
-L1 = LayerS(W1, b1, 'sigmoid'); % sigmoid, purelin, poslin, tanh
-L2 = LayerS(W2, b2, 'sigmoid');
+L1 = LayerS(W1, b1, 'poslin'); % sigmoid, purelin, poslin, tanh
+L2 = LayerS(W2, b2, 'poslin');
 L3 = LayerS(W3, b3, 'sigmoid');
 
 F = FFNNS([L1 L2 L3]); % construct an NNV FFNN
@@ -16,18 +16,20 @@ lb = [-1; -2; 0]; % lower bound vector
 ub = [1; 1; 2]; % upper bound vector
 
 %% symbolic output interval calculation
-syms a [1 3] rational
-dfdx = F.symbolicGradient(a'); % no x ni
-% double(subs(dfdx(1),a',ub))
+syms a [F.nI 1] rational
+dfdx = F.symbolicGradient(a); % no x ni
+double(subs(dfdx(3),a,[-1;-2;1]))
+% sub1 = subs(dfdx(1),a1,-1);
+% sub2 = subs(sub1,a2,-2);
+% sub3 = subs(sub2,a3,1);
+% double(sub3)
+F.gradient([-1;-2;1])
 
-
-%                 yPrime = jacobian(obj.evaluate(a'),a');
-%                 yPrime = double(subs(yPrime,a',x));
 %%
 
 n = 30;
 
-test_ind = 2;
+test_ind = 1;
 
 switch test_ind
     case 1
