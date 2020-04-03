@@ -4,7 +4,7 @@
 % install
 
 %% Load RL controller model
-load('../../../../../DDPG/model_arrays/model1_weights.mat')
+load('../../../../DDPG/model_arrays/model1_weights.mat')
 L1 = LayerS(double(weights0), double(biases0)', 'purelin'); % sigmoid, purelin, poslin(relu), tanh
 L2 = LayerS(double(weights1), double(biases1)', 'purelin');
 L3 = LayerS(double(weights2), double(biases2)', 'logsig');

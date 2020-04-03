@@ -48,8 +48,9 @@ classdef LayerS
                 y = logsig(y1);
             elseif strcmp(obj.f, 'purelin')
                 y = y1;
-            elseif strcmp(obj.f, 'sigmoid')
-                y = 1./(1+exp(-y1));
+            elseif strcmp(obj.f, 'logsig')
+%                 y = 1./(1+exp(-y1));
+                y = logsig(y1);
             elseif strcmp(obj.f, 'tanh')
                 y = tanh(y1);
             end
@@ -80,44 +81,34 @@ classdef LayerS
             elseif strcmp(obj.f, 'purelin')
                 yPrime = obj.W;
                 
-            elseif strcmp(obj.f, 'sigmoid')
-                syms a [1 size(obj.W,2)] rational
-                yPrime = jacobian(obj.evaluate(a'),a');
-                yPrime = double(subs(yPrime,a',x));
-%                 y_pre = obj.W * x + obj.b;
-%                 yPrime = diag(obj.evaluate(x)./y_pre) * obj.W;
-                
-            elseif strcmp(obj.f, 'tanh')
-                syms a [1 size(obj.W,2)] rational
-                yPrime = jacobian(obj.evaluate(a'),a');
-                yPrime = double(subs(yPrime,a',x));
+            else % for other continuous activation functions
+                syms a [size(obj.W,2) 1] rational
+                yPrime = jacobian(obj.evaluate(a),a);
+                yPrime = double(subs(yPrime,a,x));
             end
         end
         
         % Added by Yanbing
-        function yPrime = symbolicGradient(obj,y_sym)          
-            
+        function yPrime = symbolicGradient(obj,x_sym)          
             if strcmp(obj.f, 'poslin')
-
+                % if W*y_sym+b>0, yPrime = W
+                % not finished
+                y_pos = obj.evaluate(x_sym);
+                
+                y = obj.W * x_sym + obj.b;
+                yPrime = obj.W;
+                yPrime(y<0,:)=0;
                 
             elseif strcmp(obj.f, 'purelin')
-                yPrime = obj.W; % correct
+                yPrime = obj.W; 
                 
-            elseif strcmp(obj.f, 'sigmoid')
-                syms a [1 size(obj.W,2)] rational
-                yPrime = jacobian(obj.evaluate(a'),a');
-                yPrime = subs(yPrime,a',y_sym);    
-%                 y_pre = obj.W * y_sym + obj.b;
-%                 yPrime = diag(obj.evaluate(y_sym)./y_pre) * obj.W;
+            else % for continuous activation functions
+                syms a [size(obj.W,2) 1] rational
+                yPrime = jacobian(obj.evaluate(a),a);
+                yPrime = subs(yPrime,a,x_sym);                    
                 
-                
-            elseif strcmp(obj.f, 'tanh')
-                syms a [1 size(obj.W,2)] rational
-                yPrime = jacobian(obj.evaluate(a'),a');
-                yPrime = subs(yPrime,a',y_sym);
             end
-        end
-        
+        end      
     end
     
     

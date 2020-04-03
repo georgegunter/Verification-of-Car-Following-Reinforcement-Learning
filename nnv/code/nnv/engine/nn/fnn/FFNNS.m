@@ -79,6 +79,8 @@ classdef FFNNS < handle
             
         end
         
+
+        
         % Added by Yanbing 
         % Compute the gradient of a FFNN
         function fPrime = gradient(obj, x)
@@ -111,6 +113,18 @@ classdef FFNNS < handle
                 y = obj.Layers(i).evaluate(y);
             end
         end
+        
+        
+        % added by Yanbing
+        % Compute the output of a FFNN symbolically
+%         function y_sym = symbolicEvaluate(obj,x_sym)
+%             y_sym = x_sym;
+%             for i=1:obj.nL
+%                 y_sym = obj.Layers(i).e(x_sym) * y_sym;
+%                 
+%             end
+%         end
+        
         
         % Sample of FFNN
         function Y = sample(obj, V)
@@ -289,6 +303,7 @@ classdef FFNNS < handle
                 end
                 
                 st = tic;
+                
                 % Yanbing: to be modified to accomodate gradient method
                 In = obj.Layers(i).reach(In, obj.reachMethod, obj.reachOption);
                 t1 = toc(st);
@@ -391,11 +406,12 @@ classdef FFNNS < handle
                     n = length(R);
                     counterExamples = [];
                     
-                    for i=1:n
-                        if ~isempty(R(i).intersectHalfSpace(obj.unsafeRegion.G, obj.unsafeRegion.g))
-                            counterExamples = [counterExamples Star(obj.inputSet.V, R(i).C, R(i).d, R(i).predicate_lb, R(i).predicate_ub)];
-                        end
-                    end
+                    % commented out by Yanbing
+%                     for i=1:n
+%                         if ~isempty(R(i).intersectHalfSpace(obj.unsafeRegion.G, obj.unsafeRegion.g))
+%                             counterExamples = [counterExamples Star(obj.inputSet.V, R(i).C, R(i).d, R(i).predicate_lb, R(i).predicate_ub)];
+%                         end
+%                     end
                     
                     if isempty(counterExamples)
                         safe = 1;
