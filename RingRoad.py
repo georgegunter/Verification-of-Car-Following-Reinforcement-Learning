@@ -66,6 +66,14 @@ class RingRoad_Environment():
 			p_new = p + self.dt*v
 			v_new = v + self.dt*accel
 
+			# Should we let controller crash and go backwards?
+
+			if(v_new <0.0): v_new = 0.0
+
+			if(s_new <.3):
+				s_new = .3
+				v_new = 0.0
+
 			# Reassign
 			new_state[1][-1] = p_new
 			new_state[3][-1] = v_new
@@ -85,6 +93,12 @@ class RingRoad_Environment():
 			s_new = s + self.dt*dv
 			p_new = p + self.dt*v
 			v_new = v + self.dt*accel
+
+			if(v_new <0.0): v_new = 0.0
+
+			if(s_new <.3):
+				s_new = .3
+				v_new = 0.0
 
 			# Reassign
 			new_state[1][-1] = p_new
@@ -107,6 +121,12 @@ class RingRoad_Environment():
 			s_new = s + self.dt*dv
 			p_new = p + self.dt*v
 			v_new = v + self.dt*accel
+
+			if(v_new <0.0): v_new = 0.0
+
+			if(s_new <.3):
+				s_new = .3
+				v_new = 0.0
 
 			# Reassign
 			new_state[1][i] = p_new
@@ -132,20 +152,7 @@ class RingRoad_Environment():
 			self.state = new_state
 
 
-		return state_records
-
-	# def plot_space_time_diagram(self,state_records=None,time_values=None,attribute='speed'):
-
-	# 	if((state_records is None) or (time_values is None)):
-	# 		raise Exception('Must specify a simulation history in state_records')
-
-	# 	if(attribute == 'speed'):
-	# 		speed_measurements = []
-	# 		for state in state_records:
-	# 			speeds = state[2]
-	# 			speed_measurements.append(speeds)
-
-	# 		speed_measurements = np.array()
+		return
 
 	def plot_Timeseries(self):
 		times = []
@@ -154,32 +161,34 @@ class RingRoad_Environment():
 		speeds = []
 		spacings = []
 		for t in range(numSteps):
-			p_vals = np.array(self.state[1][:])
-			s_vals =  np.array(self.state[2][:])
-			v_vals = np.array(self.state[3][:])
+			curr_state = self.state_Record[t]
+
+			p_vals = np.array(curr_state[1])
+			s_vals =  np.array(curr_state[2])
+			v_vals = np.array(curr_state[3])
 
 			positions.append(p_vals)
 			speeds.append(v_vals)
 			spacings.append(s_vals)
-			times.append(self.state[0])
+			times.append(curr_state[0])
 
 		positions = np.array(positions)
 		speeds = np.array(speeds)
 		spacings = np.array(spacings)
-		time = np.array(time)
+		times = np.array(times)
 
 
 		plt.figure()
 
 		plt.subplot(311)
-		plt.plot(time,positions)
-		ylabel('Positions')
+		plt.plot(times,positions)
+		plt.ylabel('Positions')
 		plt.subplot(312)
-		plt.plot(time,speeds)
-		ylabel('Speeds')
+		plt.plot(times,speeds)
+		plt.ylabel('Speeds')
 		plt.subplot(313)
-		plt.plot(time,spacings)
-		ylabel('Spacings')
+		plt.plot(times,spacings)
+		plt.ylabel('Spacings')
 
 		plt.show()
 
@@ -207,21 +216,46 @@ class RingRoad_Environment():
 
 		return accel
 
+	def get_Equilibrium(self):
+		a = self.driver_params[0]
+		b = self.driver_params[1]
+		v0 = self.driver_params[2]
+		delta = self.driver_params[3]
+		T = self.driver_params[4]
+		s0 = self.driver_params[5]
+
+		s_eq = self.ring_length/self.num_vehicles
+
+		v_eq
+
+
 	def get_State(self):
 
 		return self.state
 
+	def print_State(self):
+		print('time: '+str(self.state[0]))
+		print('positions:')
+		print(self.state[1]%self.ring_length)
+		print('spacings:')
+		print(self.state[2])
+		print('speeds:')
+		print(self.state[3])
+
+
 
 if __name__ == "__main__":
 
-	ring_sim_env = RingRoad_Environment(num_vehicles=10,ring_length=100)
-	print(ring_sim_env.get_State())
-	new_state = ring_sim_env.step()
-	print(new_state)
-	state_records = ring_sim_env.run_episode(episode_length=30.0)
+	ring_sim_env = RingRoad_Environment(num_vehicles=10,ring_length=150)
+	# print(ring_sim_env.get_State())
+	# new_state = ring_sim_env.step()
+	# print(new_state)
+	ring_sim_env.run_episode(episode_length=60.0)
 	print('Final State:')
-	print(state_records[-1])
-	ring_sim_env.reset_sim()
+	# print(ring_sim_env.state_Record[-1])
+	ring_sim_env.print_State()
+	ring_sim_env.plot_Timeseries()
+	# ring_sim_env.reset_sim()
 
 
 
