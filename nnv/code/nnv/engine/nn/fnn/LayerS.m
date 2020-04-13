@@ -91,18 +91,16 @@ classdef LayerS
         % Added by Yanbing
         function yPrime = symbolicGradient(obj,x_sym)          
             if strcmp(obj.f, 'poslin')
-                % if W*y_sym+b>0, yPrime = W
-                % not finished
-                y_pos = obj.evaluate(x_sym);
-                
-                y = obj.W * x_sym + obj.b;
-                yPrime = obj.W;
-                yPrime(y<0,:)=0;
+
+                warning('symbolic gradient calculation currently does not support ReLU.')
+                syms a [size(obj.W,2) 1] rational
+                yPrime = jacobian(obj.evaluate(a),a);
+                yPrime = subs(yPrime,a,x_sym);
                 
             elseif strcmp(obj.f, 'purelin')
                 yPrime = obj.W; 
                 
-            else % for continuous activation functions
+            else % for differentiable activation functions
                 syms a [size(obj.W,2) 1] rational
                 yPrime = jacobian(obj.evaluate(a),a);
                 yPrime = subs(yPrime,a,x_sym);                    

@@ -115,17 +115,6 @@ classdef FFNNS < handle
         end
         
         
-        % added by Yanbing
-        % Compute the output of a FFNN symbolically
-%         function y_sym = symbolicEvaluate(obj,x_sym)
-%             y_sym = x_sym;
-%             for i=1:obj.nL
-%                 y_sym = obj.Layers(i).e(x_sym) * y_sym;
-%                 
-%             end
-%         end
-        
-        
         % Sample of FFNN
         function Y = sample(obj, V)
             % sample the output of each layer in the FFNN based on the

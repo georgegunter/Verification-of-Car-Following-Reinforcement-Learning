@@ -40,7 +40,7 @@ classdef LogSig
                 lb = B.lb;
                 ub = B.ub;
                 Z = [logsig('dn', lb) logsig('dn', ub)];
-                gamma_opt = min(Z, [], 2);
+                gamma_opt = min(Z, [], 2); % optimal slope that minimizes the area of the zonotope
                 gamma_mat = diag(gamma_opt);
                 mu1 = 0.5 * (logsig(ub) + logsig(lb) - gamma_mat * (ub + lb));
                 mu2 = 0.5 * (logsig(ub) - logsig(lb) - gamma_mat * (ub - lb));
