@@ -102,21 +102,21 @@ end
 sgtitle("Verify rational driving constraints")
 
 %% Evaluate the network and its gradient numerically
-x_ind = 1; % state to examine
-plotGradient(F,ub,lb,x_ind,x0)
+x_ind = 3; % state to examine
+plotGradient(ub,lb,x_ind,x0,y, dfdx)
 
 %% helper functions
-function plotGradient(F,ub,lb, test_ind, x_fixed)
+function plotGradient(ub,lb, test_ind, x_fixed, fx, dfdx)
 
 % symbolic expression
-syms a [F.nI 1] rational real
-y_sym = F.evaluate(a);
-dfdx_sym = F.symbolicGradient(a);
+syms a [size(dfdx,2) 1] rational real
+y_sym = fx;
+dfdx_sym = dfdx;
 
 a_copy = a; a_copy(test_ind)=[];
 x0_copy = x_fixed; x0_copy(test_ind)=[];
 
-y_ind = matlabFunction(subs(y_sym(test_ind),a_copy,x0_copy));
+y_ind = matlabFunction(subs(y_sym,a_copy,x0_copy));
 dfdx_ind = matlabFunction(subs(dfdx_sym(test_ind),a_copy,x0_copy));
 
 state = {'s','v','dv'};

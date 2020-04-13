@@ -93,9 +93,9 @@ classdef LayerS
             if strcmp(obj.f, 'poslin')
 
                 warning('symbolic gradient calculation currently does not support ReLU.')
-                syms a [size(obj.W,2) 1] rational
+%                 syms a [size(obj.W,2) 1] rational
 %                 yPrime = jacobian(obj.evaluate(a),a);
-                yPrime = obj.evaluate(a)./(obj.W * a + obj.b) .* obj.W;
+                yPrime = obj.evaluate(x_sym)./(obj.W * x_sym + obj.b) .* obj.W;
 %                 yPrime = subs(yPrime,a,x_sym);
                 
             elseif strcmp(obj.f, 'purelin')

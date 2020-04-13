@@ -14,9 +14,9 @@ fprintf('\nAdding NNV to Matlab path...\n');
 
 addpath(pwd());
 addpath(genpath(pwd()));
-if is_codeocean()
-    cd('/code/')
-end
+% if is_codeocean()
+%     cd('/code/')
+% end
 
 % import data structures from Hyst
 javaaddpath(['nnv', filesep, 'engine', filesep, 'hyst', filesep, 'lib', filesep, 'Hyst.jar']);
