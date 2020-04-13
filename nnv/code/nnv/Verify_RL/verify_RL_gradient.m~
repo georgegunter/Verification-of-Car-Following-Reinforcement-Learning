@@ -5,8 +5,8 @@
 
 %% Load RL controller model
 load('../../../../DDPG/model_arrays/model1_weights.mat')
-L1 = LayerS(double(weights0), double(biases0)', 'purelin'); % logsig (sigmoid), purelin, poslin(relu), tanh
-L2 = LayerS(double(weights1), double(biases1)', 'poslin');
+L1 = LayerS(double(weights0), double(biases0)', 'poslin'); % logsig (sigmoid), purelin, poslin(relu), tanh
+L2 = LayerS(double(weights1), double(biases1)', 'purelin');
 L3 = LayerS(double(weights2), double(biases2)', 'logsig');
 
 F = FFNNS([L1 L2 L3]); % construct an NNV FFNN

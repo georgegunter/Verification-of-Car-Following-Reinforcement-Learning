@@ -35,7 +35,8 @@ classdef LayerS
             y1 = obj.W * x + obj.b;
             
             if strcmp(obj.f, 'poslin')
-                y = max(zeros(size(y1)),y1); % changed by Yanbing
+                y = poslin(y1);
+%                 y = max(zeros(size(y1)),y1); % changed by Yanbing
             elseif strcmp(obj.f, 'purelin')
                 y = y1;
             elseif strcmp(obj.f, 'satlin')
@@ -49,7 +50,6 @@ classdef LayerS
             elseif strcmp(obj.f, 'purelin')
                 y = y1;
             elseif strcmp(obj.f, 'logsig')
-%                 y = 1./(1+exp(-y1));
                 y = logsig(y1);
             elseif strcmp(obj.f, 'tanh')
                 y = tanh(y1);
@@ -94,8 +94,9 @@ classdef LayerS
 
                 warning('symbolic gradient calculation currently does not support ReLU.')
                 syms a [size(obj.W,2) 1] rational
-                yPrime = jacobian(obj.evaluate(a),a);
-                yPrime = subs(yPrime,a,x_sym);
+%                 yPrime = jacobian(obj.evaluate(a),a);
+                yPrime = obj.evaluate(a)./(obj.W * a + obj.b) .* obj.W;
+%                 yPrime = subs(yPrime,a,x_sym);
                 
             elseif strcmp(obj.f, 'purelin')
                 yPrime = obj.W; 
