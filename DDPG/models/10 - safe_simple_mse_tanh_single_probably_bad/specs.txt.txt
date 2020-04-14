@@ -1,0 +1,4 @@
+Tanh activation functions without batchnorm
+Trained in single car following environment, sigma = 0.1
+MSE spacing loss used as reward
+model size 3 10 10 1
