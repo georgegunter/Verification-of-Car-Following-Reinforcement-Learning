@@ -11,7 +11,7 @@ class OUActionNoise(object):
     distribution that tends to return to the mean over time
     call function returns noise (x) which has as many dimensions as network outputs
     """
-    def __init__(self, mu, sigma=0.15, theta=.2, dt=1, x0=None,override = True):
+    def __init__(self, mu, sigma=0.15, theta=0.2, dt=1, x0=None,override = True):
         self.theta = theta  # 
         self.mu = mu        # distribution mean
         self.sigma = sigma  # distribution std dev
@@ -22,11 +22,18 @@ class OUActionNoise(object):
 
     def __call__(self):
         x = self.x_prev + self.theta * (self.mu - self.x_prev) * self.dt + \
-            self.sigma * np.sqrt(self.dt) * np.random.normal(size=self.mu.shape)
+            self.sigma * np.sqrt(self.dt) * np.random.normal(scale = 0.5, size=self.mu.shape)
         self.x_prev = x
         
         if self.override:
-            x = np.random.normal(0,self.sigma*10.0) #temporary reduction of noise
+#            decay = 0.6
+#            x = np.random.normal(0,self.sigma*10.0) #temporary reduction of noise
+#            x = decay * self.x_prev + (1-decay)*x
+#            self.x_prev = x
+            
+            x = np.random.normal(0,self.sigma*10.0/3) #temporary reduction of noise
+
+            
         return x
 
     def reset(self):
@@ -88,7 +95,7 @@ class CriticNetwork(nn.Module):
     """
     
     def __init__(self, beta, input_dims, fc1_dims, fc2_dims, n_actions, name,
-                 chkpt_dir='checkpoints'):
+                 chkpt_dir='model_current'):
         super(CriticNetwork, self).__init__()
         # store parameters used to define network
         self.input_dims = input_dims
@@ -151,7 +158,7 @@ class ActorNetwork(nn.Module):
     Goal is to select action that results in the largest reward
     """
     def __init__(self, alpha, input_dims, fc1_dims, fc2_dims, n_actions, name,
-                 chkpt_dir='checkpoints'):
+                 chkpt_dir='model_current'):
         super(ActorNetwork, self).__init__()
         # store parameters used to define network
         self.input_dims = input_dims
@@ -188,11 +195,11 @@ class ActorNetwork(nn.Module):
     def forward(self, state):
         # given state, return action
         x = self.fc1(state)
-        x = self.bn1(x)
-        x = F.relu(x)
+        # x = self.bn1(x)  -> remove to make easier to extract layers
+        x = T.sigmoid(x)
         x = self.fc2(x)
-        x = self.bn2(x)
-        x = F.relu(x)
+        # x = self.bn2(x)  -> remove to make easier to extract layers
+        x = T.sigmoid(x)
         #x = T.tanh(self.mu(x))
         x = T.sigmoid(self.mu(x))
         return x
@@ -407,3 +414,10 @@ class Agent(object):
         for param in current_critic_dict:
             print(param, T.equal(original_critic_dict[param], current_critic_dict[param]))
         input()
+
+#import matplotlib.pyplot as plt
+#test = OUActionNoise(np.array(0))
+#x = []
+#for i in range(100):
+#    x.append(test())
+#plt.plot(x)

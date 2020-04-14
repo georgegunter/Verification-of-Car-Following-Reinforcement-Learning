@@ -1,0 +1,3 @@
+Trained in environment with lead vehicle and single follower
+Reward - MSE on goal spacing
+Override OU action noise with normal distribution of exploration noise for better convergence

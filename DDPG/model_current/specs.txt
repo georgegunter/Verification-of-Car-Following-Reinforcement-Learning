@@ -1,0 +1,1 @@
+This model uses the safe DDPG copy (no relus or batchnorm). It is trained using spacing relative to goal spacing as a reward. Trained in a 2 car following environment with a random lead vehicle (sigma = 0.003).

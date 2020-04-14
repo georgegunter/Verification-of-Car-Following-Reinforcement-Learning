@@ -1,0 +1,4 @@
+Load model 1, then use to control all RL agents in a straight-road car following environment
+Reward - MSE on goal spacing
+Override OU action noise with normal distribution of exploration noise for better convergence
+Convergence is poor and vehicles learn unstable behaviors
