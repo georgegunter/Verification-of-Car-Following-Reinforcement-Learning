@@ -4,7 +4,7 @@
 % install
 
 %% Load RL controller model
-load('../../../../DDPG/models//Model 11/model_weights_biases.mat')
+load('../../../../DDPG/models//Model 12/model_weights_biases.mat')
 L1 = LayerS(double(weights0), double(biases0)', 'tansig'); % logsig (sigmoid), purelin, poslin(relu), tanh
 L2 = LayerS(double(weights1), double(biases1)', 'tansig');
 L3 = LayerS(double(weights2), double(biases2)', 'tansig');
@@ -34,17 +34,16 @@ P_poly1 = Polyhedron('A', P1.G, 'b', P1.g); % polyhedron obj
 P_poly2 = Polyhedron('A', P2.G, 'b', P2.g); % polyhedron obj
 
 figure;
-% [safe2, t2, cE2] = F.verify(I, P1, 'approx-star', nC, nS);
+% [safe2, t2, cE2] = F.verify(I, P1, 'exact-star', nC, nS);
 [safe3, t3, cE3] = F.verify(I_Zono, P1, 'approx-zono', nC, nS);
 
 F.visualize(map_mat, map_vec); % plot
 hold on;
 plot(P_poly1); % plot unsafe region
 plot(P_poly2); % plot unsafe region
-xlim([-3, 3])
+xlim([-5, 5])
 legend('Controller output range','','unsafe region1','','unsafe region2')
-title('Controller output range - approx-zono', 'FontSize', 20);
-xlabel('Controller output (m/s2)','FontSize', 16)
+title('Controller output range - approx-star', 'FontSize', 13);
 
 %% symbolic output interval calculation
 syms a [F.nI 1] rational real
@@ -88,7 +87,6 @@ else
     end   
 end
 
-
 %% plot gradient wrt one state
 state = {'s','v','dv'};
 rdc = {' > 0',' < 0',' > 0'};
@@ -105,22 +103,17 @@ for x_ind = 1:F.nI % state index
 end
 sgtitle("Verify rational driving constraints")
 
-%% plot gradient by numerical evaluation(low fidelity)
-ns = 30;
-plotGradientNumeric(ub,lb, x0, F, ns)
-
-%% Evaluate the network and its gradient using symbolic expression
+%% Evaluate the network and its gradient numerically
 x_ind = 3; % state to examine
 plotGradient(ub,lb,x_ind,x0,y, dfdx)
 
 %% save data
-save('model11-tanh.mat')
+save('model12.mat')
 
 %% helper functions
 function plotGradient(ub,lb, test_ind, x_fixed, fx, dfdx)
 
-% Plot the partial derivatives by fplot using the symbolic expressions
-% directly
+% symbolic expression
 syms a [size(dfdx,2) 1] rational real
 y_sym = fx;
 dfdx_sym = dfdx;
@@ -148,44 +141,5 @@ xlabel(state{test_ind}); ylabel(sprintf('dfd%s',state{test_ind}))
 title('gradient output')
 
 sgtitle(sprintf('%s = %.2g ', permute(horzcat(string(a_copy), num2str(x0_copy)),[2,1])))
-
-end
-
-function plotGradientNumeric(ub,lb, x_fixed, F, ns)
-% plot the partial derivates evaluated at the sampled points
-% ns: sampling fidelity
-
-p1 = linspace(lb(1),ub(1),ns);
-p2 = linspace(lb(2),ub(2),ns);
-p3 = linspace(lb(3),ub(3),ns);
-
-x1 = x_fixed'.*ones(ns,3); x1(:,1) = p1';
-x2 = x_fixed'.*ones(ns,3); x2(:,2) = p2';
-x3 = x_fixed'.*ones(ns,3); x3(:,3) = p3';
-x = {x1,x2,x3};
-
-G1 = zeros(ns,3);
-G2 = zeros(ns,3);
-G3 = zeros(ns,3);
-
-% evaluate
-for i = 1:ns
-    G1(i,:) = F.gradient(x1(i,:)');
-    G2(i,:) = F.gradient(x2(i,:)');
-    G3(i,:) = F.gradient(x3(i,:)');
-end
-
-G = {G1,G2,G3};
-state = {'s','v','dv'};
-rdc = {' > 0',' < 0',' > 0'};
-
-figure('Position',[180 180 300*F.nI 300])
-for x_ind = 1:F.nI % state index
-    subplot(1,F.nI,x_ind)
-    plot(x{x_ind}(:,x_ind),G{x_ind},'LineWidth',2)
-    xlabel(state(x_ind)); ylabel('dfdx')
-    legend(strcat('RDC: dfd',state,rdc));
-end
-sgtitle("Verify rational driving constraints")
 
 end
