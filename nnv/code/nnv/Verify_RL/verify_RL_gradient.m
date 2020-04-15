@@ -4,20 +4,22 @@
 % install
 
 %% Load RL controller model
-load('../../../../DDPG/model_arrays/model1_weights.mat')
-L1 = LayerS(double(weights0), double(biases0)', 'purelin'); % logsig (sigmoid), purelin, poslin(relu), tanh
-L2 = LayerS(double(weights1), double(biases1)', 'poslin');
-L3 = LayerS(double(weights2), double(biases2)', 'logsig');
+load('../../../../DDPG/models//Model 11/model_weights_biases.mat')
+L1 = LayerS(double(weights0), double(biases0)', 'tansig'); % logsig (sigmoid), purelin, poslin(relu), tanh
+L2 = LayerS(double(weights1), double(biases1)', 'tansig');
+L3 = LayerS(double(weights2), double(biases2)', 'tansig');
 
 F = FFNNS([L1 L2 L3]); % construct an NNV FFNN
 
 %% Verify F using output reachable set NNV toolbox
 
 % set state boundaries: s, v, dv
-lb = [2; 10; -5]; % lower bound on input vector
-ub = [40; 40; 5]; % upper bound on input vector
-%%
+lb = [0; 0; -5]; % lower bound on input vector
+ub = [20; 8; 5]; % upper bound on input vector
+
 I = Star(lb, ub); % star input set
+B = Box(lb, ub); % a box input set
+I_Zono = B.toZono; % convert to a zonotope
 
 %/* properties
 P1 = HalfSpace(1, -2); % P: y >= -2, safe region
@@ -33,6 +35,8 @@ P_poly2 = Polyhedron('A', P2.G, 'b', P2.g); % polyhedron obj
 
 figure;
 [safe2, t2, cE2] = F.verify(I, P1, 'approx-star', nC, nS);
+% [safe3, t3, cE3] = F.verify(I_Zono, P1, 'approx-zono', nC, nS);
+
 F.visualize(map_mat, map_vec); % plot
 hold on;
 plot(P_poly1); % plot unsafe region
@@ -44,25 +48,23 @@ title('Controller output range - approx-star', 'FontSize', 13);
 %% symbolic output interval calculation
 syms a [F.nI 1] rational real
 y = F.evaluate(a); % symbolic output
-
-%%
 dfdx = F.symbolicGradient(a); % symbolic gradient output size: nO x nI
 
 %% find output bounds by fminsearchbnd
 yf = matlabFunction(y,'vars', {a});
 yfn = matlabFunction(-y,'vars', {a}); 
 
-x0 = [30; 15; 0]; 
-[x_min,val_min] = fminsearchbnd(yf,x0,lb,ub)
+x0 = [10; 4; 0]; 
+[x_min,accel_min] = fminsearchbnd(yf,x0,lb,ub)
 [x_max,val_maxn] = fminsearchbnd(yfn,x0,lb,ub);
-val_max = -val_maxn
+accel_max = -val_maxn
 
 %% find gradient bounds by fminsearchbnd
-dfds = matlabFunction(dfdx(1),'vars', {[a1 a2 a3].'}); % dfds > 0
-dfdv_n = matlabFunction(-dfdx(2),'vars', {[a1 a2 a3].'}); % dfdv < 0
+dfds = matlabFunction(dfdx(1),'vars', {a}); % dfds > 0
+dfdv_n = matlabFunction(-dfdx(2),'vars', {a}); % dfdv < 0
 dfddv = matlabFunction(dfdx(3),'vars', {[a1 a2 a3].'}); % dfddv > 0
 
-x0 = [30; 15; 0]; % fixed input value to evaluate dfdx
+% x0 = [30; 15; 0]; % fixed input value to evaluate dfdx
 [sol_ds,dfds_min] = fminsearchbnd(dfds,x0,lb,ub); % rational if > 0
 [sol_dv,dfdv_max] = fminsearchbnd(dfdv_n,x0,lb,ub); % rational if < 0
 [sol_ddv,dfddv_min] = fminsearchbnd(dfddv,x0,lb,ub); % rational if > 0
@@ -104,6 +106,9 @@ sgtitle("Verify rational driving constraints")
 %% Evaluate the network and its gradient numerically
 x_ind = 3; % state to examine
 plotGradient(ub,lb,x_ind,x0,y, dfdx)
+
+%% save data
+save('model11-tanh.mat')
 
 %% helper functions
 function plotGradient(ub,lb, test_ind, x_fixed, fx, dfdx)
