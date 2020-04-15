@@ -1,0 +1,9 @@
+Model 11
+
+Layer Sizes: 3,20,10,1
+Activation Function: tanh
+Batchnorm?: No
+Training Environment: Car Following, single random car
+Reward: Constant headway + minimum spacing, MSE
+Exploration Noise: 20 * sigma, sigma = 0.15 intial, 0.995 decay per episode
+Transfer Learning: None
