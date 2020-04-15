@@ -106,7 +106,7 @@ end
 sgtitle("Verify rational driving constraints")
 
 %% plot gradient by numerical evaluation(low fidelity)
-ns = 4;
+ns = 3;
 plotGradientNumeric(ub,lb, x0, F, ns)
 
 %% Evaluate the network and its gradient using symbolic expression

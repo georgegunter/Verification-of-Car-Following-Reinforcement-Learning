@@ -82,7 +82,7 @@ classdef FFNNS < handle
 
         
         % Added by Yanbing 
-        % Compute the gradient of a FFNN
+        % Numerically compute the gradient of a FFNN
         function fPrime = gradient(obj, x)
             fPrime = eye(obj.nI);
             y = x;
@@ -414,7 +414,10 @@ classdef FFNNS < handle
                         R = R.toStar;
                     end
                     
-                    if isempty(R.intersectHalfSpace(obj.unsafeRegion.G, obj.unsafeRegion.g))
+                    if isempty(R)
+                        safe = 1;
+                    % edited by Yanbing due to error "dot index not supported, R is []"
+                    elseif isempty(R.intersectHalfSpace(obj.unsafeRegion.G, obj.unsafeRegion.g))
                         safe = 1;
                     else
                         safe = 2;

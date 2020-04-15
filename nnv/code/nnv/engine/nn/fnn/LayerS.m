@@ -213,7 +213,7 @@ classdef LayerS
                         
                     elseif strcmp(obj.f, 'tansig')
 %                         S = [S TanSig.reach_star_approx(I1)];
-%                         S = [S LogSig.reach_zono_approx(I1)]; % changed by Yanbing
+                        S = [S LogSig.reach_zono_approx(I1)]; % changed by Yanbing
                     else
                         error('Unsupported activation function, currently support purelin, poslin(ReLU), satlin, logsig, tansig');
                     end
