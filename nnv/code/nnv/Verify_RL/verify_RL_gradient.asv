@@ -108,7 +108,7 @@ x_ind = 3; % state to examine
 plotGradient(ub,lb,x_ind,x0,y, dfdx)
 
 %% save data
-save('model12-tanh.mat')
+save('model12.mat')
 
 %% helper functions
 function plotGradient(ub,lb, test_ind, x_fixed, fx, dfdx)
