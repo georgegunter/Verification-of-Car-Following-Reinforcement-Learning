@@ -7,11 +7,12 @@ W2 = [-2 1; 0 1; -2 -2; 3 -1]; %1x2
 b2 = [1;3;-2;1];
 W3 = [1 2 3 4];
 b3 = 2;
-L1 = LayerS(W1, b1, 'tansig'); % sigmoid, purelin, poslin, tanh
+L1 = LayerS(W1, b1, 'purelin'); % sigmoid, purelin, poslin, tanh
 L2 = LayerS(W2, b2, 'tansig');
-L3 = LayerS(W3, b3, 'tansig');
+L3 = LayerS(W3, b3, 'logsig');
 
 F = FFNNS([L1 L2 L3]); % construct an NNV FFNN
+%%
 % state: s, v, dv
 lb = [-1; -2; 0]; % lower bound vector
 ub = [1; 1; 2]; % upper bound vector
@@ -42,8 +43,12 @@ title('Controller output range - approx-star', 'FontSize', 13);
 %% symbolic output interval calculation
 syms a [F.nI 1] rational real
 y = F.evaluate(a); % symbolic output
+tic
 dfdx = F.symbolicGradient(a); % symbolic gradient output size: nO x nI
-
+toc
+tic
+dfdxj = jacobian(y,a);
+toc
 %% find output bounds by fminsearchbnd
 yf = matlabFunction(y,'vars', {a});
 yfn = matlabFunction(-y,'vars', {a}); 
@@ -102,21 +107,22 @@ end
 sgtitle('Partial derivatives')
 
 %% Evaluate the network and its gradient numerically
-x_ind = 1; % state to examine
-plotGradient(F,ub,lb,x_ind,x0)
+x_ind = 2; % state to examine
+plotGradient(ub,lb,x_ind,x0,y, dfdx)
 
 %% helper functions
-function plotGradient(F,ub,lb, test_ind, x_fixed)
+function plotGradient(ub,lb, test_ind, x_fixed, fx, dfdx)
 
-% symbolic expression
-syms a [F.nI 1] rational real
-y_sym = F.evaluate(a);
-dfdx_sym = F.symbolicGradient(a);
+% Plot the partial derivatives by fplot using the symbolic expressions
+% directly
+syms a [size(dfdx,2) 1] rational real
+y_sym = fx;
+dfdx_sym = dfdx;
 
 a_copy = a; a_copy(test_ind)=[];
 x0_copy = x_fixed; x0_copy(test_ind)=[];
 
-y_ind = matlabFunction(subs(y_sym(test_ind),a_copy,x0_copy));
+y_ind = matlabFunction(subs(y_sym,a_copy,x0_copy));
 dfdx_ind = matlabFunction(subs(dfdx_sym(test_ind),a_copy,x0_copy));
 
 state = {'s','v','dv'};

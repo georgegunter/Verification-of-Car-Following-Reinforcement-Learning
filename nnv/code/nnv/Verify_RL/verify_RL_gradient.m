@@ -4,7 +4,7 @@
 % install
 
 %% Load RL controller model
-load('../../../../DDPG/models//Model 11/model_weights_biases.mat')
+load('../../../../DDPG/models//Model 12/model_weights_biases.mat')
 L1 = LayerS(double(weights0), double(biases0)', 'tansig'); % logsig (sigmoid), purelin, poslin(relu), tanh
 L2 = LayerS(double(weights1), double(biases1)', 'tansig');
 L3 = LayerS(double(weights2), double(biases2)', 'tansig');
@@ -49,7 +49,9 @@ xlabel('Controller output (m/s2)','FontSize', 16)
 %% symbolic output interval calculation
 syms a [F.nI 1] rational real
 y = F.evaluate(a); % symbolic output
-dfdx = F.symbolicGradient(a); % symbolic gradient output size: nO x nI
+
+% dfdx = F.symbolicGradient(a); % symbolic gradient output size: nO x nI
+dfdx = jacobian(y,a); % faster and 10x shorter expression
 
 %% find output bounds by fminsearchbnd
 yf = matlabFunction(y,'vars', {a});
@@ -65,6 +67,7 @@ dfds = matlabFunction(dfdx(1),'vars', {a}); % dfds > 0
 dfdv_n = matlabFunction(-dfdx(2),'vars', {a}); % dfdv < 0
 dfddv = matlabFunction(dfdx(3),'vars', {[a1 a2 a3].'}); % dfddv > 0
 
+%%
 % x0 = [30; 15; 0]; % fixed input value to evaluate dfdx
 [sol_ds,dfds_min] = fminsearchbnd(dfds,x0,lb,ub); % rational if > 0
 [sol_dv,dfdv_max] = fminsearchbnd(dfdv_n,x0,lb,ub); % rational if < 0
