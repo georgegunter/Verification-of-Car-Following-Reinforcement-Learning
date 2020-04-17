@@ -4,7 +4,7 @@
 % install
 
 %% Load RL controller model
-load('../../../../DDPG/models//Model 11/model_weights_biases.mat')
+load('../../../../DDPG/models//Model X/model_weights_biases.mat')
 L1 = LayerS(double(weights0), double(biases0)', 'tansig'); % logsig (sigmoid), purelin, poslin(relu), tanh
 L2 = LayerS(double(weights1), double(biases1)', 'tansig');
 L3 = LayerS(double(weights2), double(biases2)', 'tansig');
@@ -55,7 +55,7 @@ dfdx = F.symbolicGradient(a); % symbolic gradient output size: nO x nI
 yf = matlabFunction(y,'vars', {a});
 yfn = matlabFunction(-y,'vars', {a}); 
 
-x0 = [10; 4; 0]; 
+x0 = [5; 4; 0]; 
 [x_min,accel_min] = fminsearchbnd(yf,x0,lb,ub)
 [x_max,val_maxn] = fminsearchbnd(yfn,x0,lb,ub);
 accel_max = -val_maxn
@@ -63,9 +63,10 @@ accel_max = -val_maxn
 %% find gradient bounds by fminsearchbnd
 dfds = matlabFunction(dfdx(1),'vars', {a}); % dfds > 0
 dfdv_n = matlabFunction(-dfdx(2),'vars', {a}); % dfdv < 0
-dfddv = matlabFunction(dfdx(3),'vars', {[a1 a2 a3].'}); % dfddv > 0
+dfddv = matlabFunction(dfdx(3),'vars', {a}); % dfddv > 0
 
-% x0 = [30; 15; 0]; % fixed input value to evaluate dfdx
+%%
+x0 = [10;4;2]; % fixed input value to evaluate dfdx
 [sol_ds,dfds_min] = fminsearchbnd(dfds,x0,lb,ub); % rational if > 0
 [sol_dv,dfdv_max] = fminsearchbnd(dfdv_n,x0,lb,ub); % rational if < 0
 [sol_ddv,dfddv_min] = fminsearchbnd(dfddv,x0,lb,ub); % rational if > 0
@@ -107,14 +108,21 @@ sgtitle("Verify rational driving constraints")
 
 %% plot gradient by numerical evaluation(low fidelity)
 ns = 30;
+x0 = [2, 5, 0]';
 plotGradientNumeric(ub,lb, x0, F, ns)
 
 %% Evaluate the network and its gradient using symbolic expression
 x_ind = 3; % state to examine
 plotGradient(ub,lb,x_ind,x0,y, dfdx)
 
+%% Evaluate the network gradient given training episodes
+state_data = readmatrix('RLmodels/state_data.csv');
+% change to s,v,dv
+state_data = state_data(:,[2 1 3]);
+evaluateEpisodeGradient(state_data,F)
+
 %% save data
-save('model11-tanh.mat')
+% save('model11-tanh.mat')
 
 %% helper functions
 function plotGradient(ub,lb, test_ind, x_fixed, fx, dfdx)
@@ -187,5 +195,34 @@ for x_ind = 1:F.nI % state index
     legend(strcat('RDC: dfd',state,rdc));
 end
 sgtitle("Verify rational driving constraints")
+
+end
+
+function evaluateEpisodeGradient(data,F)
+
+ns = size(data,1);
+
+G = zeros(ns,3);
+
+
+% evaluate
+for i = 1:ns
+    G(i,:) = F.gradient(data(i,:)');
+end
+
+
+state = {'s','v','dv'};
+
+figure('Position',[180 180 300*F.nI 300])
+for x_ind = 1:F.nI % state index
+    subplot(1,F.nI,x_ind)
+    plot(G(:,x_ind),'LineWidth',2)
+    xlabel('Episode'); ylabel('dfdx')
+    legend(strcat('dfd',state{x_ind}));
+end
+sgtitle("Partial derivatives")
+
+
+
 
 end
