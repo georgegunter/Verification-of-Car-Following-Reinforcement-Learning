@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : trig-squared4.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(trig_squared,conjecture, ! [X,Y] : (((-1 < X & X < 1) & (-1 < Y & Y < 1)) => cos(X)^2 - cos(Y)^2 >= - sin(X+Y) * sin(X-Y) - 1/4) ).
+
+%Should hold for all X and Y ...
+%SLOW, Processor time: 60 = 2 (Metis) + 58 (Mathematica)
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

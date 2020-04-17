@@ -1,0 +1,42 @@
+%--------------------------------------------------------------------------
+% File     : Nichols-Plot-Disk-Drive-Meets-1-7.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Analysis of a Disk Drive Reader that Meets its Requirements
+
+fof(Nichols_Plot_Disk_Drive_Meets_1_7, conjecture, ! [X] : (X = 15839/128 => (20/ln(10) * ln ((28 * 130e10) / sqrt(9*X^10 + 3.09e8*X^8 + 1.03e16*X^6 + 10^22*X^4 + 4e24*X^2)) < ((-12/pi)*(-pi - arctan((1/1140)*(-130660000*X^2+3*X^4+2000000000000)/(X*(29*X^2-90000000)))) - 18)) ) ).
+
+% This problem formulation is difficult because the argument of sqrt is around 2.44e30
+%	 and our bounds become extremely inaccurate. It becomes easy with scaling.
+
+% Source: Formal Methods for Control Engineering: A Validated Decision Procedure for Nichols Plot Analysis
+% Author: R. Hardy (PhD. thesis, University of St. Andrews)
+% Chapter 8: Case Studies, 8.3 Disk Drive Read System, 8.3.2 Analysis of a Disk Drive Reader that Meets its Requirements
+% G = 280000000000*K_m/(s+1000)s(s+20)(3s^2+30000+100000000)
+% 1. for all w. 15839/128 >= w \/ w >= 354991/512 ==> -5pi/4 >= argument (G) \/ argument (G) >= -pi.
+% 2. for all w. 9745/512>= w \/ w >= 63357/512 ==> -pi >= argument (G) \/ argument (G) >= -3pi/4.
+% 3. for all w. 1347/128 >= w \/ w >= 9601/512 ==> -3 >= gain (G) \/ gain(G) >= 3.
+
+% The argument is (Email Exchange: Ruth Letham <Ruth.Letham@fife.gov.uk>, Thu, 24 Jul 2008 09:44:38 +0100):
+
+% For w in [0,1761.660...) argument(G) = - arctan ((1/1140)*(-130660000*X^2+3*X^4+2000000000000)/(X*(29*X^2-90000000))) - Pi
+% For w = 1761.660... argument(G) = -Pi
+% For w in (1761.660..., infinity) argument(G) = - arctan((1/1140)*(-130660000*X^2+3*X^4+2000000000000)/(X*(29*X^2-90000000))) - 2 * Pi
+
+% The denominator goes to zero
+%      when u = +/- 1761.660660 and 0!
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/pi.ax').
+
+cnf(sqrt_lower_bound_1_scaled,axiom,
+    ( ~ 0 <= X
+    | ~ lgen(R, Y, 4e15*X*(X + 10^30) / (X^2 + 6e30*X + 10^60))
+    | lgen(R,Y,sqrt(X)) )).

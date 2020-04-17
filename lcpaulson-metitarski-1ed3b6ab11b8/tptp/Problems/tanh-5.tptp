@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : tanh-5.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tanh Problem
+
+fof(tanh_5,conjecture, ! [X] : (0 <= X => 2*tanh(X) <= sinh(2*X)) ).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/tanh-upper.ax').
+include('Axioms/sinh-lower.ax').

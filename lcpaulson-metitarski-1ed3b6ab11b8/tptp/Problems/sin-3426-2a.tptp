@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sin-3426-2a.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_3426,conjecture, ! [X] : ((X != 0 & abs(X) < pi/2) => 1/sin(X)^2 - 1/5 <= 1/(X+2*pi)^2 + 1/(X+pi)^2 + 1/X^2 + 1/(X-pi)^2 + 1/(X-2*pi)^2)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.4.26, page 245: (n=2)
+% cosec^2(x) - 1/(2n+1) < \sum_{k=-n}^n 1/(x - k pi)^2 < cosec^2(x)   (|x| < pi/2)
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin.ax').

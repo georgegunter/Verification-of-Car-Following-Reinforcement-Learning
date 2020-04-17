@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-11.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_11,conjecture, ! [X] : cos(X) - 1 + X^2/2 >= 0 ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+% (n) Let us write S_(2n-1)(x) = sum(i=1 to n) (-1)^(i-1)x^(2i-1)/(2i-1)!, C_(2n)(x)=sum(i=0 to n) (-1)^(i-1)x^(2i)/(2i)!
+% then for all x,n, (-1)^(n+1)(cos x + C_2n(x)) >= 0; (-1)^(n+1) x (sin x - S_(2n+1)(x)) >=0
+% n=1
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+
+

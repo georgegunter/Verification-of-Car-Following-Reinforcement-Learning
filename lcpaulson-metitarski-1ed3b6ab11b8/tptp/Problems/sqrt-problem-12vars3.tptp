@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-12vars3.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+fof(sqrt_problem_12,conjecture, ! [X,SX,SMX] : ((0 < X & X <= 1 & 0 <= SX & SX^2 = 1+X & 0 <= SMX & SMX^2 = 1-X) => 3*X/(2+sqrt(1-X^2)) < (6*(SX-SMX)) / (4+SX+SMX))).
+
+% Mentioned below; credited to D. S. Mitrinovic, Analytic Inequalities, Springer, 1970.
+% Ling Zhu. New Inequalities of Shafer-Fink Type for Arc Hyperbolic Sine.
+% Journal of Inequalities and Applications (2008). doi:10.1155/2008/368275
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

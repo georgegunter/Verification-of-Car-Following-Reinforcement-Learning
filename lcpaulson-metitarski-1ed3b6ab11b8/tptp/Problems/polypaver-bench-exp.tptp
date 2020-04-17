@@ -1,0 +1,25 @@
+%--------------------------------------------------------------------------
+% File     : polypaver-bench-exp.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Jan Duracz and Michal Konecny
+
+fof(benchexp8, conjecture,
+    ! [X,Y] :
+    (
+            (0 <= X & X <= 1 &
+             0 <= Y & Y <= 1)
+            =>
+            (exp(X + Y) <= (exp(X) * exp(Y))+(2^(-8)))
+    )).
+
+% ULTRA SLOW, 882.6 = 8.5 (Metis) + 874.1 (RCF). 237-line proof. Only 481s with --icp_eadm
+
+include('Axioms/general.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/exp-general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').

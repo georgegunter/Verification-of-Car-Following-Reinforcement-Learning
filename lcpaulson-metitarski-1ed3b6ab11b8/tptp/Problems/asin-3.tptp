@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : asin-3.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arcsin Problem
+
+fof(asin_3,conjecture, ! [X] : ((0 < X & X <= 1) => arcsin(pi*(X*(1-X))) < pi*X )).
+
+% Source: LCP (from sin-problem-4)
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/arcsin-upper.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').

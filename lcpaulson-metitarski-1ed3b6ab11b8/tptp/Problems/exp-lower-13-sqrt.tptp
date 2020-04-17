@@ -1,0 +1,27 @@
+%--------------------------------------------------------------------------
+% File     : exp-lower-13-sqrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Exp Lower Bound Problem
+
+fof(exp_lower_bound_problem_13,conjecture, ! [X] : (0 <= X => (2 + X^2 + X*sqrt(4 + X^2)) / 2 <= exp(X))).
+
+% bounds relaxed 2008-05-21
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.4 If x>0, then e^x > 1 + x/1! + ... + x^(n-1)/(n-1)! + x^(n+1)/(n+1)! + x^n/n! (1+x^2/(n+1)^2)^1/2
+% n=1
+
+% This version of the problem, with an explicit square root function, 
+%    requires an upper bound scaled to be exact at 4
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+
+cnf(sqrt_upper_bound_2_scaled,axiom,
+    ( ~ 0 <= X
+    | ~ lgen(R, (1/16)*(X^4+112*X^3+1120*X^2+1792*X+256)/((X+4)*(X^2+24*X+16)), Y)
+    | lgen(R,sqrt(X),Y) )).

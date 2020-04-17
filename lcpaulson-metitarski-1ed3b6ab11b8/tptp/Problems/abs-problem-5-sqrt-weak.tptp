@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : abs-problem-5-sqrt-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : A Dictionary of Inequalities, P. S. Bullen, Logarithmic Function Inequalities:
+%            (d) If x > -1, then 2 |x| / (2 + x) <= |ln (1+x)| <= |x| / sqrt (1+x)
+% Comments : 5-Aug-2010 and 10-Oct-2010: widened range of X.
+%            Cf log-lower-17 and log-upper-18. See comment in log-upper-18-sqrt-weak2.
+%            Easier than abs-problem-5-sqrt-weak2 but proof takes longer!
+fof(abs_problem_5,conjecture, ! [X] : ((-0.999 < X & X < 1200) => abs(ln(1+X)) <= 1/12 + abs(X)/sqrt(1+X)) ).
+
+include('Axioms/general.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/abs.ax').

@@ -1,0 +1,27 @@
+%--------------------------------------------------------------------------
+% File     : polypaver-sqrt43_B.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Jan Duracz and Michal Konecny
+
+fof(sqrt43, conjecture, 
+    ! [X,R] : 
+    (
+            (0.5 <= X & X <= 2 & 
+             0 <= R & R <= 3 & 
+             R >= -((X*X)/4) + X &
+             R <= ((X*X)/4) + 1 &
+             R <= (1+2^(-23))*((1+2^(-23))*(R + ((1+2^(-23))*(X/R) + 2^(-126))) + 2^(-126))/2 + 2^(-126) &
+             R >= (1-2^(-23))*((1-2^(-23))*(R + ((1-2^(-23))*(X/R) - 2^(-126))) - 2^(-126))/2 - 2^(-126))
+            =>
+            ((1+2^(-23))*((1+2^(-23))*(R + ((1+2^(-23))*(X/R) + 2^(-126))) + 2^(-126))/2 + 2^(-126) <= (1+4*2^(-23))*sqrt(X))
+    )).
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-extended.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

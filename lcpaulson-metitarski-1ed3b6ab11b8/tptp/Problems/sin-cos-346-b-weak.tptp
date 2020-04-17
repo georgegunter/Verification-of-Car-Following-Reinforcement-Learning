@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-346-b-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_346b,conjecture, ![X] : ((0 < X & X < pi/2 - 10^-7) => 10^-12 + cos(X/1.73205) >= cbrt(cos(X)) )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.6), page 236 
+% 2011-06-26: now with pi/2 and more difficult
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/cbrt-upper.ax').

@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : tan-2-2var.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tan problem in two variables
+
+fof(tan_2_2v,conjecture, ! [X,Y] : ((1 < X & X < 1.25 & 1 < Y & Y < 1.25) => tan(X)*tan(Y) <= 0.05 + tan(1)*tan(X*Y)) ).
+
+% The two sides of the inequality appear to converge at both endpoints of the interval [0,1]
+% Not provable without padding: the tangent bounds are only exact at zero
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities, page 251.
+% tan(x)tan(y) <= tan(1)tan(xy), for 0 <= x, y <= 1 or 1 <= x, y < sqrt(pi/2)
+% Note: the text incorrectly says pi/2, corrected in an e-mail from Bullen 2010/09/16
+% tan(1) = 1.5574...; sqrt(pi/2) = 1.2533...
+
+include('Axioms/general.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/tan-lower.ax').
+

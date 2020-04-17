@@ -1,0 +1,30 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-1-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_1,conjecture, ! [X] : ((X != 0 & abs(X) < pi/2 - 10^-15) => 2/pi <= sin(X) / X)).
+
+% A PUZZLE: how can this theorem be proved when, with our bounds, the expression
+% pi/2 - 10^-15 can exceed the true value of pi/2? Above that value, the conclusion fails.
+
+% SOLUTION: although the bounds of pi are too coarse, MetiTarski knows that
+% all occurrences of pi are equal. The proof fails if we replace
+% the last occurrence of pi by another constant having identical bounds.
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.3.79 sin x/x > 2/pi (-pi/2 < x < pi/2)
+
+% Cannot work due to division by zero, so we exclude that point.
+% In fact the true difficulty is when abs(X) = pi/2, because then sin(X) / X = 2/pi.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/pi.ax').
+

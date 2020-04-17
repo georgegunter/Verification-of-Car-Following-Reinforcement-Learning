@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : bottom-plate-mixer.tptp
+% Syntax   : Dimension                 	:    5
+% Syntax   : Number of Skolem constants	:    5
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sample and Hold Bottom-Plate Mixer Circuit
+
+%---- Author : Rajeev Narayanan (r_naraya@encs.concordia.ca)
+
+% We verify that for a set of circuit parameters and within a bounded
+% condition, when the gate voltage is applied, the output across the
+% capacitor is within the certain threshold.
+
+% Since the Taylor series approximations for sine and cosine are
+% extremely inaccurate even a short distance from zero, we have
+% replaced the terms sin(wt) and cos(wt) by new variables S and C
+% constrained to satisfy  S^2 + C^2 = 1. Similarly we have SB and CB.
+
+fof(Mixer, conjecture, ! [X,S,C,SB,CB] : ((0 <= X & X <= 10^-7 & S^2 + C^2 = 1 & SB^2 + CB^2 = 1) => 0.0228*C + 0.104*S - 0.0228*exp(-2.75e8*X) + 0.00305 + 0.392e-3*CB + 0.520e-3*SB + 7330*exp(-5.50e8*X)*X - 0.354e-2*exp(-5.5000e8*X) + 0.102e-3*exp(-2.75e8*X)*C + 0.22149e-3*exp(-2.75e8*X)*S <= 0.13)).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+

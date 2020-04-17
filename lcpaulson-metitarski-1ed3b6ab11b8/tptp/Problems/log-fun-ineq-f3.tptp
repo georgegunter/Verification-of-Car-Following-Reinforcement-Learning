@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-fun-ineq-f3.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (f) If a, x > 0 then ln(x) <= (a/e) * x ^ (1/a); the inequality is sharp at e^a.
+
+% Our bounds are exact at 1 (for ln) and 0 (for exp) and so
+%     the problem can only be solved if we weaken the inequality.
+
+% Here, a = 3 and exp(3) = 20.086... 
+
+fof(lfi_f,conjecture, ! [X,R] : ((0 < X & X < 100 & R^3 = X) => ln(X) <= 0.01 + R * 3/exp(1))).
+
+include('Axioms/general.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/ln-extended.ax').

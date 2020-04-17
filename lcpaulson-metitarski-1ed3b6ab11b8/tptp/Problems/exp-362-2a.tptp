@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : exp-362-2a.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_362,conjecture, 0 <= exp(-t) - (1 - t/a)^a).
+
+fof(a, axiom, a = 2).
+fof(t, axiom, abs(t) <= a).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.6.2, page 266.
+% 0 <= exp(-t)-(1-t/a)^a <= t^2*exp(-t)/a if a>=1 and |t| <= a
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/exp-lower.ax').
+

@@ -1,0 +1,11 @@
+syntax: glob
+metit.o
+STATUS-Metit-*.log
+.DS_Store
+autom4te*
+compile
+config.log
+config.status
+metit
+*orig
+Makefile

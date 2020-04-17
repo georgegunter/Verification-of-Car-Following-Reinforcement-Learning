@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : cbrt-problem-2-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cube Root Problem
+
+fof(cbrt_problem_2,conjecture, ![X,Y] : ((0.01 < X & X < 30 & 0.01 < Y & Y < 30) => cbrt(X+Y) <= cbrt(X) + cbrt(Y)) ).
+
+%2011-10-12: extended the ranges of X and Y. SLOW: 268 = 4 (Metis) + 264 (RCF)
+
+include('Axioms/general.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

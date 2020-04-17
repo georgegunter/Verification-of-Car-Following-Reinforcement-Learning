@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : exp-hyperbolic-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(exp_hyp, conjecture, ![X] : (0 < X => (3 + X^2/10)*((exp(X)-exp(-X))/2) / (2 + ((exp(X)+exp(-X))/2) + X^2/10) > X )).
+
+% Analytic Inequalities, D.S.Mitrinovic, 3.6.12, page 270.
+% Derived from cosh-3612b by expanding the definitions of sinh and cosh.
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-extended.ax').

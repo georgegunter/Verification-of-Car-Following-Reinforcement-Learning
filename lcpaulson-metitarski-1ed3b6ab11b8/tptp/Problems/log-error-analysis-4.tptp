@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-error-analysis-4.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Error Analysis
+
+fof(log_error_analysis_4,conjecture, ! [X] : ((0 <= X & X <= 1) => abs(ln (1+X) - (0.9999964239 * X - 0.4998741238 * X^2 + 0.3317990258 * X^3 - 0.2407338084 * X^4 + 0.1676540711 * X^5 - 0.0953293897 * X^6 + 0.0360884937 * X^7 - 0.0064535442 * X^8)) <= 3.223892e-8)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.1.44 0 <= x <= 1 ln(1+x) = a1 x + a2 x^2 + a3 x^3 + a4 x^4 + a5 x^5 + a6 x^6 + a7 x^7 + a8 x^8 + e (x)
+% |e(x)| <= 3e-8
+% a1 = 0.9999964239 a2 = - 0.4998741238 a3 = 0.3317990258 a4 = -0.2407338084 a5 = 0.1676540711 a6 = -0.0953293897 a7 = 0.0360884937 a8 = -0.0064535442
+
+% Maple says, the original upper bound of 3e-8 is too low: should be 3.2238914807e-8
+
+include('Axioms/general.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/abs.ax').

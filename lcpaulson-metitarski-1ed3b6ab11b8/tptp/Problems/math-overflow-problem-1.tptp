@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : math-overflow-problem-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Problem from math overflow via Grant - initially take log to mean ln
+% The equality holds at both ends and ln(P) is undefined when P=0 so range needs to be
+% reduced - as is done in the weak version of this problem
+% NB the inequality actually holds over the range 0 <= P <= 1 the range up to 1/2 is as on the math overflow page
+
+fof(math_overflow_problem_8_ln,conjecture, ! [P] : ((0.0 <= P & P <= 0.5) => (((P*ln(P)+(1-P)*ln(1-P))*(P*ln(P)-(1-P)*ln(1-P))/(1-P-P)+ln(P)*ln(1-P)+P*ln(P)+(1-P)*ln(1-P)) <= 0))).
+
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-general.ax').
+

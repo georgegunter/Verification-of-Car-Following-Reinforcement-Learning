@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-6-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_6,conjecture, ![X] : (abs(X) < pi/2 - 10^-7 => tan(X/2)^2 <= 1 - cos(X)) ).
+
+% Source: LCP
+% 2011-06-27: now with pi/2, and harder. 446-step proof.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/tan-lower.ax').

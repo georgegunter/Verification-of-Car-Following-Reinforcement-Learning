@@ -1,0 +1,290 @@
+--- ./src/AGIGCDW.c.orig	2010-06-14 12:29:58.000000000 -0600
++++ ./src/AGIGCDW.c	2013-08-27 11:00:00.000000000 -0600
+@@ -42,9 +42,11 @@ for (i = 0; i <= 9; i++)
+ Step2: /* A = 0 or B = 0. */
+         if (AGIZERO(A)) {
+            AGICOPY(B,C);
++           N = 0;
+            goto Step9; }
+         if (AGIZERO(B)) {
+            AGICOPY(A,C);
++           N = 0;
+            goto Step9; }
+ 
+ Step3: /* Reduce the inputs. */
+--- ./src/AMUPMPR.c.orig	2010-06-14 12:29:47.000000000 -0600
++++ ./src/AMUPMPR.c	2013-08-27 11:00:00.000000000 -0600
+@@ -35,6 +35,7 @@ Step1: /* Initialize. */
+ 
+ Step2: /* Test for real roots of each Li in current interval. */
+        v = 0;
++       j = 0;
+        jp = 0;
+        Lp = L;
+        Js = LIST2(a,b);
+--- ./src/ANIIPE.c.orig	2010-06-14 12:30:22.000000000 -0600
++++ ./src/ANIIPE.c	2013-08-27 11:00:00.000000000 -0600
+@@ -97,6 +97,7 @@ Step4: /* Test for real roots of each Li
+        v = 0;
+        kp = 0;
+        Lp = L;
++       S = 0;
+        do
+          {
+          ADV(Lp,&L1,&Lp);
+--- ./src/DEGCD.c.orig	2010-06-14 12:30:05.000000000 -0600
++++ ./src/DEGCD.c	2013-08-27 11:00:00.000000000 -0600
+@@ -24,9 +24,9 @@ void DEGCD(a,b, c_,u_,v_)
+ 
+ Step1: /* b = 0. */
+ 	if (b == 0) {
+-           c = a;
+-	   u = 0;
+-	   v = 0;
++	   a2 = a;
++	   u2 = 0;
++	   v2 = 0;
+            goto Return; }
+ 
+ Step2: /* Initialize. */
+--- ./src/DIIPREAD.c.orig	2010-06-14 12:29:57.000000000 -0600
++++ ./src/DIIPREAD.c	2013-08-27 11:00:00.000000000 -0600
+@@ -29,7 +29,7 @@ Step1: /* Rl=0. */
+ Step2: /* Initialize. */
+        C = CREADB();
+        if (C != '(')
+-         goto Step6;
++         goto Step7;
+        A = NIL;
+        r = LENGTH(V);
+ 
+--- ./src/DIRPREAD.c.orig	2010-06-14 12:30:09.000000000 -0600
++++ ./src/DIRPREAD.c	2013-08-27 11:00:00.000000000 -0600
+@@ -30,7 +30,7 @@ Step1: /* Rl=0. */
+ Step2: /* Initialize. */
+        C = CREADB();
+        if (C != '(')
+-         goto Step6;
++         goto Step7;
+        A = NIL;
+        r = LENGTH(V);
+ 
+--- ./src/FPROD.c.orig	2010-06-14 12:30:15.000000000 -0600
++++ ./src/FPROD.c	2013-08-27 11:00:00.000000000 -0600
+@@ -140,6 +140,8 @@ Step10: /* Determine sticky bit if neede
+ 	   t = 0;
+          else
+ 	   t = 1; }
++       else
++	 t = 0;
+ 
+ Step11: /* Round up if needed. */
+        if ((d == s && (sp != 0 || t != 0)) ||
+--- ./src/FSUMDESS.c.orig	2010-06-14 12:29:28.000000000 -0600
++++ ./src/FSUMDESS.c	2013-08-27 11:00:00.000000000 -0600
+@@ -47,6 +47,8 @@ Step3: /* Determine the denormalizing sh
+ 	rp = ZETA - r;
+ 
+ Step4: /* Add mantissas, case q = 0. */
++	t = 0;
++	ap = 0;
+ 	if (q > 0)
+ 	   goto Step5;
+ 	cb = Ap[p+2] + (Bp[p+2] >> r);
+--- ./src/HIPRRID.c.orig	2010-06-14 12:30:21.000000000 -0600
++++ ./src/HIPRRID.c	2013-08-27 11:00:00.000000000 -0600
+@@ -29,6 +29,7 @@ void HIPRRID(n,A, L_,t_)
+ 	Word b,I,J,L,L1,L2;
+ 
+ Step1: /* Compute a bound for the positive roots. */
++	L = NIL;
+ 	k = HIPPRB(n,A);
+ 
+ Step2: /* Isolate the positive roots. */
+--- ./src/HIPRRISD.c.orig	2010-06-14 12:30:34.000000000 -0600
++++ ./src/HIPRRISD.c	2013-08-27 11:00:00.000000000 -0600
+@@ -35,11 +35,11 @@ void HIPRRISD(n,A,a,b, L_,t_)
+ 	interval *B,*C;
+ 
+ Step1: /* Case that A has at most one variation, */
++	L = NIL;
+ 	HIPVCHT(n,A, &v,&t);
+ 	if (t != 0)
+ 	   goto Return;
+ 	if (v == 0) {
+-	   L = NIL;
+ 	   goto Return; }
+ 	if (v == 1) {
+ 	   L = LIST1(LIST2(a,b));
+--- ./src/HIPVCHT.c.orig	2010-06-14 12:29:29.000000000 -0600
++++ ./src/HIPVCHT.c	2013-08-27 11:00:00.000000000 -0600
+@@ -40,6 +40,7 @@ Step2: /* Compute C(x). */
+ 	if (FPCHECK() == 1) {
+ 	   FPCATCH();
+ 	   FREEARRAY(C);
++	   v = 0;
+ 	   t = 1;
+ 	   goto Return; }
+ 
+--- ./src/IDIF.c.orig	2010-06-14 12:30:14.000000000 -0600
++++ ./src/IDIF.c	2013-08-27 11:00:00.000000000 -0600
+@@ -182,6 +182,7 @@ Step10: /* Continue with longer input. *
+ 
+ Step11: /* Normalize the result. */
+        Cb = C;
++       Cs = 0;
+        cp = 0;
+        if (u < 0)
+ 	  do {
+--- ./src/IEEENEIGH.c.orig	2010-06-14 12:30:04.000000000 -0600
++++ ./src/IEEENEIGH.c	2013-08-27 11:00:00.000000000 -0600
+@@ -42,6 +42,7 @@ Step2: /* F = 0. */
+              sp = 1;
+           else
+              sp = 0;
++          t = 0;
+           goto Return; }
+        sp = F.rep.sign; 
+        if (s != d)
+--- ./src/IEQ.c.orig	2010-06-14 12:30:33.000000000 -0600
++++ ./src/IEQ.c	2013-08-27 11:00:00.000000000 -0600
+@@ -50,6 +50,8 @@ Step5: /*  Compute lengths and signs. */
+        J = 0;
+        App = Ap;
+        Bpp = Bp;
++       ah = 0;
++       bh = 0;
+        while (Bpp != NIL) {
+ 	  ah = FIRST(App);
+ 	  App = RED(App);
+--- ./src/IFATL.c.orig	2010-06-14 12:30:18.000000000 -0600
++++ ./src/IFATL.c	2013-08-27 11:00:00.000000000 -0600
+@@ -40,6 +40,7 @@ Step4: /* Copy digits to initial segment
+        if (AVAIL == NIL)
+ 	  GC();
+        B = AVAIL;
++       Bp = 0;
+        if (s < 0) {
+ 	  for (k = 0; k <= n; k++) {
+ 	     if (AVAIL == NIL) {
+--- ./src/IPGCDC.c.orig	2010-06-14 12:29:35.000000000 -0600
++++ ./src/IPGCDC.c	2013-08-27 11:00:00.000000000 -0600
+@@ -50,6 +50,10 @@ Step3: /* A=0 or B=0. */
+ 	  goto Return; }
+        
+ Step4: /* Compute integer contents and primitive parts. */
++       Ap = 0;
++       Bp = 0;
++       Cp = 0;
++       Q = 0;
+        IPICPP(r,A,&a,&Ah);
+        IPICPP(r,B,&b,&Bh);
+        c = IGCD(a,b);
+--- ./src/IPPSC.c.orig	2010-06-14 12:29:50.000000000 -0600
++++ ./src/IPPSC.c	2013-08-27 11:00:00.000000000 -0600
+@@ -38,8 +38,10 @@ Step1: /* Initialize. */
+        P = NIL;
+ 
+ Step2: /* Compute Gh_{i+2}. */
+-       if (G2 == 0)
+-	  goto Step3;
++       if (G2 == 0) {
++	  Gh3 = 0;
++	  n3 = 0;
++	  goto Step3; }
+        Gh3 = IPPSR(r,G1,G2);
+        n3 = PDEG(Gh3);
+        if (Gh3 == 0)
+--- ./src/IPRESPRS.c.orig	2010-06-14 12:30:41.000000000 -0600
++++ ./src/IPRESPRS.c	2013-08-27 11:00:00.000000000 -0600
+@@ -39,6 +39,7 @@ Step1: /* Initialize. */
+         d1 = n1 - n2;
+         rp = r - 1;
+         i = 1;
++        h0 = 0;
+ 
+ Step2: /* Compute Gh_{i+2} and n_{i+2}. */
+        Gh3 = IPPSR(r,G1,G2);
+--- ./src/ISUM.c.orig	2010-06-14 12:30:37.000000000 -0600
++++ ./src/ISUM.c	2013-08-27 11:00:00.000000000 -0600
+@@ -180,6 +180,7 @@ Step10: /* Continue with longer input. *
+ 
+ Step11: /* Normalize the sum. */
+        Cb = C;
++       Cs = 0;
+        cp = 0;
+        if (u < 0)
+ 	  do {
+--- ./src/IUPLRB.c.orig	2010-06-14 12:30:04.000000000 -0600
++++ ./src/IUPLRB.c	2013-08-27 11:00:00.000000000 -0600
+@@ -22,9 +22,9 @@ Word IUPLRB(A)
+ 
+ Step1: /* Initialize. */
+        ADV2(A,&n,&a,&Ap);
+-       if (Ap == NIL) {
+-	  h = -1;
+-	  goto Step3; }
++       h = -1;
++       if (Ap == NIL)
++	  goto Step3;
+        ab = IABSF(a);
+        m = ILOG2(ab);
+        t = 0;
+--- ./src/IUPRB.c.orig	2010-06-14 12:30:35.000000000 -0600
++++ ./src/IUPRB.c	2013-08-27 11:00:00.000000000 -0600
+@@ -23,9 +23,9 @@ Word IUPRB(A)
+ 
+ Step1: /* Initialize. */
+        ADV2(A,&n,&a,&Ap);
+-       if (Ap == NIL) {
+-	  h = -1;
+-	  goto Step3; }
++       h = -1;
++       if (Ap == NIL)
++	  goto Step3;
+        ab = IABSF(a);
+        m = ILOG2(ab);
+        t = 0;
+--- ./src/LBRNIEEEE.c.orig	2010-06-14 12:30:35.000000000 -0600
++++ ./src/LBRNIEEEE.c	2013-08-27 11:00:00.000000000 -0600
+@@ -66,6 +66,7 @@ Step4: /* a double-precision. */
+ 	   s = 0;
+ 	k = PDLOG2(a2);
+ 	if (k > 24) {
++	   n = 0;
+ 	   t = 2;
+ 	   goto Return; }
+ 	kp = ZETA - k;
+--- ./src/MPFFDP.c.orig	2010-06-14 12:30:06.000000000 -0600
++++ ./src/MPFFDP.c	2013-08-27 11:00:00.000000000 -0600
+@@ -27,6 +27,7 @@ Step1: /* Search for an irreducible bino
+               goto Return; }
+ 
+ Step2: /* Search for an irreducible polynomial with three or more terms. */
++	F = NIL;
+ 	for (k = 1; k < n; k++) {
+ 	   if (p == 2 && EVEN(k))
+ 	      k = k + 1;
+--- ./src/MPGCDC.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/MPGCDC.c	2013-08-27 11:00:00.000000000 -0600
+@@ -59,6 +59,10 @@ Step3: /* r=1. */
+          }
+ 
+ Step4: /* Compute univariate contents and primitive parts. */
++       Ap = 0;
++       Bp = 0;
++       Cp = 0;
++       Q = 0;
+        MPUCPP(r,p,A,&a,&Ah);
+        MPUCPP(r,p,B,&b,&Bh);
+        c = MUPGCD(p,a,b);
+--- ./src/PTRADV2.c.orig	2010-06-14 12:30:23.000000000 -0600
++++ ./src/PTRADV2.c	2013-08-27 11:00:00.000000000 -0600
+@@ -17,6 +17,7 @@ void PTRADV2(L,a_,b_,Lp_)
+      Word L, **a_, **b_, *Lp_;
+ {
+   Word Lp, *a, *b;
++  Lp = NIL;
+   PTRADV(Lp,&a,&Lp);
+   PTRADV(Lp,&b,&Lp);
+   *Lp_ = Lp;

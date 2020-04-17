@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : two-variable-problem-6.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Two Variable Problem
+
+fof(two_variable_problem_6,conjecture, ! [X,Y] : (X < Y => 1/(1+exp(X)) > 1/(1+exp(Y)))).
+
+include('Axioms/general.ax').
+include('Axioms/exp-general.ax').
+include('Axioms/exp-lower.ax').

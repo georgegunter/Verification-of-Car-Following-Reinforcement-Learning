@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : doa-chesi-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    0
+% Source   : Estimation of the domain of attraction for non-polynomial systems: A Novel method
+% 	     Saleme, A. et al.
+%	     Preprints of the 18th IFAC World Congress
+%--------------------------------------------------------------------
+% Verifying that a non-polynomial Lyapunov function approximates
+% the domain of attraction of a simple pendulum system. Tight bound
+% of the DOA found using the MetiTarski Python API.
+%
+%
+% Note: options used --autoIncludeExtended --qepcad
+%--------------------------------------------------------------------
+
+fof(pendulum_doa, conjecture,(![X,Y] : (~(X=0 & Y=0) & 4*X^2 + 2*X*Y + 3*Y^2 > 0 & 4*X^2 + 2*X*Y + 3*Y^2 < 23.007186714740923924106342328768552 =>
+		  	6*X*Y - 4*Y^2 + (-2*X - 6*Y)*sin(X) < 0))).

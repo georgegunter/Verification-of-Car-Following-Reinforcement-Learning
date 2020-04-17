@@ -1,0 +1,594 @@
+--- ./src/AFPCMV.c.orig	2010-06-14 12:30:26.000000000 -0600
++++ ./src/AFPCMV.c	2013-11-18 21:00:00.000000000 -0700
+@@ -20,7 +20,7 @@ Word AFPCMV(r,M,A,B)
+ {
+        Word C;
+ 
+-       Word Ap,a2,P,e1,e2,i;
++       Word Ap,a2,e1,e2,i;
+ 
+ Step1: /* A=0. */
+        if (A == 0)
+--- ./src/AFPHIP.c.orig	2010-06-14 12:30:19.000000000 -0600
++++ ./src/AFPHIP.c	2013-11-18 21:00:00.000000000 -0700
+@@ -29,7 +29,6 @@ void AFPHIP(I,A,B_,t_)
+ 	interval *B;
+ 	BDigit i,m,t;
+ 	Word a,Ap;
+-	Word V,v;
+ 
+ Step1: /* Get an array for B. */
+ 	m = PDEG(A);
+--- ./src/AFSIGN.c.orig	2010-06-14 12:30:43.000000000 -0600
++++ ./src/AFSIGN.c	2013-11-18 21:00:00.000000000 -0700
+@@ -16,7 +16,7 @@ Outputs
+ Word AFSIGN(M,I,a)
+        Word M,I,a;
+ {
+-       Word A,Is,r,s,sp;
++       Word A,r,s,sp;
+        /* hide s,sp; */
+ 
+ Step1: /* a rational. */
+--- ./src/AFUPBRI.c.orig	2010-06-14 12:30:23.000000000 -0600
++++ ./src/AFUPBRI.c	2013-11-18 21:00:00.000000000 -0700
+@@ -23,7 +23,7 @@ Word AFUPBRI(M,I,L)
+ {
+        Word A1,A2,B1,I1,I11,I21,Lp,Lpp,N,S,S1,S2,Sp,Spp,Ss1,Ss2,T,T1,
+             T2,s;
+-       Word At1,at1,Lt;
++       Word At1,Lt;
+        /* hide A1,A2,B1,Lp,Lpp,Sp,Spp,s; */
+ 
+ Step1: /* Compute Ati, an element of Z[alpha,x], similar to Ai. */
+--- ./src/AFUPHIBRI.c.orig	2010-06-14 12:29:36.000000000 -0600
++++ ./src/AFUPHIBRI.c	2013-11-18 21:00:00.000000000 -0700
+@@ -32,9 +32,9 @@ void AFUPHIBRI(M,I,B, L_,t_)
+ 	Word *L_;
+ 	BDigit *t_;
+ {
+-	Word a1,a2,B1,B2,Bp,*D,I1,Ip,L,L1,Lp,Lp1,*N,*T,*X;
++	Word a1,a2,B1,Bp,*D,I1,L,L1,Lp,Lp1,*N,*T,*X;
+ 	BDigit h,i,j,k,m,n,n1,n2,np,q,r,s,s1,t,t1,u,x,i1,is3;
+-	interval *A,*Bp1,Is,It,*J,K,**P;
++	interval *A,*Bp1,*J,K,**P;
+ 	ieee F1,F2;
+ 	double p,w1,w2;
+ 
+--- ./src/AGIGCD2.c.orig	2010-06-14 12:30:30.000000000 -0600
++++ ./src/AGIGCD2.c	2013-11-18 21:00:00.000000000 -0700
+@@ -17,11 +17,13 @@ BDigit **AGIGCD2(A,B)
+ 	BDigit **D,**Dt,**E,**Et,**F,**Ft,*Gt,**Q,*T1,*T2,*T3,**U;
+ 	BDigit d,dp,h,k,kp,M,m,N,n,np,p,t;
+ 	BDigit d1,d2,e,e1,e2,f1,f2,q1,q2,r1,r2;
++	BDigit i,I;
+ 
+-BDigit g,i;
+-BDigit j,*W,*X;
++/*
++BDigit g,j,*W,*X;
+ BDigit **S;
+-BDigit I,P,T,V;
++BDigit P,T,V;
++*/
+ 
+ Step1: /* Set the precision. */
+ 	d = 8;
+--- ./src/AGIGCDAE.c.orig	2010-06-14 12:30:42.000000000 -0600
++++ ./src/AGIGCDAE.c	2013-11-18 21:00:00.000000000 -0700
+@@ -18,11 +18,6 @@ BDigit **AGIGCDAE(A,B)
+ 	BDigit d,dp,h,k,kp,M,m,N,n,np,p,t;
+ 	BDigit d1,d2,e,e1,e2,f1,f2,q1,q2,r1,r2;
+ 
+-BDigit g,i;
+-BDigit j,*W,*X;
+-BDigit **S;
+-BDigit I,P,T,V;
+-
+ Step1: /* Set the precision. */
+ 	d = 8;
+ 
+--- ./src/AINQ.c.orig	2010-06-14 12:30:33.000000000 -0600
++++ ./src/AINQ.c	2013-11-18 21:00:00.000000000 -0700
+@@ -19,8 +19,6 @@ void AINQ(A,B,Q,R,S,T)
+ {
+ 	BDigit c,i,k,s,t;
+ 
+-Word Ap,Bp,Qp,Rp;
+-
+ Step1: /* Apply AIQR. */
+ 	AIQR(A,B,Q,R,T);
+ 
+--- ./src/AMUPBES.c.orig	2010-06-14 12:30:21.000000000 -0600
++++ ./src/AMUPBES.c	2013-11-18 21:00:00.000000000 -0700
+@@ -18,7 +18,7 @@ Outputs
+ Word AMUPBES(M,I,A,c)
+        Word M,I,A,c;
+ {
+-       Word a,b,s;
++       Word b,s;
+        /* hide s; */
+ 
+ Step1: /* Compute the sign. */
+--- ./src/AMUPIIWS.c.orig	2010-06-14 12:29:52.000000000 -0600
++++ ./src/AMUPIIWS.c	2013-11-18 21:00:00.000000000 -0700
+@@ -25,7 +25,6 @@ void AMUPIIWS(M,I,A,L)
+        Word M,I,A,L;
+ {
+        Word I1,I2,Lp,a,a1,ap,b,b1,bp,c,r2,t,y1,y3;
+-       Word Is;
+        /* hide t,y1,y3; */
+ 
+ Step1: /* Make intervals strongly disjoint. */
+--- ./src/AMUPRICSW.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/AMUPRICSW.c	2013-11-18 21:00:00.000000000 -0700
+@@ -24,7 +24,7 @@ void AMUPRICSW(M,I,A,L_,Is_)
+        Word *L_,*Is_;
+ {
+        Word L,Is;
+-       Word As_1,As_2,Ab,ab,I_1,I_2,Ls_1,Ls_2,L_0,L_1,
++       Word As_1,As_2,Ab,I_1,I_2,Ls_1,Ls_2,L_0,L_1,
+            L_2,b_1,b_2,m;
+ 
+ Step1: /*[Initialize and check if A(0) = 0.]*/
+--- ./src/AMUPSR.c.orig	2010-06-14 12:30:33.000000000 -0600
++++ ./src/AMUPSR.c	2013-11-18 21:00:00.000000000 -0700
+@@ -18,8 +18,7 @@ Outputs
+ Word AMUPSR(M,I,A,c)
+        Word M,I,A,c;
+ {
+-       Word a,b,s;
+-       Word Is;
++       Word b,s;
+        /* hide s; */
+ 
+ Step1: /* Compute the sign. */
+--- ./src/ANDWRITE.c.orig	2010-06-14 12:29:21.000000000 -0600
++++ ./src/ANDWRITE.c	2013-11-18 21:00:00.000000000 -0700
+@@ -19,7 +19,7 @@ void ANDWRITE(M,I,n)
+ 
+        Word M,I,n;
+ {
+-       Word J,R,Mp,K;
++       Word J,R,K;
+        Word a,a1,a2,b,b1,b2,d,d1,d2,e,f,m;
+        Word N;
+ 
+--- ./src/ARGSACLIB.c.orig	2010-06-14 12:30:47.000000000 -0600
++++ ./src/ARGSACLIB.c	2013-11-18 21:00:00.000000000 -0700
+@@ -25,7 +25,7 @@ void ARGSACLIB(argc,argv,ac_,av_)
+        char ***av_;
+ {
+        Word gcm,nsprime,nmprime,nlprime,nu,nup,rho,nptr1;
+-       int  ac,i,j;
++       int  ac,i;
+        char **av;
+ 
+ Step1: /* Store the default values of certain global variables. */ 
+--- ./src/DEGCD.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/DEGCD.c	2013-11-18 21:00:00.000000000 -0700
+@@ -20,7 +20,7 @@ Method
+ void DEGCD(a,b, c_,u_,v_)
+        Word a,b, *c_,*u_,*v_;
+ {
+-       Word a1,a2,a3,b2,q,u,u1,u2,u3,v,v1,v2,v3,c,d;
++       Word a1,a2,a3,b2,q,u1,u2,u3,v1,v2,v3,d;
+ 
+ Step1: /* b = 0. */
+ 	if (b == 0) {
+--- ./src/DIIPREAD.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/DIIPREAD.c	2013-11-18 21:00:00.000000000 -0700
+@@ -17,8 +17,8 @@ Outputs
+ Word DIIPREAD(V)
+        Word V;
+ {
+-       Word A,C,Cp,E,a,e,i,j,k,r,s,v;
+-       /* hide C,e,i,j,k,r,s; */
++       Word A,C,Cp,E,a,e,i,j,k,r,v;
++       /* hide C,e,i,j,k,r; */
+ 
+ Step1: /* Rl=0. */
+        if (V == NIL) {
+--- ./src/DIIPWRITE.c.orig	2010-06-14 12:29:22.000000000 -0600
++++ ./src/DIIPWRITE.c	2013-11-18 21:00:00.000000000 -0700
+@@ -14,7 +14,7 @@ Inputs
+ void DIIPWRITE(r,A,V)
+        Word r,A,V;
+ {
+-       Word Ap,E,Eb,Ep,Vb,Vp,a,e,s,v;
++       Word Ap,E,Ep,Vp,a,e,s,v;
+        char fc,z;
+ 
+ Step1: /* r = 0 or A = 0. */
+--- ./src/DIRPREAD.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/DIRPREAD.c	2013-11-18 21:00:00.000000000 -0700
+@@ -18,8 +18,8 @@ Outputs
+ Word DIRPREAD(V)
+        Word V;
+ {
+-       Word A,C,Cp,E,a,e,i,j,k,r,s,v;
+-       /* hide C,e,i,j,k,r,s; */
++       Word A,C,Cp,E,a,e,i,j,k,r,v;
++       /* hide C,e,i,j,k,r; */
+ 
+ Step1: /* Rl=0. */
+        if (V == NIL) {
+--- ./src/DIRPWRITE.c.orig	2010-06-14 12:29:34.000000000 -0600
++++ ./src/DIRPWRITE.c	2013-11-18 21:00:00.000000000 -0700
+@@ -14,7 +14,7 @@ Inputs
+ void DIRPWRITE(r,A,V)
+        Word r,A,V;
+ {
+-       Word Ap,E,Eb,Ep,Vb,Vp,a,e,s,v,p1,n1;
++       Word Ap,E,Ep,Vp,a,e,s,v,p1,n1;
+        char fc,z;
+ 
+ Step1: /* r = 0 or A = 0. */
+--- ./src/DLINIT.c.orig	2010-06-14 12:30:47.000000000 -0600
++++ ./src/DLINIT.c	2013-11-18 21:00:00.000000000 -0700
+@@ -31,7 +31,7 @@ void DLINIT(p,n,Fp,Gp,A,B,C)
+ 	BDigit **Fp,**Gp,**A,**B,**C;
+ {
+ 	BDigit a,q;
+-	Word F,G;
++	Word F;
+ 
+ Step1: /* n = 1. */
+         if (n == 1) {
+--- ./src/DPCC.c.orig	2010-06-14 12:30:07.000000000 -0600
++++ ./src/DPCC.c	2013-11-18 21:00:00.000000000 -0700
+@@ -37,7 +37,7 @@ Step2: /* Is the quotient 1 or 2 ? */
+ 	  v3 = v1 - v2;
+ 	  goto Step4; }
+        d3 = d2 - a2;
+-       if (d2 < 0) {
++       if (d3 < 0) {
+ 	  a3 = d2;
+ 	  u3 = u1 - u2 - u2;
+ 	  v3 = v1 - v2 - v2;
+--- ./src/DRPCC.c.orig	2010-06-14 12:29:54.000000000 -0600
++++ ./src/DRPCC.c	2013-11-18 21:00:00.000000000 -0700
+@@ -37,7 +37,7 @@ Step2: /* Is the quotient 1 or 2 ? */
+ 	  v3 = v1 - v2;
+ 	  goto Step4; }
+        d3 = d2 - a2;
+-       if (d2 < 0) {
++       if (d3 < 0) {
+ 	  a3 = d2;
+ 	  u3 = u1 - u2 - u2;
+ 	  v3 = v1 - v2 - v2;
+--- ./src/GCSI.c.orig	2010-06-14 12:30:25.000000000 -0600
++++ ./src/GCSI.c	2013-11-18 21:00:00.000000000 -0700
+@@ -21,10 +21,9 @@ void GCSI(s,EACSTACK)
+        Word s;
+        char *EACSTACK;
+ {
+-       Word I,L,N,N1,Np,Np1,T,T1,c,**i,j,inc;
++       Word I,L,N,N1,Np,Np1,T,T1,c,inc;
+        char *a;
+-       GCArray *v;
+-       /* hide I,L,N,N1,Np,Np1,T,T1,c,i,j,inc,a,v; */
++       /* hide I,L,N,N1,Np,Np1,T,T1,c,inc,a; */
+ 
+ Step1: /* Setup. */
+        if (GCM == 1) {
+--- ./src/HIPBHT.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/HIPBHT.c	2013-11-18 21:00:00.000000000 -0700
+@@ -22,7 +22,7 @@ void HIPBHT(n,A,k,B_,t_)
+ 	BDigit *t_;
+ {
+ 	interval *B;
+-	BDigit e,i,t;
++	BDigit i,t;
+ 	ieee F;
+ 	double f,g;
+ 
+--- ./src/HIPDWRITE.c.orig	2010-06-14 12:29:21.000000000 -0600
++++ ./src/HIPDWRITE.c	2013-11-18 21:00:00.000000000 -0700
+@@ -22,7 +22,6 @@ void HIPDWRITE(n,A,k)
+ 	BDigit k;
+ {
+ 	BDigit i;
+-	Word I;
+ 
+ Step1: /* Convert and write coefficients. */
+ 	for (i = n; i >= 0; i--) {
+--- ./src/HIPIEVAL.c.orig	2010-06-14 12:30:12.000000000 -0600
++++ ./src/HIPIEVAL.c	2013-11-18 21:00:00.000000000 -0700
+@@ -22,7 +22,6 @@ interval HIPIEVAL(n,A,I)
+ {
+ 	BDigit i;
+ 	interval J;
+-	Word L;
+ 
+ Step1: /* Apply Horner's method. */
+ 	J = A[n];
+--- ./src/HIPIR.c.orig	2010-06-14 12:30:42.000000000 -0600
++++ ./src/HIPIR.c	2013-11-18 21:00:00.000000000 -0700
+@@ -39,7 +39,6 @@ void HIPIR(n,A,I,t,h,k,J_,j_)
+ 	interval J;
+ 	BDigit j,s;
+ 	double a,b,c,w;
+-	Word ap;
+ 
+ Step1: /* Set FPCATCH. */
+ 	FPCATCH();
+--- ./src/HIPROD.c.orig	2010-06-14 12:30:08.000000000 -0600
++++ ./src/HIPROD.c	2013-11-18 21:00:00.000000000 -0700
+@@ -18,7 +18,7 @@ interval HIPROD(I,J)
+ 
+        interval I,J;
+ {
+-       double a1,a2,b,b1,b2,c1,c2,d1,d2;
++       double a1,a2,b1,b2,c1,c2,d1,d2;
+        interval K;
+ 
+ Step1: /* Extract endpoints. */
+--- ./src/HIPRRID.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/HIPRRID.c	2013-11-18 21:00:00.000000000 -0700
+@@ -26,7 +26,7 @@ void HIPRRID(n,A, L_,t_)
+ {
+ 	BDigit k,s,t;
+ 	interval *B,*C;
+-	Word b,I,J,L,L1,L2;
++	Word I,L,L1,L2;
+ 
+ Step1: /* Compute a bound for the positive roots. */
+ 	L = NIL;
+--- ./src/HIPRRISD.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/HIPRRISD.c	2013-11-18 21:00:00.000000000 -0700
+@@ -30,7 +30,7 @@ void HIPRRISD(n,A,a,b, L_,t_)
+ 	Word a,b,*L_;
+ 	BDigit *t_;
+ {
+-	BDigit s,s2,t,u,v;
++	BDigit s,s2,t,v;
+ 	Word c,L,L1,L2;
+ 	interval *B,*C;
+ 
+--- ./src/HIPVCHT.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/HIPVCHT.c	2013-11-18 21:00:00.000000000 -0700
+@@ -25,9 +25,8 @@ void HIPVCHT(n,A, v_,t_)
+ 	interval *A;
+ 	BDigit *v_,*t_;
+ {
+-	interval a,*B,*C;
++	interval *B,*C;
+ 	BDigit t,v;
+-	double b;
+ 
+ Step1: /* Compute B(x). */
+ 	FPCATCH();
+--- ./src/HIQUOT.c.orig	2010-06-14 12:30:34.000000000 -0600
++++ ./src/HIQUOT.c	2013-11-18 21:00:00.000000000 -0700
+@@ -18,7 +18,7 @@ interval HIQUOT(I,J)
+ 
+        interval I,J;
+ {
+-       double a1,a2,b,b1,b2,c1,c2,d1,d2;
++       double a1,a2,b1,b2;
+        interval K;
+ 
+ Step1: /* Extract endpoints. */
+--- ./src/IPBEZM.c.orig	2010-06-14 12:30:30.000000000 -0600
++++ ./src/IPBEZM.c	2013-11-18 21:00:00.000000000 -0700
+@@ -18,8 +18,7 @@ Word IPBEZM(r,A,B)
+ 	Word A,B;
+ {
+ 	BDigit a,b,e,k,m,n;
+-	Word Ab,Ap,Bb,Bp,C,D,E,L,L2,Lp,M;
+-	Word V;
++	Word Ab,Ap,Bb,Bp,C,D,E,L,L2,M;
+ 
+ Step1: /* Get the degrees, m and n. */
+ 	m = PDEG(A);
+--- ./src/IPEQ.c.orig	2010-06-14 12:29:55.000000000 -0600
++++ ./src/IPEQ.c	2013-11-18 21:00:00.000000000 -0700
+@@ -15,7 +15,7 @@ Output
+ Word IPEQ(r,A,B)
+        Word r,A,B;
+ {
+-       Word a,Ah,Ap,b,bh,bp,Bb,Bp,Bh,c,C,e,f,g,h,k,m,n,rp;
++       Word a,Ah,Ap,b,bh,bp,Bb,Bp,Bh,c,C,e,f,g,h,m,n,rp;
+ 
+ Step1: /* A = 0. */
+        if (A == 0) {
+@@ -27,10 +27,9 @@ Step2: /* r = 0. */
+ 	  C = IEQ(A,B);
+ 	  goto Return; }
+ 
+-Step3: /* Set m = deg(A), n = deg(B), k = deg(C). */
++Step3: /* Set m = deg(A), n = deg(B). */
+        m = PDEG(A);
+        n = PDEG(B);
+-       k = m - n;
+ 
+ Step4: /* Set b = ldcf(B), B_ = red(B), r' = r - 1. */
+        b = PLDCF(B);
+--- ./src/IPFACTREAD.c.orig	2010-06-14 12:30:00.000000000 -0600
++++ ./src/IPFACTREAD.c	2013-11-18 21:00:00.000000000 -0700
+@@ -16,8 +16,8 @@ Outputs
+ void IPFACTREAD(r,V, A_,t_)
+        Word r,V, *A_,*t_;
+ {
+-       Word A,C,N,i,k,t,v;
+-       /* hide C,i,k,t; */
++       Word A,C,N,k,t,v;
++       /* hide C,k,t; */
+ 
+ Step1: /* Setup and Classify. */
+        t = 1;
+--- ./src/IPPVED.c.orig	2010-06-14 12:30:47.000000000 -0600
++++ ./src/IPPVED.c	2013-11-18 21:00:00.000000000 -0700
+@@ -16,7 +16,7 @@ Outputs
+ Word IPPVED(r,A)
+        Word r,A;
+ {
+-       Word Ed,Ap,rp,E,Es,Ep,a,d;
++       Word Ap,rp,E,Es,Ep,a,d;
+ 
+ Step1: /* r = 1. */
+        Ap = A;
+--- ./src/IPQ.c.orig	2010-06-14 12:30:40.000000000 -0600
++++ ./src/IPQ.c	2013-11-18 21:00:00.000000000 -0700
+@@ -16,7 +16,7 @@ Outputs
+ Word IPQ(r,A,B)
+        Word r,A,B;
+ {
+-       Word C,R;
++       Word C;
+ 
+ Step1: /* Compute. */
+        if (r == 0)
+--- ./src/IPRES.c.orig	2010-06-14 12:29:41.000000000 -0600
++++ ./src/IPRES.c	2013-11-18 21:00:00.000000000 -0700
+@@ -24,8 +24,6 @@ Word IPRES(r,A,B)
+ 	BDigit d1,i,k,**M,m,n,p,q,rp;
+         Word As,Bs,C,Cs,D,L,Mp,P,Q,d,e,f;
+ 
+-	BDigit j,T;
+-
+ Step1: /* Compute a coefficient bound. */
+         d = IPSUMN(r,A);
+         e = IPSUMN(r,B);
+--- src/IUPSQHLL.c.orig	2010-06-14 12:30:04.000000000 -0600
++++ src/IUPSQHLL.c	2013-11-18 21:00:00.000000000 -0700
+@@ -27,7 +27,7 @@
+ void IUPSQHLL(p,q,A,C,Ap_,Bp_,Sp_,Tp_)
+        Word p,q,A,C,*Ap_,*Bp_,*Sp_,*Tp_;
+ {
+-       Word Ab,Ap,As,B,Bb,Bp,Bs,Cb,Cp,L,R,Sb,Sp,Ss,Tb,Tp,Ts;
++       Word Ab,Ap,As,Bb,Bp,Bs,Cb,Cp,L,R,Sb,Sp,Ss,Tb,Tp,Ts;
+ 
+ Step1: /* Initialize. */
+        Ap = NIL;
+@@ -36,7 +36,6 @@
+        Tp = NIL;
+        L  = A;
+        Cp = MPHOM(1,q,C);
+-       B  = Cp;
+ 
+ Step2: /* Lift factors. */
+        while (RED(L) != NIL) {
+--- ./src/IUSFPMF.c.orig	2010-06-14 12:30:34.000000000 -0600
++++ ./src/IUSFPMF.c	2013-11-18 21:00:00.000000000 -0700
+@@ -38,7 +38,7 @@ void IUSFPMF(A, p_,F_,C_,L_)
+        Word A, *p_,*F_,*C_,*L_;
+ {
+        Word B,B1,Bp,C,D,F,F1,Fp,G,H,H1,I,J,L,Lp,P,R,
+-            a,b,d,e,f,i,j,k,n,p,q,s;
++            a,b,d,e,f,i,j,k,n,p,q;
+ 
+ Step1: /* Initialize. */
+        p = 0;
+@@ -48,7 +48,6 @@ Step1: /* Initialize. */
+        n = n + 1;
+        C = IDIF(IMP2(1,n),1);
+        L = NIL;
+-       s = 0;
+        a = PLDCF(A);
+        i = 0;
+        P = RED(SPRIME); /* skip over the prime 2 */
+@@ -92,7 +91,6 @@ Step4: /* Compute the factor degree set.
+ 	  p = 0;
+ 	  F = NIL;
+ 	  L = NIL;
+-	  s = 1;
+ 	  goto Return; }
+        if (k < n) {
+ 	  p = q;
+--- ./src/MAIPDM.c.orig	2010-06-14 12:29:42.000000000 -0600
++++ ./src/MAIPDM.c	2013-11-18 21:00:00.000000000 -0700
+@@ -16,7 +16,7 @@ Output
+ Word MAIPDM(r,M)
+         Word r,M;
+ {
+-        Word b,b1,b11,bp,D,Ds,M1,M11,Mp,Ms,n,P,Q,p,pp;
++        Word b,b1,b11,bp,D,Ds,M1,M11,Mp,Ms,P,Q,p,pp;
+ 
+ Step1: /* Matrix of order 1. */
+         if (RED(M) == NIL) {
+@@ -24,7 +24,6 @@ Step1: /* Matrix of order 1. */
+            goto Return; }
+ 
+ Step2: /* Compute a coefficient bound. */
+-        n = LENGTH(M);
+         Mp = M;
+         b = 1;
+         do {
+--- ./src/MAPMON.c.orig	2010-06-14 12:30:34.000000000 -0600
++++ ./src/MAPMON.c	2013-11-18 21:00:00.000000000 -0700
+@@ -14,7 +14,7 @@ Output
+ Word *MAPMON(p,A)
+ 	BDigit p,*A;
+ {
+-	BDigit ap,b,*B,i,n;
++	BDigit ap,*B,i,n;
+ 
+ Step1: /* Get array for B. */
+         n = MAPDEG(A);
+@@ -22,7 +22,6 @@ Step1: /* Get array for B. */
+ 
+ Step2: /* Compute the inverse of the leading coefficient. */
+ 	ap = MDINV(p,MAPLDCF(A));
+-	b = MDPROD(p,ap,A[0]);
+ 
+ Step3: /* Store the degree and leading coefficients of B. */
+ 	B[-1] = n;
+--- ./src/MPRESDB.c.orig	2010-06-14 12:29:40.000000000 -0600
++++ ./src/MPRESDB.c	2013-11-18 21:00:00.000000000 -0700
+@@ -19,10 +19,8 @@ Word MPRESDB(r,p,A,B,D)
+ 	BDigit r,p;
+         Word A,B,D;
+ {
+-        Word As,Bs,C,Cs,Dp,E,Ep,b,L,P;
+-	BDigit d,i,k,**M,m,n,q,rp;
+-
+-	Word T;
++        Word As,Bs,C,Cs,Dp,E,Ep,b;
++	BDigit d,i,m,n,rp;
+ 
+ Step1: /* r = 1. */
+         if (r == 1) {
+--- ./src/NORMEFD.c.orig	2010-06-14 12:29:24.000000000 -0600
++++ ./src/NORMEFD.c	2013-11-18 21:00:00.000000000 -0700
+@@ -51,7 +51,7 @@ Outputs
+ void NORMEFD(N,n,p,Q,B,L,G,C,d,N1, F_,Nb_,Gb_,Bb_,Ib_,Cb_,Nb1_)
+        Word N,n,p,Q,B,L,G,C,d,N1, *F_,*Nb_,*Gb_,*Bb_,*Ib_,*Cb_,*Nb1_;
+ {
+-       Word A,A1,Bb,Cb,F,Fb,Fp,F1,Gb,Ib,Ib1,Lb,Lp,Lb1,Lp1,L1,Nb,Nb1,
++       Word A,A1,Bb,Cb,F,Fb,F1,Gb,Ib,Ib1,Lb,Lp,Lb1,Lp1,L1,Nb,Nb1,
+             Qp,Tb,T1,c,dp,d1,e,i,k,n1,q,s;
+ 
+ Step1: /* Initialize. */
+@@ -66,7 +66,6 @@ Step1: /* Initialize. */
+        Ib = NIL;
+        F = NIL;
+        k = LENGTH(SECOND(FIRST(L)))-1;
+-       Fp = NIL;
+        e = 1;
+        dp = d;
+        c = 1;
+--- ./src/RHI.c.orig	2010-06-14 12:30:09.000000000 -0600
++++ ./src/RHI.c	2013-11-18 21:00:00.000000000 -0700
+@@ -23,7 +23,6 @@ void RHI(a,b,I_,t_)
+ 	BDigit e,e1,e2,f,g,m01,m02,m11,m12,s1,s2,t,t1,t2;
+ 	ieee F1,F2,G1,G2;
+         interval F,G,I;
+-	BDigit c;
+ 
+ Step1: /* Apply ISEM  to both a and b. */
+ 	ISEM(a,&s1,&e1,&m11,&m01,&t1);
+--- ./src/RPFACTREAD.c.orig	2010-06-14 12:29:51.000000000 -0600
++++ ./src/RPFACTREAD.c	2013-11-18 21:00:00.000000000 -0700
+@@ -16,8 +16,8 @@ Outputs
+ void RPFACTREAD(r,V, A_,t_)
+        Word r,V, *A_,*t_;
+ {
+-       Word A,C,D,N,i,k,t,v;
+-       /* hide C,i,k,t; */
++       Word A,C,D,N,k,t,v;
++       /* hide C,k,t; */
+ 
+ Step1: /* Setup and Classify. */
+        t = 1;

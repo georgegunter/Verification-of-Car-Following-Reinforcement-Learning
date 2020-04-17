@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-1.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_1,conjecture, ! [X,S3,SX] : ((0 < X & 0 < S3 & S3^2 = 3 & 0 < SX & SX^2 = 75 + 80 * X^2) => arctan(X) > 8*X*S3/(3*S3 + SX)) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+
+% The large number of variables makes this form of problem difficult.
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+

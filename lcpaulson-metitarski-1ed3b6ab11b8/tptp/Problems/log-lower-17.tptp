@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-17.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_17,conjecture, ! [X,Y] : ((-1 < X & X <= 0 & 0 <= Y & Y^2 = 1+X) => X/Y <= ln(1+X))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (d) If x > -1, then 2 |x| / (2 + x) <= |ln (1+x)| <= |x| / sqrt (1+x)
+
+% Related to log-upper-18
+
+% NOT PROVABLE with current ln bounds as 1+X approaches zero. Lines cross around X = -.99972
+
+include('Axioms/general.ax').
+include('Axioms/ln-extended.ax').

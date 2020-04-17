@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : keymaera-frocos-whirling-pendulum.tptp
+% Syntax   : Dimension                 	:    10
+% Syntax   : Number of Skolem constants	:    10
+% Source   : Andrew Sogokon
+%            one of a series of problems automatically generated from whirling pendulum problem
+% Comments : solved in 545 secs
+%   
+%--------------------------------------------------------------------------
+
+
+% Auto-generated MetiTarski problem.
+% Number of variables: 10
+fof(KeYmaera,conjecture, ![X2,KF,X1,A,G,OMEGA,LP,MB] : ((((((((KF=0.2) & (MB=1)) & (OMEGA=0.9)) & (G=10)) & (LP=10)) & ((((X1^2)+(X1*X2))+(4*(X2^2)))<A)) & (A>0)) => ![X2USCORE0,X1USCORE0] : (((((X1USCORE0^2)+(X1USCORE0*X2USCORE0))+(4*(X2USCORE0^2)))<=0.69929971) => ((((((2*X1USCORE0)*X2USCORE0)+(X2USCORE0^2))+(X1USCORE0*(((((-1*KF)*(MB^-1))*X2USCORE0)+(((-1*G)*(LP^-1))*sin(X1USCORE0)))+(((OMEGA^2)*cos(X1USCORE0))*sin(X1USCORE0)))))+((8*X2USCORE0)*(((((-1*KF)*(MB^-1))*X2USCORE0)+(((-1*G)*(LP^-1))*sin(X1USCORE0)))+(((OMEGA^2)*cos(X1USCORE0))*sin(X1USCORE0)))))<=0)))).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+

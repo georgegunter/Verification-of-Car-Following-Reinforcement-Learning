@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : asin-1-1var.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arcsin Problem
+
+fof(asin_1,conjecture, ! [X] : ((0 <= X & X < 1) => arcsin(X)*(pi/6) >= arcsin(X/2)/2) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities, page 251, (k)
+% Here, y = 1/2
+
+include('Axioms/general.ax').
+include('Axioms/arcsin-lower.ax').
+include('Axioms/arcsin-upper.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/pi.ax').
+

@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : MUTANT-3-h.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(MUTANT_3_h, conjecture, ! [X] : ((0 <= X & X <= 10) => -2650*exp(-0.278 + 10^-3*X) + 0.152e-5*exp(-0.515e-2*X)*(5.02e9*cosh(0.512e-2*X) + 2.4e10*sinh(0.512e-2*X)) < 25000)).
+
+% Source:
+%   Benchmarks for Safety Verification of Hybrid Systems
+%   Stefan Ratschan and Zhikun She, http://hsolver.sourceforge.net/benchmarks/
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/sinh-upper.ax').
+include('Axioms/cosh-upper.ax').

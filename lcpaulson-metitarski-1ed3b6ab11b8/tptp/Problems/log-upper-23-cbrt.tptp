@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-23-cbrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_23,conjecture, ! [X] : ((0 < X & X <= 400) => ln(X) <= 3*(cbrt(X)-1)) ).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.1.37 ln x <= n (x^1/n - 1) for any positive n (x > 0).
+% n = 3.
+
+% Version with explicit cube roots
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

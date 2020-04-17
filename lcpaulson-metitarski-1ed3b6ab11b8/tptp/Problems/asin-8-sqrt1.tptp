@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : asin-8-sqrt1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arcsin Problem
+
+fof(asin_8,conjecture, ! [X,SP] : ((0 < X & X < 1 & 0 <= SP & SP^2 = 1+X) => arcsin(X) < 0.1 + 3.1416*(1.415 + 1/2)*(SP - sqrt(1-X)) / (4 + SP + sqrt(1-X)) )).
+
+% Theorem 1.3 of Ling Zhu. New Inequalities of Shafer-Fink Type for Arc Hyperbolic Sine.
+% Journal of Inequalities and Applications (2008). doi:10.1155/2008/368275
+
+% SLOW, 52.0 seconds;   51.3 seconds (QEPCAD)
+
+include('Axioms/general.ax').
+include('Axioms/arcsin-upper.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').

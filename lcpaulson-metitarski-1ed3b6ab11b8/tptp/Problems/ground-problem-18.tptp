@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-18.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_18,conjecture, ln(pi) < pi/exp(1)  ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.16 (a) Solutions. ln pi < pi/e
+
+% Not trivial: the lhs is 1.144729886, the rhs is 1.15572735, the difference
+%    is only 0.01099746394.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-general.ax').
+include('Axioms/pi.ax').

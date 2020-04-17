@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : log-fun-ineq-e-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% formerly two-variable-problem-4-weak.tptp
+
+fof(lfi_e,conjecture, ! [X,Y] : ((0 < X & X < 12) => X * Y <= 1/5 + X * ln(X) + exp(Y-1))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (e) If x > 0 then xy <= x log x + e^(y-1)
+% with equality if and only if y = 1 + log x.
+
+% 2011-10-27: Now harder, with no restrictions on Y (X is now bounded above however)
+% With Mathematica, it takes about 60 seconds. With QEPCAD, above 200.
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/ln-lower.ax').

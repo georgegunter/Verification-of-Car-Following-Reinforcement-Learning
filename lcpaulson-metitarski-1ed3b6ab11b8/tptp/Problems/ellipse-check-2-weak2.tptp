@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : ellipse-check-2-weak2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : W. Denman, M. H. Zaki, S. Tahar and L. Rodrigues.
+% Comments : Rudder input and response: Lower right bound of the elliptical exclusion region
+%--------------------------------------------------------------------------
+% W. Denman, M. H. Zaki, S. Tahar and L. Rodrigues.
+% Towards Flight Control Verification using Automated Theorem Proving.
+% In M. Bobaruet al., editors, Nasa Formal Methods, Springer LNCS 6617 (2011), pages 89-100.
+
+% Maximum theoretical range 1.088957993 to infinity
+% This weaker version of the problem simplifies the argument of the logarithm.
+
+fof(aeronautical,conjecture, ![X] : (1.089 < X => ((10*log(1/X^2))^2)/36 + (arctan(0.2*(0.49e28*X^8+0.60e29*X^6-0.10e30*X^4+0.239e30*X^2-0.161e12+0.53e13*X^10)/(X*(0.37e27*X^8+0.45e28*X^6-0.89e28*X^4+0.369e28*X^2-0.96e26))))^2/(3.14*0.205)^2 > 1)).
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/log.ax').

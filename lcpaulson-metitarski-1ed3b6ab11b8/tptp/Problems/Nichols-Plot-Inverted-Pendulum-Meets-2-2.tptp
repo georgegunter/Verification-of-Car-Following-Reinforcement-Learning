@@ -1,0 +1,37 @@
+%--------------------------------------------------------------------------
+% File     : Nichols-Plot-Inverted-Pendulum-Meets-2-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Analysis of an Inverted Pendulum that Meets its Requirements
+
+fof(Nichols_Plot_Inverted_Pendulum_Meets_2_2, conjecture,
+  ! [X] : ((0.2 <= X & X <= 57/128) => arctan((22*X^5 + 650*X^3 - 1029*X)/(81*X^4+2495*X^2-98)) <= -pi/4)).
+
+% Source 1: Applications of Real Number Theorem Proving in PVS
+% Author: H. Gottliebsen, R. Hardy, O. Lightfoot, and U. Martin
+% Source 2: Formal Methods for Control Engineering: A Validated Decision Procedure for Nichols Plot Analysis
+% Author: R. Hardy (PhD. thesis, University of St. Andrews)
+% Chapter 8: Case Studies, 8.2 Inverted Pendulum, 8.2.2 Analysis of an Inverted Pendulum that Meets its Requirements
+% G = -25(2s^2-7s+2)/(11s^3+2s^2-343s-49)
+% 1. for all w. 157/128 >= w \/ w >= 129/32 ==> -5pi/4 >= argument (G) \/ argument (G) >= -pi.
+% 2. for all w. 57/128>= w \/ w >= 629/512 ==> -pi >= argument (G) \/ argument (G) >= -3pi/4.
+% 3. for all w. w >= 101/512 ==> -3 >= gain (G) \/ gain(G) >= 3.
+
+% The argument is (Email Exchange: Ruth Letham <Ruth.Letham@fife.gov.uk>, Thu, 24 Jul 2008 09:44:38 +0100):
+
+% For w in [0,0.198...) argument(G) = -arctan( (650w^3 - 1029w + 22w^5)/(81w^4+24595w^2-98) )
+% For w = 0.198... argument(G) = -Pi
+% For w in (0.198..., infinity) argument(G) = -arctan( (650w^3 - 1029w + 22w^5)/(81w^4+24595w^2-98) ) - Pi
+
+% The denominator goes to zero
+%      when u = +/- 0.19876!   (There are also two imaginary roots.)
+
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/pi.ax').
+

@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-3512-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_3512,conjecture, ![X] : ((0 < X & X < pi) => (cos(X) + cos(2*X)/2) <= - ln(sin(X/2)) + (pi - X) / 2)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.12, page 251. (n=2)
+% for 0 < x < pi, |\sum_{k=1}^n cos(kx)/k| <= - ln(sin(X/2)) + (pi-x) / 2
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos-extended.ax').

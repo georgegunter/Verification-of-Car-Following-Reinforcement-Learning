@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : sin-344-2-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_344,conjecture, ! [X,Y] : ((0.1 < X & X < 2.9 & 0.1 < Y & Y < 2.9) => abs(sin(X+Y)) <= 0.02 + sin(X) + sin(Y))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.4.4: If 0 < x_i < pi, then |sin(x_1 + ... + x_n)| < sin(x_1) + ... + sin(x_n)
+
+% A little padding, and more tightly constrained variable ranges. Requires Mathematica, 42 sec!
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin-extended.ax').
+

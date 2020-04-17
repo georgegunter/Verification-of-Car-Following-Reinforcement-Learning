@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_1,conjecture, ![X] : ((0 <= X & X < pi/2) => 1-cos(X) <= tan(X/2)) ).
+
+% Must avoid pi/2, else division by zero.
+% NOT PROVABLE except with exact value of pi.
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/pi.ax').
+

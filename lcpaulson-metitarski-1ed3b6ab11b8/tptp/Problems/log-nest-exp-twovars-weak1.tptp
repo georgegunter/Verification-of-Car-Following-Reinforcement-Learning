@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : log-nest-exp-twovars-weak1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(log_nest_exp_twovars,conjecture, ! [X,Y] : ((0 < X & Y < 2) => Y <= ln(X + 1 + exp(Y)))).
+
+% Source: LCP. 2011-05-03: reduced padding from 10 to 1.5.
+% 2011-10-28: down to 1, and Y not bounded below.
+% SLOW: 164 = 3 (Metis) + 161 (RCF) [and a 1016-step proof!]
+% 2014-06-20: Can be proved using Z3 in 6s using --RCFtime 1000
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-extended.ax').

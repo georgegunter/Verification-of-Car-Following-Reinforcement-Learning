@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : log-problem-4.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : LC Paulson.
+% Comments : The upper bound of 13 is arbitrary, of course.
+%--------------------------------------------------------------------------
+fof(log_problem_4,conjecture, ! [X] : ((0 <= X & X <= 13) => X * ln(1 + X) < 1 + X * ln(X))).
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+

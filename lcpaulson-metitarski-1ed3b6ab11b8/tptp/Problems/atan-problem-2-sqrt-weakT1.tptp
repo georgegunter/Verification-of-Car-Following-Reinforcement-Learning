@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-2-sqrt-weakT1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_2,conjecture, ! [A,B] : ((0 < A & A < B & B < 2) => 0.25 + arctan(B) - arctan(A) >= (B-A) / sqrt((A^2 + 1)*(B^2 + 1))) ).
+
+% 2011-07-05: a very slight weakening. Previously not proved.
+% DIFFICULT: proved in 50-135s, nearly all QEPCAD, and needs --maxalg 25-150.
+
+% The American Mathematical Monthly, Vol. 73, No. 4 (Apr., 1966), p. 424
+% via P. S. Bullen [The version in his Dictionary of Inequalities contains many errors]
+
+% If a<b and t<>0 then arctan(b/t)-arctan(a/t))/t > (b-a)/sqrt((a^2+t^2)*(b^2+t^2))
+
+% The large number of variables makes this problem difficult.
+% Here, t = 1
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/sqrt-lower.ax').

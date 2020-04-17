@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : X1s-tan.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists1,conjecture, ? [X] : tan(X) > X).
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/pi.ax').
+

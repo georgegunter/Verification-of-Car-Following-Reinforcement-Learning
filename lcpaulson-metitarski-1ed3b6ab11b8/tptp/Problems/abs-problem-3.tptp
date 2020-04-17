@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : abs-problem-3.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : Abramowitz & Stegun 4.1.35 |ln (1-x)| <= 3 x / 2 (0 < x <= 0.5828)
+% Comments : Special cases include problems log-lower-{4,8,12} and log-upper-{4,8,12}.
+%            2011-05-29: increased the upper bound of X, making the problem slightly harder
+%--------------------------------------------------------------------------
+fof(abs_problem_3,conjecture, ! [X] : ((0 < X & X <= 0.582811643) => abs(ln(1-X)) <= 3*X/2) ).
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/abs.ax').

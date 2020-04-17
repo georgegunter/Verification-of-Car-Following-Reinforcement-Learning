@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-359-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_359,conjecture, ![X] : ((0 < X & X < 6.28) => abs(sin(X) + sin(2*X)/2) <= 1 / sin(X/2))).
+% SUPER SLOW, 125s = 5 (Metis) + 120 (QEPCAD); 557-line proof
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.9, page 250. (m=0, n=2)
+% for 0 < x < 2 pi, |\sum_{k=m+1}^{m+n} sin(kx)/k| < 1 / ((m+1) sin(x/2))
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended2.ax').
+include('Axioms/sin-constant.ax').

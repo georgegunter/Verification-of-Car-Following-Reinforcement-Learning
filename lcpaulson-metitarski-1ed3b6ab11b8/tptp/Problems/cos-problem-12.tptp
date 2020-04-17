@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-12.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_12,conjecture, ! [X,Y] : (X^2+Y^2 <= pi => cos(X) + cos(Y) <= 1 + cos(X*Y)) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.48. Show that cos x + cos y <= 1 + cos (xy) for x^2+y^2 <= pi
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+
+

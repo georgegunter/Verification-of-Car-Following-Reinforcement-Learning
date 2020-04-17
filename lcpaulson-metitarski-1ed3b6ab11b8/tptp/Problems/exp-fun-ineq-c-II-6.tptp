@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : exp-fun-ineq-c-II-6.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Exponential Function Inequalities.
+% (c) (1 + x/n)^n > exp(x)*(1 + x/n)^n   [x>0, n = 1, 2, ...]
+
+% The book incorrectly shows this as holding for all nonzero x.
+% It holds for all positive X, but we do not have a uniform upper bound for exponentials.
+
+fof(efi_c,conjecture, ! [X] : ((0<X & X<4) => (1 + X/6)^6 > exp(X)*(1 + X/6)^-6)).
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

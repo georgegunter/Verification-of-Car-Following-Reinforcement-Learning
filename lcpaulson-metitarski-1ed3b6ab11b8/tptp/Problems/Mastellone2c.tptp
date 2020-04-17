@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : Mastellone2c.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(lyapunov_1,conjecture, ! [X1,X2,X3] :
+		( (1.2 < X3 & X3 < 3.08) => X1^2*sin(X3) + X2^4 - X1*X2*cos(X3) + X2^2*X3^2*log(X3) >= 0 )).
+
+%Source: William Denman.  Requires Mathematica / Z3
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/log.ax').

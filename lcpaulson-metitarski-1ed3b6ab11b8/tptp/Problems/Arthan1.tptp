@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : Arthan1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Email Exchange, Rob Arthan <rda@lemma-one.com>
+% http://www.lemma-one.com/papers/75s.pdf
+% K = M = 1
+
+% Hard to prove for the full interval shown. 2011-01-13, first proof using case splitting
+
+fof(Rob_Arthan_problem_1, conjecture, ! [S] : ((0 <= S & S <= 3) => (1 + S + S^2 + sin(S))*((1 + S)*(2 - sin(S)) + 2 + 4*S + 2*cos(S)) - (2*(1 + S))*(1 + 2*S + cos(S))^2 < 0)).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

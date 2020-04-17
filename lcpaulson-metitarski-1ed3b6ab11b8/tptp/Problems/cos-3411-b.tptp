@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : cos-3411-b.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(cos_problem_3411,conjecture, ![A,T] : ((0 < A & A < 1.5707 & -1.5707 < T & T < 1.5707) => 2*(cos(A) - sin(A))^2 <= (cos(A+T) + sin(A+T))^2 + (cos(A-T) + sin(A-T))^2 )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.10), page 237
+% Incredibly difficult!
+
+include('Axioms/general.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/cos-extended.ax').

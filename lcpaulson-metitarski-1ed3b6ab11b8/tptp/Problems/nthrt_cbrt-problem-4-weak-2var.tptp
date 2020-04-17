@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : nthrt_cbrt-problem-4-weak-2var.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cube Root Problem
+
+fof(cbrt_problem_4,conjecture, ![X,Y] : ((0.005 < X & X < 360 & 0 <= Y & Y^3 = 2*X) => Y < 2*nthrt(3,X)) ).
+
+% Making one of the cube roots exact extends the range of X but only a little.
+
+include('Axioms/general.ax').
+include('Axioms/nthrt-lower.ax').

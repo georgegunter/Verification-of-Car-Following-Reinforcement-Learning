@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-3.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_3,conjecture, ![X] : ((0 < X & X < pi/2) => X / (pi-2*X) <= pi/4 * tan(X)) ).
+
+% Related to sin_cos_problem_3
+% NOT PROVABLE except with exact value of pi.
+
+% Source 2: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+% (j) If 0 < x < pi/2, then x / (pi - 2x) < pi/4 tan x
+
+% Must avoid pi/2, else division by zero.
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/pi.ax').

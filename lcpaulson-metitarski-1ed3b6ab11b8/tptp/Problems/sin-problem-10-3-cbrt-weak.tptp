@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-10-3-cbrt-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_10_3,conjecture, ! [X] : (2 <= X => sin (1/cbrt(X-1)) - 2 * sin (1/cbrt(X)) + sin (1/cbrt(X+1)) > -0.6)).
+
+% Source: LCP. Related to sin_problem_10. Similarly holds by Jensen's inequality.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-linear.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

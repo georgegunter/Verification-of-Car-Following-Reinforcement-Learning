@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : Nichols-Plot-Inverted-Pendulum-Fails-3-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Analysis of an Inverted Pendulum that Meets its Requirements
+
+fof(Nichols_Plot_Inverted_Pendulum_Fails_3_1, conjecture, ! [X,Y] : ((55/256 <= X & 0 <= Y & Y^2 = 15132100*X^10 + 1024027285*X^8 + 21404723599*X^6 + 129098541721*X^4 + 15328072984*X^2 + 277555600) => 4250*Y / (3783025*X^6 + 217230815*X^4 + 3120782021*X^2 + 69388900) <= 0.71)).
+
+% This problem is trivial: we use a new variable to eliminate the sqrt function.
+
+% Source 1: Applications of Real Number Theorem Proving in PVS
+% Author: H. Gottliebsen, R. Hardy, O. Lightfoot, and U. Martin
+% Source 2: Formal Methods for Control Engineering: A Validated Decision Procedure for Nichols Plot Analysis
+% Author: R. Hardy (PhD. thesis, University of St. Andrews)
+% Chapter 8: Case Studies, 8.2 Inverted Pendulum, 8.2.2 Analysis of an Inverted Pendulum that Meets its Requirements
+% G = -25(2s^2-7s+2)/(11s^3+2s^2-343s-49)
+% 1. for all w. 157/128 >= w \/ w >= 129/32 ==> -5pi/4 >= argument (G) \/ argument (G) >= -pi.
+% 2. for all w. 57/128>= w \/ w >= 629/512 ==> -pi >= argument (G) \/ argument (G) >= -3pi/4.
+% 3. for all w. w >= 101/512 ==> -3 >= gain (G) \/ gain(G) >= 3.
+
+include('Axioms/general.ax').

@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : log-error-analysis-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Error Analysis
+
+fof(log_error_analysis_1,conjecture, ! [X] : ((0 <= X & X <= 1/128) => abs(ln ((1+X/2)/(1-X/2)) - X - 0.0833339964 * X^3) <= 4.8e-14)).
+
+% Source: Elementary Functions, Algorithms and Implementation, J-M. Muller, 1997.
+% Section 4.2.2 page 57, Table 4.6.
+% Approximation to ln((1+r/2)/(1-r/2)) on [0,1/128].
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/abs.ax').

@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_2,conjecture, ! [X] : (1 <= X => - (X^2) + 3*X - 2 <= ln(X))).
+
+% Source: Ln.thy
+% Author: Jeremy Avigad
+% lemma: abs_ln_one_plus_x_minus_x_bound_nonneg:
+% [0 <= x; x <= 1] ==> |ln(1+x) - x| <= x^2
+
+% bounds relaxed 2008-01-08
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

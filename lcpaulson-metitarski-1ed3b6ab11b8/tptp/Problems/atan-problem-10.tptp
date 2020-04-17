@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-10.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_10,conjecture, ! [X,Y] : ((X > 0 & 0 <= Y & Y^2 = 1+X^2) => arctan(X) > 3*X/(1+2*Y)) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.46. For x>0, show that arctan x > 3x/(1+2sqrt(1+x^2))
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+

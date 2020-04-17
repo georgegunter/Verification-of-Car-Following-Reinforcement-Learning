@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : abs-problem-13.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : A Dictionary of Inequalities, P. S. Bullen. Exponential Inequalities
+%    (d) If z in C then |e^z-(1+z/n)^n| <= |e^|z|-(1+|z|/n)^n| <= |z|^2 e^|z| / 2n  [n = 1]
+% Comments : Provable, but needs over 500 seconds (2008-02-01); now easy (2008-07-08)
+%--------------------------------------------------------------------------
+fof(abs_problem_13,conjecture, ! [X] : abs(exp(X)-(1+X)) <= abs(exp(abs(X))-(1+abs(X))) ).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/abs.ax').

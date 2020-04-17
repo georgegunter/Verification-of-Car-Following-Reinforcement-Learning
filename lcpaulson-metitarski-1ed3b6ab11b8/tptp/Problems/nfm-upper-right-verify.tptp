@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : nfm-upper-right-verify.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Rudder input and response  ---  Upper right bound of exclusion region
+
+% W. Denman, M. H. Zaki, S. Tahar and L. Rodrigues.
+% Towards Flight Control Verification using Automated Theorem Proving.
+% In M. Bobaruet al., editors, Nasa Formal Methods, Springer LNCS 6617 (2011), pages 89-100.
+
+fof(aeronautical,conjecture,! [X] : ((51928/104679 < X & X < 36442/51063) => 10*log(0.8e-25*(1419938695*X^10+0.178e39*X^8+0.22e40*X^6-0.28e40*X^4+0.59e40*X^2+659465876)/(X^2*(0.185e14*X^8+0.51e14*X^6-0.19e15*X^4+0.48e15*X^2+1959239727+0.1e13*X^10))) > -6+(-12/pi)*(arctan(0.2*(0.49e28*X^8+0.60e29*X^6-0.10e30*X^4+0.239e30*X^2-0.161e12+0.53e13*X^10)/(X*(0.37e27*X^8+0.45e28*X^6-0.89e28*X^4+0.369e28*X^2-0.96e26))) - pi))).
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/pi.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/log.ax').

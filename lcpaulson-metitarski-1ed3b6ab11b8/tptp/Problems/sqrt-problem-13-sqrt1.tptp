@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-13-sqrt1.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sqrt Problem
+
+fof(sqrt_13,conjecture, ! [X,SM,SS] : ((0 < X & X < 1 & 0 <= SM & SM^2 = 1-X & 0 <= SS & SS^2 = 1-X^2) => (1.414 + 1/2)*(sqrt(1+X) - SM) / (4 + sqrt(1+X) + SM) < X/(2+SS) )).
+
+% Theorem 1.3 of Ling Zhu. New Inequalities of Shafer-Fink Type for Arc Hyperbolic Sine.
+% Journal of Inequalities and Applications (2008). doi:10.1155/2008/368275
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').

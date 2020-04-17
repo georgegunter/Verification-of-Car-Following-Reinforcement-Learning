@@ -1,0 +1,27 @@
+%--------------------------------------------------------------------------
+% File     : polypaver-sqrt43-int-4vars_A.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    4
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Jan Duracz and Michal Konecny
+
+fof(sqrt43, conjecture,
+    ! [X,R,E,EA] :
+    (
+            (0.5 <= X & X <= 2 &
+             0 <= R & R <= 3 &
+             -2^(-5) <= E & E <= 2^(-5) &
+             -2^(-126) <= EA & EA <= 2^(-126) &
+             R >= -((X*X)/4) + X &
+             R <= ((X*X)/4) + 1 &
+             R = (1+E)*((1+E)*(R + ((1+E)*(X/R) + EA)) + EA)/2 + EA
+            )
+            =>
+            ((1-4*2^(-5))*sqrt(X) <= R)
+    )).
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

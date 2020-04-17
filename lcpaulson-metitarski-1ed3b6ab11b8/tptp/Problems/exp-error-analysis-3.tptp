@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : exp-error-analysis-3.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exp Error Analysis
+
+fof(exp_error_analysis_3,conjecture, ! [X] : (abs(X) <= 1 => abs(exp(X) - (0.5429906776 * X^2 + 1.130318208 * X + 0.9945705392)) <= 0.0526)).
+
+% Source: Elementary Functions, Algorithms and Implementation, J-M. Muller, 1997.
+% Section 3.2 page 29, Table 3.1.
+% Maximum absolute errors for various degree-2 polynomial approximations to e^x on [-1,1].
+% Weakened from the original 0.050
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/abs.ax').

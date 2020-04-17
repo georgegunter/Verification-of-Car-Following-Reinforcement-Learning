@@ -1,0 +1,11 @@
+--- ./include/hfloats.h.orig	2010-06-14 12:30:52.000000000 -0600
++++ ./include/hfloats.h	2013-08-27 11:00:00.000000000 -0600
+@@ -92,6 +92,7 @@
+   double left, right;
+ } interval;
+ 
++/*
+ static interval izero = { 0.0, 0.0 };
+ static interval ione  = { 1.0, 1.0 };
+-
++*/

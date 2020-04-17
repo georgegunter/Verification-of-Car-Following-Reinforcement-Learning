@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : trig-squared6.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(trig_squared,conjecture, ! [X,Y] : (((-1 < X & X < 1) & (-1 < Y & Y < 1)) => cos(X)^2 - sin(Y)^2 >= cos(X+Y) * cos(X-Y) - 1/20) ).
+
+%Should hold for all X and Y ...
+%SLOW, Processor time: 684 = 32 (Metis) + 652 (Mathematica). A 702-step proof.
+%  also  419 = 29 (Metis) + 390 (RCF) using Mathematica with nsatz_eadm.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

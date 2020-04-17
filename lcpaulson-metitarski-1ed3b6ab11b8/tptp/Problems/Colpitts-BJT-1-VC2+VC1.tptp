@@ -1,0 +1,42 @@
+%--------------------------------------------------------------------------
+% File     : Colpitts-BJT-1-VC2+VC1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- BJT Colpitts Oscillator
+% Source : Chaos in the Colpitts Oscillator, Michael Peter Kennedy
+%
+% The BJT in this model only operates in two modes of operation.
+% In this example, we are checking in what region the BJT is operating. We
+% know that it is supposed to always be in cutoff or active therefore it
+% will never be in reverseactive or saturation. The proverty to check is
+% whether VBC  is always less than 0 or in terms of the system equations
+% that VC1 + VC2 > 0
+
+% The BJT is approximated by a piecewise linear resistor with two modes.
+
+% IB = 0 if VBE <= VTH
+% IB = (VBE-VTH)/RON VBE > VTH
+
+% System equations
+
+% dVCE/dt = (IL - IC) / C1
+% dVBE/dt = -(VEE+VBE)/Ree - IL - IB
+% dIL/dt = VCC -VCE + VBE - ILRL
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/exp-general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').
+
+% Maple is used to generate the closed form solutions over each mode of operation
+% This proof demonstrates that the BJT will remain out of reverse cutoff or saturation in mode 1
+
+fof(Colpitts, conjecture, ! [X] : ((0 <= X & X <= 1.66e-7) => -2.524 * exp(-1.93e6*X) +
+ (2.875 * cos(1.71e6*X) +  3.161 * sin(1.71e6*X)) * exp(8.45e5*X) > 0.0001)).
+
+% 2011-09-02: simplified the formula

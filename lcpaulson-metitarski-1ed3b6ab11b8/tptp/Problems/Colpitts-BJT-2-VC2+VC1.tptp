@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : Colpitts-BJT-2-VC2+VC1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- BJT Colpitts Oscillator
+% Source : Chaos in the Colpitts Oscillator, Michael Peter Kennedy
+%
+% The BJT in this model only operates in two modes of operation. This proof demonstrates that the BJT will remain out of reverse cutoff or saturation in mode 2.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/exp-general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').
+
+fof(Colpitts, conjecture, ! [X] : ((0 <= X & X <= 1.46e-6) => (64.42 * sin(1.71e6*X) - 21.08 * cos(1.71e6*X)) * exp(9.05e5*X) + 24.24*exp(-1.86e6*X) > 0 )).
+
+% 2011-08-31: simplified the formula

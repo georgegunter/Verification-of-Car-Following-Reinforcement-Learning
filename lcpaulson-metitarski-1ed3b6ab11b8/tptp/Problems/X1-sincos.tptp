@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : X1-sincos.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists1_ln,conjecture, ? [X] : sin(X) > cos(X)).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+

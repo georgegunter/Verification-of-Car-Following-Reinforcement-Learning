@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-10-2-sqrt-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_10_2,conjecture, ! [X] : (2 <= X => sin (1/sqrt(X-1)) - 2 * sin (1/sqrt(X)) + sin (1/sqrt(X+1)) > -0.5)).
+
+% Source: LCP. Related to sin_problem_10. Similarly holds by Jensen's inequality.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-linear.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-extended.ax').

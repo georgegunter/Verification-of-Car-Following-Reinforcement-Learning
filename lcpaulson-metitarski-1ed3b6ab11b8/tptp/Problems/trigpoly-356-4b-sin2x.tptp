@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-356-4b-sin2x.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_356,conjecture, ![X] : ((0 < X & X < pi) => sin(X) + sin(2*X)/2 + 2*sin(3*X/2)*cos(3*X/2)/3 + sin(2*X)*cos(2*X)/2 < 0.01 + pi - X)).
+
+% 2011-11-09: Corrected an error. Substituted more accurate bounds.
+% SLOW, Processor time: 62s = 12 (Metis) + 50 (RCF)
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.6, page 249. (n=4)
+% 0 < sum_{k=1}^n sin(kx) / k < pi - x     (for 0 < x < pi)
+% ...transformed using sin 2x = 2 sin(x) cos(x)
+% Maple plots suggest that it is exact when X = pi, so "padding" is necessary.
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin-extended2.ax').
+include('Axioms/cos-extended2.ax').

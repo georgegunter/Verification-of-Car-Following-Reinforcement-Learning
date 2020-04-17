@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-8.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+fof(sqrt_problem_8,conjecture, ! [X] : (abs(X) < 1 => abs(sqrt(1+X) - (1 + X/2 - X^2/8)) <= (abs(X))^3 / 2)).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.3.6 Show that the approximation formula sqrt(1+x) ~ 1+1/2x-1/8x^2 gives sqrt(1+x) with the error not greater than 1/2|x|^3, if |x| < 1/2.
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/abs.ax').
+

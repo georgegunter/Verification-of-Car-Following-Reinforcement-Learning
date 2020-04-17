@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-10.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_10,conjecture, ! [X] : (1.475263653 < X => sin (1/(X-1)) - 2 * sin (1/X) + sin (1/(X+1)) > 0)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.4.3: If 1 <= x, then sin 1/(x-1) - 2 sin 1/x + sin 1/(x+1) > 0
+% Maple finds the claim to be incorrect: the expression goes negative for X < 1.475263652!
+
+% The supplied proof (involving Jensen's inequality) only works for x>=2: 
+%     the function sin(1/x) is convex for x>=1 but is applied to x-1.
+
+include('Axioms/general.ax').
+include('Axioms/sin-extended.ax').

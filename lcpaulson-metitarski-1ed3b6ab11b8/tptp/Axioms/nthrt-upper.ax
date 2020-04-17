@@ -1,0 +1,47 @@
+%---- Nth Root Continued Fractions
+
+% Source: F. Backeljauw, A. Cuyt, A Continued Fractions Package for Special Functions
+% Powers, with alpha = 1/N
+
+% NB n is the order of the approximant whilst N is the order of the root (i.e. N=3 is cuberoot)
+
+%---- Nth Root Upper Bound (n=1)
+
+cnf(nthrt_upper_bound_1,axiom,
+    ( ~ 0 <= X
+    | ~ 1 <= N
+    | ~ lgen(R,(X-1+N)/N, Y)
+    | lgen(R,nthrt(N,X),Y) )).
+
+%---- Nth Root Upper Bounds (n=2)
+
+% Argument scaled by a factor of 2^N : good near zero
+cnf(nthrt_upper_bound_2_small,axiom,
+    ( ~ 0 <= X
+    | ~ X < 1
+    | ~ 1 <= N
+    | ~ lgen(R, ((2^(N+N))*(N+1)*X*X + (2^(N+1))*(N+1)*(N+N-1)*X + (N-1)*(N+N-1))/(4*N*((2^N)*(N+N-1)*X + N+1)),Y)
+    | lgen(R, nthrt(N,X), Y))).
+
+% unscaled argument
+cnf(nthrt_upper_bound_2,axiom,
+    ( ~ 0 <= X
+    | ~ 1 <= N
+    | ~ lgen(R,((N+1)*X*X+(4*N*N+2*N-2)*X+(2*N*N-3*N+1))/(2*N*((2*N-1)*X+N+1)),Y)
+    | lgen(R,nthrt(N,X),Y) )).
+
+% Argument divided by 2^N : good for large X
+cnf(nthrt_upper_bound_2_large,axiom,
+    ( ~ 1 <= X
+    | ~ 1 <= N
+    | ~ lgen(R, ((N+1)*X*X + (2^(N+1))*(N+1)*(N+N-1)*X + (2^(N+N))*(N-1)*(N+N-1))/((2^N)*N*(N+N-1)*X + (2^(N+N))*N*(N+1)),Y)
+    | lgen(R, nthrt(N,X), Y))).
+
+%---- Nth Root Upper Bound (n=3)
+% NOTE: this is highly accurate around 1, but is not the best for large X
+
+cnf(nthrt_lower_bound_3,axiom,
+    ( ~ 0 <= X
+    | ~ 1 <= N
+    | ~ lgen(R,((2*N*N+3*N+1)*X*X*X+(18*N*N*N + 21*N*N-3)*X*X + (36*N*N*N-12*N*N-9*N+3)*X+(6*N*N*N-11*N*N+6*N-1))/(3*N*((6*N*N-5*N+1)*X*X+(12*N*N+2*N-2)*X+(2*N*N+3*N+1))) ,Y)
+    | lgen(R,nthrt(N,X),Y) )).

@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-16.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_16,conjecture, ! [X] : (0 < X => ln(1 + 1/X) <= (12*X^2 + 12*X + 1) / (12*X^3 + 18*X^2 + 6*X)) ).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.19: For x > 0, 2/(2x+1) < ln(1+1/x) < 2 / (2x+1) (1 + 1/12x - 1/12(x+1)) ????
+
+% 2011-10-31: Restored the full range of X. Maple shows the formal problem to be accurate,
+%	 but the original formulation is unclear.
+
+% Via a change of variables, it gives an upper bound on y, where y = (1+X)/X.
+% [And thus X = 1/(y-1).]
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').

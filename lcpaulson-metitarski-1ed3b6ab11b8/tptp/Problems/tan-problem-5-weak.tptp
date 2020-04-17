@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-5-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_5,conjecture, ![X] : ((0.4 < X & X < 1.4) => tan(X/2) <= sqrt(1 - cos(X))) ).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-constant.ax').  
+include('Axioms/tan-upper.ax').
+include('Axioms/sqrt-lower.ax').
+
+%2011-02-11: full axiom file instead of sqrt_lower_bound_case_1. SLOW: 55 = 23; 32 (QEPCAD)
+%2011-05-20: a simpler proof, using axioms cos-constant.ax

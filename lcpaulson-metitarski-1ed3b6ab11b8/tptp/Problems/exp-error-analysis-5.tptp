@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : exp-error-analysis-5.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exp Error Analysis
+
+fof(exp_error_analysis_5,conjecture, ! [X] : ((0 <= X & X <= 0.693) => abs(exp(-X) - (1 - 0.9664 * X + 0.3536 * X^2)) <= 3e-3)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.43 0 <= x <= ln 2 = 0.693
+% e^-x = 1 + a1 x + a2 x^2 + epsilon (x)
+% |epsilon (x)| <= 3e-3
+% a1 = - 0.9664 a2 = 0.3536
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/abs.ax').

@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-3426-4b-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_3426,conjecture, ! [X] : ((1.5 < X & X < pi/2) => 1/(X+4*pi)^2 + 1/(X+3*pi)^2 + 1/(X+2*pi)^2 + 1/(X+pi)^2 + 1/X^2+1/(X-pi)^2 + 1/(X-2*pi)^2 + 1/(X-3*pi)^2 + 1/(X-4*pi)^2 <= 1/sin(X)^2)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.4.26, page 245: (n=4)
+% cosec^2(x) - 1/(2n+1) < \sum_{k=-n}^n 1/(x - k pi)^2 < cosec^2(x)   (|x| < pi/2)
+
+% This problem involves enormous terms; the proof requires a weight above 600!
+% 2011-01-11: simplified the RHS, making the proof easier (while strengthening the statement)
+% SLOW, 70.6 seconds;   59.4 seconds (QEPCAD)
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin-extended.ax').

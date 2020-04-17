@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-351-1a.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_351,conjecture, ![X] : ((0 < X & X < 6.2831) => -(1/2)*tan(X/4) <= 4e-9 + sin(X))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.1, page 247. (n=1)
+% -(1/2)tan(x/4) <= \sum_{k=1}^n sin(k*x) <= (1/2)cot(x/4), for 0 < x < 2*pi
+
+% Cannot be proved exactly: the inequality is sharp away from zero, at X = 4*pi/3
+% SLOW, Processor time: 51.1s = 0.4 (Metis) + 50.7 (QEPCAD)
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/sin-extended.ax').

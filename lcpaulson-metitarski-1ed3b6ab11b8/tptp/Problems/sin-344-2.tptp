@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-344-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_344,conjecture, ! [X,Y] : ((0.1 < X & X < 3 & 0.1 < Y & Y < 3) => abs(sin(X+Y)) <= sin(X) + sin(Y))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.4.4: If 0 < x_i < pi, then |sin(x_1 + ... + x_n)| < sin(x_1) + ... + sin(x_n)
+
+% Hard to prove even with restricted variable ranges. Very slow RCF calls, with huge formulas.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').
+

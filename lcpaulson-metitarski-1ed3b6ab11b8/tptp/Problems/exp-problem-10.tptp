@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-10.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_10,conjecture, ! [X] : (1.5 <= X => exp (1/(X-1)) - 2 * exp (1/X) + exp (1/(X+1)) > 0)).
+
+% Source: LCP. Related to sin_problem_10. Similarly holds by Jensen's inequality.
+% The function exp(1/x) is convex for x>=1. So the inequality holds for x>=2 (at least).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').

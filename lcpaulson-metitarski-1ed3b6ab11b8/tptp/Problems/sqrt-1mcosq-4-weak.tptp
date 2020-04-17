@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-1mcosq-4-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Derived from sin-problem-4
+
+fof(sqrt_1mcosq_4,conjecture, ! [X] : ((0 < X & X < 0.95) => pi <= 10^-6 + sqrt(1 - cos(3.1415926*X)^2) / (X*(1-X)))).
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').

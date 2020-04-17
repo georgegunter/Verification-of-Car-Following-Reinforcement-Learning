@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-Kubo-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_Kubo,conjecture, ![X] : ((0 <= X & X <= pi) => sin(X)*(1+cos(X)) <= 0.075 + sin((X+pi)/4)*(1+cos((X+pi)/4)))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities, page 250. (Kubo).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+

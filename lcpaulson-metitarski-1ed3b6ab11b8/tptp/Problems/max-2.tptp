@@ -1,0 +1,10 @@
+%--------------------------------------------------------------------------
+% File     : max-2.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(max2,conjecture, ![X,Y,Z] : max(X, max(Y,Z)) = max(max(X,Y), Z) ).
+
+include('Axioms/minmax.ax').

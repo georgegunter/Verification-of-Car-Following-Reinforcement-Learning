@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : trig-squared2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(trig_squared,conjecture, ! [X,Y] : (((-1 < X & X < 1) & (-1 < Y & Y < 1)) => sin(X)^2 - sin(Y)^2 >= sin(X+Y) * sin(X-Y) - 1/7) ).
+
+%Should hold for all X and Y ...
+%ULTRA SLOW, Processor time: 724 = 16 (Metis) + 708 (Mathematica). A 1561-step proof!
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').

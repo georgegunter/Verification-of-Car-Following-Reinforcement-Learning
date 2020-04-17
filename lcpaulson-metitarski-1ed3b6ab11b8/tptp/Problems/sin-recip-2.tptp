@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-recip-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem with Reciprocal
+
+fof(sin_recip_2,conjecture, ! [X] : (X>0 => 0 < 0.0496 + X^2*sin(1/X))).
+
+% 2011-05-20: sin-constant.ax lets us prove a result about sin(1/X) as X approaches 0.
+
+% Source: LCP. Composed to investigate division by zero and range reduction 
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-constant.ax').
+include('Axioms/sin-extended.ax').

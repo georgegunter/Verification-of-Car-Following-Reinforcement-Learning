@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : exp-361-6-scaled.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(a, axiom, a = 6).
+fof(exp_361,conjecture, ![X] : (0 <= X => exp(X/2)^2 >= (2.718281*X/a) ^ a)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.6.1, page 266. (a=6)
+% exp(x) >= (e*x/a)^a, for x>=0 and a>0
+% We must weaken the problem slightly, because the inequality is exact when x=a.
+
+% This version scales the argument of exp, allowing much greater accuracy.
+% Also, it eliminates the second exp altogether. Our approximation to e is sufficient weakening.
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').

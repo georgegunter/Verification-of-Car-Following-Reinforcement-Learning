@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-1-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_1,conjecture, ! [X] : ((0 < X & X < 1/2 - 2.1e-8) => cos(pi*X) > 1 - 2*X) ).
+
+% Limiting X to slightly below 1/2 makes it trivial.
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, page 237
+% 3.4.9 If 0 < r < 1/2, then cos (pi r) > 1 - 2r
+
+include('Axioms/general.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/pi.ax').

@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sin-error-analysis-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Error Analysis
+
+fof(sin_error_analysis_2,conjecture, ! [X] : (abs(X) <= 1/32 => abs(sin (X) - X + 0.1666596*X^3) <= 0.33e-10)).
+
+% Source: Elementary Functions, Algorithms and Implementation, J-M. Muller, 1997.
+% Section 4.2.3 page 58, Table 4.7.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/abs.ax').
+

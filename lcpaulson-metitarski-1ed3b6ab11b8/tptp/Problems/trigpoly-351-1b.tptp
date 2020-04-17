@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-351-1b.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_351,conjecture, ![X] : ((0 < X & X < 6.2831) => 10^-10 + 1 /(2 * tan(X/4)) >= sin(X))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.1, page 247. (n=1)
+% -(1/2)tan(x/4) <= \sum_{k=1}^n sin(k*x) <= (1/2)cot(x/4), for 0 < x < 2*pi
+
+% Cannot be proved exactly: the inequality is sharp away from zero, at X = 2.094
+% 2011-06-17: Strengthened the problem by reducing the "padding"
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/sin-extended.ax').

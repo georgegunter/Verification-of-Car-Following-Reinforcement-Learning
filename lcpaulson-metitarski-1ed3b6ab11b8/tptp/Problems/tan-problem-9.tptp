@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-9.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_9,conjecture,  ![T] : ( T : (0, pi/6) => tan(T) : (T + (1/3)*T^3, T + (4/9)*T^3))).
+% Source: Analytic Inequalities, D.S.Mitrinovic, remark in proof of 3.4.27, page 246.
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/pi.ax').

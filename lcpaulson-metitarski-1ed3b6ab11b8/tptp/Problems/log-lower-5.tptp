@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-5.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_5,conjecture, ! [X] : ((-1 < X & X != 0) => X/(1+X) < ln(1+X))).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.1.33 x / (1+x) < ln (1+x) < x    (x > -1, x # 0)
+% 4.1.34 x < - ln (1-x) < x / (1-x)  (x < 1, x # 0)
+
+% Bounds relaxed 2008-01-07 and 2008-08-19
+% Identical to log-lower-1 modulo a change of variable.
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

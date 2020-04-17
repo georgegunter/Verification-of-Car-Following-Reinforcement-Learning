@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-1mcosq-7-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(sqrt_1mcosq_7,conjecture, ! [X,Y] : ((2/3 < X & X < Y & Y < 1.57) => X/Y <= 1/2 + sqrt(1 - cos(X)^2) / sqrt(1 - cos(Y)^2) )).
+
+% Source   : Derived from sin-problem-7, simply via sin(X) = sqrt(1 - cos(X)^2).
+% 2011-11-04: Weakened still further.
+% 2014-06-20: SLOW. Can be proved using Z3 in 60s using --RCFtime 1000
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').

@@ -1,0 +1,11 @@
+%--------------------------------------------------------------------------
+% File     : max-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(max1,conjecture, ![X] : abs(X) = max(X,-X) ).
+
+include('Axioms/minmax.ax').
+include('Axioms/abs.ax').

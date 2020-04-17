@@ -1,0 +1,13 @@
+%--------------------------------------------------------------------------
+% File     : X1-cosh.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists2,conjecture, ? [X] : cosh(X) > 2000000).
+
+include('Axioms/general.ax').
+include('Axioms/cosh-lower.ax').

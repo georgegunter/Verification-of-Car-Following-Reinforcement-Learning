@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-9.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_9,conjecture, ! [X] : (0 < X => (1 - exp(-2*X)) / (2*X*(1-exp(-X))^2) - 1/(X^2) <= 1/12)).
+
+% Obtained from two-variable-problem-3 by identifying X=Y.
+% Extremely sharp near zero, with an absolute difference of 1.39e-5 for X = 0 .. .1
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.13: If 0 < x and 0 < y, then (1-e^(-x-y))/(x+y)(1-e^(-x))(1-e^(-y))-1/xy <= 1/12
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-extended.ax').

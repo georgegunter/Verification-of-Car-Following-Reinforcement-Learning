@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : cosh-3612b-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(cosh_3612, conjecture, ![X] : ((0 < X & X < 2.5) => (3 + X^2/10)*sinh(X) / (2 + cosh(X) + X^2/10) + 10^-2 > X )).
+
+% Analytic Inequalities, D.S.Mitrinovic, 3.6.12, page 270.
+
+include('Axioms/general.ax').
+include('Axioms/cosh-lower.ax').
+include('Axioms/cosh-upper.ax').
+include('Axioms/sinh-lower.ax').
+include('Axioms/sinh-upper.ax').

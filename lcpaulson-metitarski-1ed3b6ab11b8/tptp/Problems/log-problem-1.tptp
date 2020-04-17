@@ -1,0 +1,13 @@
+%--------------------------------------------------------------------------
+% File     : log-problem-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Problem
+
+fof(log_problem_1,conjecture, ! [X] : (1 < X => 1 <= ln(2.79 + ln(X)))).
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

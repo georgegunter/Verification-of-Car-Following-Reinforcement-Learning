@@ -1,0 +1,13 @@
+%--------------------------------------------------------------------------
+% File     : max-sin-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(max_sin,conjecture, ![X] : (X : (-1.5,3) => max(sin(X),cos(X)) > 0 )).
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/sin.ax').
+include('Axioms/minmax.ax').

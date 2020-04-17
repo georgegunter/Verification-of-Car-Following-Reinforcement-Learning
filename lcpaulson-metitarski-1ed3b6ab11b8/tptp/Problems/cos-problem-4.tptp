@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-4.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_4,conjecture, ! [X] : ((0 <= X & X <= pi) => cos(X) <= 1) ).
+
+% This problem is trivial of course.
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+
+

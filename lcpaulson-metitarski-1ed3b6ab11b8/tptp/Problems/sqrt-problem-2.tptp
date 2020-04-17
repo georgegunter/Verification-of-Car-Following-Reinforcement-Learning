@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-2.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+fof(sqrt_problem_2,conjecture, sqrt(2) + sqrt(3) <= 3.15).
+
+% Source: examples.pvs
+% Interval package
+% lemma: sqrt23
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').

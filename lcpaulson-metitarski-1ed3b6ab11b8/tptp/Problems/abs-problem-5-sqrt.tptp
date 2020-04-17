@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : abs-problem-5-sqrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : A Dictionary of Inequalities, P. S. Bullen, Logarithmic Function Inequalities:
+%            (d) If x > -1, then 2 |x| / (2 + x) <= |ln (1+x)| <= |x| / sqrt (1+x)
+% Comments : Cf log-lower-17 and log-upper-18
+% NOT PROVABLE with current ln bounds as 1+X approaches zero. Lines cross around X = -.99972
+%--------------------------------------------------------------------------
+fof(abs_problem_5,conjecture, ! [X] : (-1 < X => abs(ln(1+X)) <= abs(X)/sqrt(1+X)) ).
+
+include('Axioms/general.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/abs.ax').

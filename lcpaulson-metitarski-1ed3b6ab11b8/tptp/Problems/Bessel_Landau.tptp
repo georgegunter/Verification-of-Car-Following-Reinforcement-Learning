@@ -1,0 +1,49 @@
+%--------------------------------------------------------------------------
+% File     : Bessel_Landau.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : Landau inequality
+% Comments :
+%--------------------------------------------------------------------------
+
+
+% test for the Bessel axiom file
+% Landau inequality
+
+% For the j0 case MetiTarski Gives up with this value of c (0.78...)
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(0,X) < 0.7857468704/cbrt(X))).
+% for j1 to j10 below proofs are found quickly
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(1,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(2,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(3,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(4,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(5,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(6,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(7,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(8,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(9,X) < 0.7857468704/cbrt(X))).
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(10,X) < 0.7857468704/cbrt(X))).
+
+
+% For the j0 case a proof is found if the value of the constant is relaxed just to the extent shown:
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(0,X) < 0.785747/cbrt(X))).
+
+% gives up on this version presumably because of the RHS going to infinity at X=0
+%fof(bessel_less_than_one,conjecture, ! [X] : ((-10 < X & X < 10) => abs(besselJ(1,X)) < 0.7857468704/cbrt(X))).
+
+% the negative end of the conjecture proved quickly
+%fof(bessel_less_than_one,conjecture, ! [X] : ((0 < X & X < 10) => besselJ(1,X) > -0.7857468704/cbrt(X))).
+
+% negative x cases proved quickly
+%fof(bessel_less_than_one,conjecture, ! [X] : ((-10 < X & X < 0) => besselJ(1,X) > -0.7857468704/cbrt(-X))).
+fof(bessel_less_than_one,conjecture, ! [X] : ((-10 < X & X < 0) => besselJ(1,X) < 0.7857468704/cbrt(-X))).
+
+
+
+
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/Bessel.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

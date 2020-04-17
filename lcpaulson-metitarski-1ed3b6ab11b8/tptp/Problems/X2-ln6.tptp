@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : X2-ln6.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists2,conjecture, ? [X,Y] : Y+ln(X) < ln(Y)).
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+

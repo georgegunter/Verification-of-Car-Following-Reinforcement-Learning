@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : log-problem-5.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   : LC Paulson.
+% Comments : Pity about the "padding"
+%--------------------------------------------------------------------------
+fof(log_problem_5,conjecture, ! [X,Y] : ((1 < X & X < Y) => ln(Y) / (Y - 1)^2 < 0.0001 + ln(X) / (X - 1)^2)).
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+

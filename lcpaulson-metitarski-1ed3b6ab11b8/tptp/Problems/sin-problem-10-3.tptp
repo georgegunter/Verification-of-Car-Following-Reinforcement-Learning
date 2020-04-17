@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-10-3.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    4
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_10_3,conjecture, ! [X,CM1,C,CP1] : ((1.4 < X & 0 <= CM1 & CM1^3 = X-1 & 0 <= C & C^3 = X & 0 <= CP1 & CP1^3 = X+1) => sin (1/CM1) - 2 * sin (1/C) + sin (1/CP1) > -1/7)).
+
+% Source: LCP. Related to sin_problem_10. Similarly holds by Jensen's inequality.
+% The function sin(1/cbrt(x)) is convex for x>=1.
+
+% 2011-11-03: Fixed an error; extended the range of X. Takes 480 secs. Requires Mathematica!
+% Can be proved (using Mathematica) in two seconds if we relax it to 2 < X ... > -1/5.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').

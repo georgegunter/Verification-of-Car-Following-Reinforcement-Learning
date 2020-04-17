@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : ArthanM2.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    4
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Email Exchange, Rob Arthan <rda@lemma-one.com>
+% http://www.lemma-one.com/papers/75s.pdf
+% K = 2, M >= 2 (replacing the sine and cosine functions by variables)
+
+% First proved 2011-01-11. SLOW: 128.8 seconds;  128.7 seconds (QEPCAD)
+
+fof(Rob_Arthan_problem_2, conjecture, ! [S,M,COSS,SINS] : ((S >= 2 & M >= 2 & SINS^2 + COSS^2 = 1) => (1+2*S+S^2+SINS/M) * ((1+S)*(2-SINS/M)+4+4*S+2*COSS/M) - (2*(1+S))*(2+2*S+COSS/M)^2 < 0)).
+
+include('Axioms/general.ax').

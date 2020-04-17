@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : tan-3428e.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_3428,conjecture, ![X] : ((0 < X & X < pi/4) => tan(X)^2 / 2 > 1 - cos(X))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.4.28 (3), page 246.
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').

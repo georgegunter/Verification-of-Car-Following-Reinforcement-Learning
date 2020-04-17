@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : exp-361-neg-4-e.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(a, axiom, a = 4).
+fof(exp_361,conjecture, ![X] : (0 < X => exp(-X) <= 10^-4 + (a/(e*X)) ^ a)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.6.1, page 266. (a=4)
+% exp(x) <= (a/(e*x))^a, for x>0 and a>0
+% We must weaken the problem, because the inequality is exact when x=a.
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-extended.ax').
+
+% This is an experiment in replacing ground terms by new variables in multiplicative contexts.
+fof(e_upper_bound, axiom, e <= exp(1)).
+fof(e_lower_bound, axiom, exp(1) <= e).

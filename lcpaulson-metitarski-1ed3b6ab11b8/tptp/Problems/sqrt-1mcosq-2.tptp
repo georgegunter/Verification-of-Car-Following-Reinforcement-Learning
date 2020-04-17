@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-1mcosq-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Derived from sin-problem-2
+
+fof(sqrt_1mcosq_2,conjecture, ! [X] : ((0 < X & X < 11) => sqrt(1 - cos(X)^2) <= X)).
+
+include('Axioms/general.ax'). 
+include('Axioms/sqrt-general.ax').
+include('Axioms/cos-extended.ax').

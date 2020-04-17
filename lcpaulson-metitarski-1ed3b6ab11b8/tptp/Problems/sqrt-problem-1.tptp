@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+fof(sqrt_problem_1, conjecture, ! [X] : ((0 <= X & X <= 2) => sqrt (X) + sqrt (3) < 3.15)).
+
+% Source: examples.pvs
+% Interval package
+% lemma: sqrtx3
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').
+

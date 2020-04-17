@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-2var6.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_2var6,conjecture, ! [X,Y] : ((-3/2 < X & -3/2 < Y & X+Y < 5/2) => 2*cos(X)*cos(Y) <= 1.001 + cos(X+Y)) ).
+
+%Should hold for all X and Y ... Exact [2*cos(X)*cos(Y) <= 1 + cos(X+Y)] when X = Y = 0.
+%Note: 2*cos(X)*cos(Y) = cos(X-Y) + cos(X+Y).
+
+include('Axioms/general.ax').
+include('Axioms/cos-extended.ax').
+
+

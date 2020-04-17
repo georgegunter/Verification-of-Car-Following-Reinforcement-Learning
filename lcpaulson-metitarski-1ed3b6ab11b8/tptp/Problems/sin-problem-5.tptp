@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-5.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_5,conjecture, ! [X] : ((0 < X & X < 1) => sin(pi*X) / (X*(1-X)) <= 4)).
+
+% Not provable because pi is not known exactly.
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.3.82 pi < sin pi x / x (1-x) <= 4 (0 < x < 1)
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/pi.ax').
+

@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-circles-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(sqrt_circles_1,conjecture, ! [X,Y] : (sqrt(X^2 + (Y-1)^2) <= 1 => sqrt(X^2 + (Y-2)^2) <= 2)).
+
+% Based on Example 1 of
+%   Polynomial Function Intervals for Floating Point Software Verification
+%   by Jan Duracz & Michal Konecny (2011).
+% Proof relies on elimination of sqrt using sqrt-general.ax.
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

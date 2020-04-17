@@ -1,0 +1,13 @@
+%--------------------------------------------------------------------------
+% File     : cos-power-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: LCP
+
+fof(cos_power_2, conjecture, ! [X] : ((0 < X & X < 2.2412) => 6 * (1/(3*X) + 7*X/72)^2 <= 1/(1-cos(X)^3))).
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').

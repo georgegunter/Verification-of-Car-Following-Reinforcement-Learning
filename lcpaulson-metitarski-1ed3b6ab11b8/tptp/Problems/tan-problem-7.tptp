@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-7.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_7,conjecture, ![X] : ((X^2 < pi^2/4 & 0 < sin(X)) => sin(X) / (1 + cos(X)) <= tan(X)) ).
+
+% NOT PROVABLE except with exact value of pi.
+
+% This problem illustrates multiple function inequalities in the formula.
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/pi.ax').
+

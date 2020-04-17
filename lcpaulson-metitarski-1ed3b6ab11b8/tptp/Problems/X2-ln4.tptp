@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : X2-ln4.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists2,conjecture, ? [X,Y] : ln(X)+ln(Y) > ln(X+Y)).
+
+% SUPER SLOW, proved; 1160 seconds; 1130 seconds (QEPCAD)
+% 2011-03-03: 147 seconds;   96 (QEPCAD)
+% 2011-06-17: 319 seconds;  276 (QEPCAD); Maximum weight: 1007
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+

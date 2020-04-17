@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : exp-error-analysis-7.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exp Error Analysis
+
+fof(exp_error_analysis_7,conjecture, ! [X] : ((0 <= X & X <= 0.693) => abs(exp(-X) - (1 - 0.9999999995 * X + 0.4999999206 * X^2 - 0.1666653019 * X^3 + 0.0416573475 * X^4 - 0.0083013598 * X^5 + 0.0013298820 * X^6 - 0.0001413161 * X^7)) <= 2e-10)).
+
+%  To prove this will require the Taylor series up to degree of 11 at least.
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.44 0 <= x <= ln 2 = 0.693
+% e^-x = 1 + a1 x + a2 x^2 + a3 x^3 + a4 x^4 + a5 x^5 + a6 x^6 + a7 x^7 + epsilon (x)
+% |epsilon (x)| <= 2e-10     [NO: According to Maple, it is 6.665380348e-11]
+% a1 = - 0.9999999995 a2 = 0.4999999206 a3 = - 0.1666653019  a4 = 0.0416573475 a5 = - 0.0083013598 a6 = 0.0013298820 a7 = - 0.0001413161
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/abs.ax').

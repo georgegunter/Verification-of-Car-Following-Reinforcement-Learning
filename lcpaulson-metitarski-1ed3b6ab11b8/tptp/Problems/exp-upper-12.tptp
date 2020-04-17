@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-12.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_12,conjecture, ! [X] : ((0 <= X & X < 3) => exp(X) <= (X^2 + 4*X + 6) / (6-2*X))).
+
+% Corrected 2008-08-13
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.6: e^x <= n/(n-x) (x^n/n!) + sum (k=0 to n-1) x^k/k!  (0 <= x < n)
+% n=3
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+

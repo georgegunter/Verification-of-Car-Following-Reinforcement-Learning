@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-22.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_22,conjecture, ! [X,Y] : ((0 < X & X <= 2250 & 0 <= Y & Y^2 = X) => ln(X) <= 2*(Y-1)) ).
+
+% bounds relaxed 2008-01-04 and again on 2008-09-12
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.1.37 ln x <= n (x^1/n - 1) for any positive n (x > 0).
+% n = 2.
+
+% eliminating the square root:
+%---- 22   0 <= Y /\ Y^2 = X /\ 0 < X <= 4 ==> ln (X) <= 2(Y-1) 
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').

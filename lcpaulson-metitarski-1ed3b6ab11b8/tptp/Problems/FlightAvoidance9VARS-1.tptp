@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : FlightAvoidance9VARS-1.tptp
+% Syntax   : Dimension                 	:    9
+% Syntax   : Number of Skolem constants	:    9
+% Source   :
+% Comments : This is an incorrect version of this example, error in the trajectory equations
+% Comments : Included because it is proved under 300s
+%--------------------------------------------------------------------------
+
+fof(airplane_easy,conjecture,(! [T,A10,A20,B10,B20,D10,D20,E10,E20] : (
+(
+  T   >  0  & T < 10 &
+  A10 < -9 &
+  A20 < -1 &
+  B10 > 10  &
+  B20 >  1 &
+  D10 > 0.1 & D10 < 0.15 &
+  D20 > 0.1 &
+  E10 > 0.1 & E10 < 0.15 &
+  E20 > 0.1 & E20 < 0.15
+) =>
+(A10 - B20 - 100*D20 - 100*E20 + (100*D20 + 100*E20)*cos(0.01*T) + (100*D10 - 100*E10)*sin(0.01*T))^2 + (A20 - B20 - 100*D10 - 100*E10 + (100*D10 + 100*E10)*cos(0.01*T) + (-100*D20 + 100*E20)*sin(0.01*T))^2 > 2))).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

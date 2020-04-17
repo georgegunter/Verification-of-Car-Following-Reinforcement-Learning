@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-2var2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_2var2,conjecture, ! [X,Y] : ((-1 <= X & -1 <= Y & -1.57 <= X+Y & X+Y <= 1.4) => cos(X-Y) >= 2*sin(X)*sin(Y)) ).
+
+%Should hold for all X and Y such that -pi/2 <= X+Y & X+Y <= pi/2, but that's much too difficult!
+%Note: 2*sin(X)*sin(Y) = cos(X-Y) - cos(X+Y).
+%2012-01-04: extended the range
+%SUPER SLOW, Processor time: 474 = 2 (Metis) + 472 (Mathematica)
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos-extended.ax').
+
+

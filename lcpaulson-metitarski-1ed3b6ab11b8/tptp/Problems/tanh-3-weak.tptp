@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : tanh-3-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tanh problem
+
+fof(tanh_3,conjecture, ! [X] : ( (0 <= X & X <= 2.1) => tanh(-2*X) <= -tanh(X)) ).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/tanh-lower.ax').
+include('Axioms/tanh-upper.ax').

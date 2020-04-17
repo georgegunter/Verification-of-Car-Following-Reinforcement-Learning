@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : doa-chesi-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    0
+% Source   : Chesi, G. "Estimating the domain of attraction for non-polynomial
+%                    systems via LMI optimizations".
+%		     Automatica 45 (2009), 1536-1541.
+%--------------------------------------------------------------------
+% Verifying that a non-polynomial Lyapunov function approximates
+% the domain of attraction of a double pendulum system
+%--------------------------------------------------------------------
+
+fof(pendulum_doa, conjecture,
+		  ![X1,X2]: ((X1^2 + X1^2*X2^2 + 4*X2^2 <= 0.699) & (X1^2 + X1^2*X2^2 + 4*X2^2 > 0)  =>
+		  	    	   (X1*(-sin(X1) + 0.81*cos(X1)*sin(X1) - 0.2*X2) + 2*X1*X2 + 8*(-sin(X1) + 0.81*cos(X1)*sin(X1) - 0.2*X2)*X2 + X2^2 <= 0))).

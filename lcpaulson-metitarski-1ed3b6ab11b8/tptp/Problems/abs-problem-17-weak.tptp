@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : abs-problem-17-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : Analytic Inequalities, D.S.Mitrinovic
+%            3.6.5 For all real x,  |e^x (12-6x+x^2)-(12+6x+x^2)| <= 1/60 |x|^5 e^|x|
+% Comments : Weakened by constraining X
+%--------------------------------------------------------------------------
+fof(abs_problem_17,conjecture, ! [X] : ((1 < X | X < 0) => abs (exp(X)*(12 - 6*X + X^2) - (12 + 6*X + X^2)) <= (abs(X))^5 * exp(abs(X)) / 60) ).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/abs.ax').

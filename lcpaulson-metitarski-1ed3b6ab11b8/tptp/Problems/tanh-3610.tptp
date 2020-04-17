@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : tanh-3610.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tanh problem
+
+fof(tanh_3610, conjecture, ![X] : ((0 <= X & X < 6.5) => arctan(X) <= (pi/2)*tanh(X))).
+
+% Analytic Inequalities, D.S.Mitrinovic, 3.6.10, page 270.
+% If 0 <= x, then arctan(X) <= (pi/2)*tanh(X)
+% Clearly not provable for unbounded x
+
+include('Axioms/general.ax').
+include('Axioms/tanh-lower.ax').
+include('Axioms/arctan-extended.ax').
+include('Axioms/pi.ax').

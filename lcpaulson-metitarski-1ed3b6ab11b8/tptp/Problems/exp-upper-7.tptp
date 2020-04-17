@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-7.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_7,conjecture, ! [X] : (-1 < X => exp(-X) <= 1/(1+X))).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.31 e^x < 1/(1-x)  (x < 1)
+% By a change of variable, we obtain a problem with a negative argument.
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

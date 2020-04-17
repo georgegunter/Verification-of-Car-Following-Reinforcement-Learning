@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : tanh-9-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tanh Problem
+
+fof(tanh_9,conjecture, ! [X] : (abs(X) < 1.2 => (1 - tanh(X)^2)*abs(sinh(X))*cosh(X) <= 1) ).
+
+% Because sinh(2*X) = sinh(X)*cosh(X),  this problem is linked to tanh-8.
+
+% Source: LCP
+% 2010-03-31: Processor time: 619.152 = 339.592 (Metis) + 279.560 (QEPCAD)
+% 2011-06-13: Processor time: 6.775 = 2.546 (Metis) + 4.229 (QEPCAD)
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/tanh-lower.ax').
+include('Axioms/tanh-upper.ax').
+include('Axioms/cosh-upper.ax').
+include('Axioms/sinh-upper.ax').
+include('Axioms/sinh-lower.ax').

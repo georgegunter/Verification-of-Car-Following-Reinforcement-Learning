@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-3512-5.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_3512,conjecture, ![X] : ((0 < X & X < pi) => (cos(X) + cos(2*X)/2 + cos(3*X)/3 + cos(4*X)/4 + cos(5*X)/5) <= - ln(sin(X/2)) + (pi - X) / 2)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.12, page 251. (n=5)
+% for 0 < x < pi, |\sum_{k=1}^n cos(kx)/k| <= - ln(sin(X/2)) + (pi-x) / 2
+
+% NOT PROVABLE: Our existing bounds for cos(x) are only accurate when -12 < x < 12.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos-extended2.ax').

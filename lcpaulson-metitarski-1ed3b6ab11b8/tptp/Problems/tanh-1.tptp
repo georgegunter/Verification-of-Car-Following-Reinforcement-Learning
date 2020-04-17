@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : tanh-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tanh problem
+
+fof(tanh_1,conjecture, ! [X] : abs(tanh(X)) <= abs(X) ).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/tanh-lower.ax').
+include('Axioms/tanh-upper.ax').
+include('Axioms/abs.ax').

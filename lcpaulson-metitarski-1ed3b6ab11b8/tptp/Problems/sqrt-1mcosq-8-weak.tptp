@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-1mcosq-8-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Derived from sin-problem-8
+
+fof(sqrt_1mcosq_8,conjecture, ! [X,Y] : ((0.2 < X & X < Y & Y < 1.5) => sqrt(1 - cos(X)^2) / sqrt(1 - cos(Y)^2) <= 3.2 * 2 * X/Y)).
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/cos.ax').

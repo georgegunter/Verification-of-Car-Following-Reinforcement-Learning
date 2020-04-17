@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-28.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Actually requires both upper AND lower bounds, because ln(X) crosses zero.
+
+fof(log_upper_bound_problem_28,conjecture, ! [X] : (0 < X => X*ln(X)*ln(X) <= (X-1)^2) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.18 (b) For x > 0, establish the following inequalities: (x-1)^2 >= x ln^2 x
+
+% NOT PROVABLE with current ln bounds. Lines cross around X = 0.000278 and X = 3591.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').

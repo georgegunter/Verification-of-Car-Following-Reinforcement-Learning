@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : tan-1-1var-pi.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tan problem 
+
+fof(tan_1_1v,conjecture, ! [X] : ((0 < X & X < 0.95) => tan(X) <= tan(1)*tan(X*pi/4)) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities, page 251.
+% tan(x)tan(y) <= tan(1)tan(xy), for 0 <= x, y <= 1
+
+% We have set y = pi/4, so tan(y) = 1
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/tan-lower.ax').
+

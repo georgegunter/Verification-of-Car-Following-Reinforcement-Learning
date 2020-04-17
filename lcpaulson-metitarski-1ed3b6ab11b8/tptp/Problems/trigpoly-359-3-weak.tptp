@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-359-3-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_359,conjecture, ![X] : ((0 < X & X < 4.3) => abs(sin(X) + sin(2*X)/2 + sin(3*X)/3) <= 1 / sin(X/2))).
+
+% SLOW, 25s = 3 (Metis) + 22 (QEPCAD)
+% 2011-06-13: Much easier after weakening < to <=, even with abs and X up to 3!
+% 2011-11-09: Much easier still after omitting 'Axioms/sin.ax', even X up to 4.3!
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.9, page 250. (m=0, n=3)
+% for 0 < x < 2 pi, |\sum_{k=m+1}^{m+n} sin(kx)/k| < 1 / ((m+1) sin(x/2))
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin-extended2.ax').

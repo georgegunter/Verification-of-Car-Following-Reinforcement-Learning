@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : two-variable-problem-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Two Variable Problem
+
+fof(two_variable_problem_1,conjecture, ! [X,Y] : ((0 < Y & Y < X) => (X-Y)/(X+Y) < ln(X/Y)/2) ).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.17: If 0 < y < x, then x+y/2 > (x-y)/(log x - log y) or 1/2 log x/y > x-y/x+y for 0 < y < x
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

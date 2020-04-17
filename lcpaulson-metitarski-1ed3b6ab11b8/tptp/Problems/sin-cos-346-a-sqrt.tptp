@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-346-a-sqrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_346a,conjecture, ![X] : ((0 < X & X <= 4) => sin(X)/X > cos(X/sqrt(3)))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.6), page 236 
+% It is only claimed to hold for the interval (0,pi/2), but it actually holds over (0,8.345...).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

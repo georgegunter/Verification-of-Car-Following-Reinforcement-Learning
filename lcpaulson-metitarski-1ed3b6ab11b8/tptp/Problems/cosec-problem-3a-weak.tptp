@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : cosec-problem-3a-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosec Problem
+
+fof(cosec_problem_3a,conjecture, ! [X] : ((0 < X & X < pi/2) => 1/sin(X)^2 - 1/7 <= 1/(X+3*pi)^2 + 1/(X+2*pi)^2 + 1/(X+pi)^2 + 1/X^2 + 1/(X-pi)^2 + 1/(X-2*pi)^2 + 1/(X-3*pi)^2)).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities. 
+% (p) cosec^2(x) - 1/(2n+1) < \sum_{i=-n}^{n} 1/(x-i\pi)^2
+% n = 3
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/pi.ax').
+

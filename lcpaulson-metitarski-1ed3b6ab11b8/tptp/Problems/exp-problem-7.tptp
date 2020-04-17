@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-7.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_7,conjecture, ! [X] : (0 < X => exp(X) < 1 + X * exp(X))).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.20. For x > 0, verify the following claims: e^x < 1 + xe^x
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').

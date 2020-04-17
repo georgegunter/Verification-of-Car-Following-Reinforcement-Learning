@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : cosh-369.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tanh problem
+
+fof(tanh_3610,conjecture, ![X] : ((-4 < X & X < 4 & X != 0) => cosh(X) <= (sinh(X)/X)^3 )).
+
+% Analytic Inequalities, D.S.Mitrinovic, 3.6.10, page 270.
+% If 0 <= x, then arctan(X) <= (pi/2)*tanh(X)
+
+include('Axioms/general.ax').
+include('Axioms/cosh-upper.ax').
+include('Axioms/sinh-lower.ax').
+include('Axioms/sinh-upper.ax').

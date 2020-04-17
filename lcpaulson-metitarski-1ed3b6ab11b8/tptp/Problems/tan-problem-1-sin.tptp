@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-1-sin.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_1,conjecture, ![X] : ((0 <= X & X < pi/2) => tan(X/2) <= sin(X)) ).
+
+% Must avoid pi/2, else division by zero.
+% Not provable because pi is not known exactly.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/pi.ax').
+

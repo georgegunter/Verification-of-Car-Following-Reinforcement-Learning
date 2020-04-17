@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : math-overflow-problem-1-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Problem from math overflow via Grant - initially take log to mean ln
+% reduced range on P
+
+fof(math_overflow_problem_8_ln,conjecture, ! [P] : ((0.05 <= P & P <= 0.45) => (((P*ln(P)+(1-P)*ln(1-P))*(P*ln(P)-(1-P)*ln(1-P))/(1-P-P)+ln(P)*ln(1-P)+P*ln(P)+(1-P)*ln(1-P)) < 0))).
+
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-general.ax').
+

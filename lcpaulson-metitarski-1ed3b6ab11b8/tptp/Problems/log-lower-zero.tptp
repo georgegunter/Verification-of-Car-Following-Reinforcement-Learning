@@ -1,0 +1,12 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-zero.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Note: simplification eliminates the log function!
+fof(log_lower_zero_1,conjecture, ! [X] : (0 < X => 0 < ln(1 + 1/X)) ).
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

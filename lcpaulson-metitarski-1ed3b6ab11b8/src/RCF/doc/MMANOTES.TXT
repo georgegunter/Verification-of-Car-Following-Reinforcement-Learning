@@ -1,0 +1,181 @@
+=========================================================================
+   Some Notes on a MetiTarski/Mathematica Connection  ::  05-Oct-2011
+=========================================================================
+
+ I - Setup
+
+   i. Set your MK environment variable to point to Mathematica's
+      MathKernel.  This should point to your MathKernel binary
+      directly.  For instance, the following works for me:
+ 
+      MK=/Applications/Mathematica.app/Contents/MacOS/MathKernel
+ 
+     (I imagine this should work for a default installation of
+      Mathematica 8 on most Mac OS X machines.)
+ 
+
+
+
+ II - Enabling Mathematica as the External Algebraic Decision Method
+      (EADM)
+
+   i. By default, Mathematica is not enabled as the EADM.
+
+  ii. The reference RCF.eadm determines which EADM should be used.
+      Currently, the choice is between Mathematica and QepcadB.  To
+      make Mathematica the EADM, invoke:
+     
+        RCF.set_eadm RCF.MATHEMATICA.
+
+
+
+
+ III - Timing
+
+   i. When Mathematica is used, there are a number of ways in which
+      its execution may be time constrained.
+
+  ii. We currently support a time limit on a ``per decision'' basis.
+      The value which handles this is 
+ 
+        Mathematica.mk_decision_time_limit : Time.time ref.
+ 
+      By default, !Mathematica.mk_decision_time_limit is Time.zeroTime,
+      which means there is no time limit.
+
+ iii. To set the ``per decision'' time limit, invoke:
+      
+        RCF.set_d_time_limit Time.time -> unit.
+
+      With a time limit t, then every call of a Mathematica-based
+      decision method will be limited to taking t seconds.
+
+
+
+
+ IV - Extending the Set of ``Algebraic'' Operators
+
+   i. Given a list of function symbols (strings) L, we can extend our
+      list of ``algebraic'' operators by each function symbol
+      represented in L.
+
+  ii. These ``algebraic'' symbols will then be interpreted in
+      Mathematica as the ``actual'' mathematical functions to which we
+      ``wish'' them to correspond.  (Note that this correspondence is
+      indeed wishful thinking, as there exist uncountably many models
+      of our axioms for "sin" in which the denotation of "sin" is not
+      the actual Sin function!  But, if we set "sin" to be
+      ``algebraic'' using make_algebraic, then "sin" will be
+      interpreted as the ``actual'' Sin in Mathematica, i.e., taken to
+      be Sin of our intended model.)
+
+      Example:
+        Poly.make_algebraic ["sin", "cos", "/"]
+
+      Supported symbols:
+        ["sin", "cos", "sinh", "cosh", "abs", "ln", "tan", "sqrt", 
+         "arctan", "arcsin", "exp", "pi", "/"]
+
+ iii.  This brings up many interesting questions as to how, for
+       instance, our approximate axioms for "sin" should be used when
+       "sin" is being taken to be algebraic, and hence treated as the
+       ``actual'' mathematical Sin within Mathematica.
+ 
+
+
+
+
+ V - Inequality System Solving Options
+
+   i. Mathematica exposes many different algebraic proof procedures,
+      and we use a record of type mk_opts to determine the strategy 
+      underlying their combination.
+
+  ii. The types for controlling Mathematica solving options are the
+      following, found within the structure Mathematica:
+
+       datatype mk_tfa = O_True | O_False | O_Automatic;
+
+       type mk_opts = 
+	    { Exact_Pi : bool,
+              ARS_Decision : bool,
+  	      Brown_Projection : bool,
+  	      CAD : bool,
+ 	      CAD_Default_Precision : real,
+	      CAD_Sort_Variables : bool,
+	      Equational_Constraints_CAD : mk_tfa,
+	      FGLM_Basis_Conversion : bool,
+	      FGLM_Elimination : mk_tfa,
+	      Generic_CAD : bool,
+	      Groebner_CAD : bool,
+	      Linear_Equations : bool,
+	      Linear_QE : mk_tfa,
+	      LW_Decision : bool,
+	      LW_Preprocessor : mk_tfa,
+	      Project_Algebraic : mk_tfa,
+	      Prove_Multiplicities : mk_tfa,
+	      Quadratic_QE : mk_tfa,
+	      QVS_Preprocessor : mk_tfa,
+	      Reduce_Powers : bool,
+	      Root_Reduced : bool,
+	      Simplex : bool,
+	      Thread_Or : bool,
+	      Zeng_Decision : bool};
+	 
+  iii. The value mk_default_options is meant to be a default sensible
+       set of options, upon which other option records may be built.
+       It is as follows:
+
+        val mk_default_options =
+	    { Exact_Pi = false,
+	      ARS_Decision = false,
+	      Brown_Projection = true,
+	      CAD = true,
+	      CAD_Default_Precision = 30.103,
+	      CAD_Sort_Variables = true,
+	      Equational_Constraints_CAD = O_Automatic,
+	      FGLM_Basis_Conversion = false,
+	      FGLM_Elimination = O_Automatic,
+	      Generic_CAD = true,
+	      Groebner_CAD = true,
+	      Linear_Equations = true,
+	      Linear_QE = O_Automatic,
+	      LW_Decision = true,
+	      LW_Preprocessor = O_Automatic,
+	      Project_Algebraic = O_Automatic,
+	      Prove_Multiplicities = O_Automatic,
+	      Quadratic_QE = O_Automatic,
+	      QVS_Preprocessor = O_False,
+	      Reduce_Powers = true,
+	      Root_Reduced = false,
+	      Simplex = true,
+	      Thread_Or = true,
+	      Zeng_Decision = false};
+	    
+  iv. To set the Mathematica options, use
+ 
+        RCF.set_mk_active_options : Mathematica.mk_opts -> unit.
+
+   v. For more information on these options, see:
+
+       http://reference.wolfram.com/mathematica/tutorial/RealPolynomialSystems.html
+
+
+
+
+
+
+ VI - Decision Making
+
+   i. The following high-level algebraic decision functions are
+      available:
+
+       RCF.call_rcf_conj : LiteralSet.set -> LiteralSet.set list -> bool
+   
+       RCF.isArithTaut : LiteralSet.set -> bool;
+ 
+      The latter checks to see if its argument is a ``semantic tautology,''
+      using Mathematica.
+
+
+ *** Will write more soon!

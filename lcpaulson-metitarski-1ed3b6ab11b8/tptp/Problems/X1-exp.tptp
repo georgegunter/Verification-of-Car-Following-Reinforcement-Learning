@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : X1-exp.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists1,conjecture, ? [X] : exp(X) > 10^50).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+

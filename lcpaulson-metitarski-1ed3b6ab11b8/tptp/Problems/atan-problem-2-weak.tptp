@@ -1,0 +1,25 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-2-weak.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    4
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_2,conjecture, ! [A,B,T,S] : ((0 < A & A < B & B < 2 & abs(T) > 1 & 0 <= S & S^2 = (A^2+T^2)*(B^2+T^2)) => 1 + (arctan(B/T) - arctan(A/T))/T > (B-A) / S) ).
+
+% The American Mathematical Monthly, Vol. 73, No. 4 (Apr., 1966), p. 424
+% via P. S. Bullen [The version in his Dictionary of Inequalities contains many errors]
+
+% If a<b and t<>0 then arctan(b/t)-arctan(a/t))/t > (b-a)/sqrt((a^2+t^2)*(b^2+t^2))
+
+% The large number of variables makes this problem difficult.
+
+% 2011-10-31: Made very much easier. Takes about 2 min, virtually all in Mathematica.
+% Requires Mathematica, 225 secs. The proof uses only the very simplest atan bounds.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').

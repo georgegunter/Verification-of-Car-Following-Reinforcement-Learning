@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : Arthan1C.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Email Exchange, Rob Arthan <rda@lemma-one.com>
+% http://www.lemma-one.com/papers/75s.pdf
+% K = M = 1
+ 
+% Proof for all S >= 2.17 (replacing the sine and cosine functions by variables)
+
+fof(Rob_Arthan_problem_1, conjecture, ! [S,COSS,SINS] : ((2.17 <= S & SINS^2 + COSS^2 = 1) => (1 + S + S^2 + SINS)*((1 + S)*(2 - SINS) + 2 + 4*S + 2*COSS) - (2*(1 + S))*(1 + 2*S + COSS)^2 < 0)).
+
+include('Axioms/general.ax').

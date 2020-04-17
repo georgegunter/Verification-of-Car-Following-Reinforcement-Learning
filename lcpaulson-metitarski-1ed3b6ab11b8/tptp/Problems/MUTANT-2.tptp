@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : MUTANT-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(MUTANT, conjecture, ! [X] : (0 <= X => 40000*exp(-0.000278*X) + 0.0211*exp(-0.0103*X) < 49964)).
+
+% 2011-09-01: simplified the formula
+
+% Source:
+%   Benchmarks for Safety Verification of Hybrid Systems
+%   Stefan Ratschan and Zhikun She, http://hsolver.sourceforge.net/benchmarks/
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

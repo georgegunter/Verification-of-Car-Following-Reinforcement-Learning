@@ -1,0 +1,44 @@
+--- ./src/AGIRP.c.orig	2010-06-14 12:29:56.000000000 -0600
++++ ./src/AGIRP.c	2013-08-27 11:00:00.000000000 -0600
+@@ -47,7 +47,7 @@ Step2: /* If A is divisible by 1 + 1, mu
+           add 1 to k, and divide by 2^{h + 1}.  Otherwise
+           divide A by 2^h. */
+ 	k = h + h;
+-	if ((a1 & 1 == 1) && (a2 & 1 == 1)) {
++	if (((a1 & 1) == 1) && ((a2 & 1) == 1)) {
+ 	   A1[0] = - A1[0];
+ 	   AISUM(A1,A2,B[1]);
+ 	   A1[0] = - A1[0];
+--- ./src/DLNEG.c.orig	2010-06-14 12:29:57.000000000 -0600
++++ ./src/DLNEG.c	2013-08-27 11:00:00.000000000 -0600
+@@ -19,7 +19,7 @@ BDigit DLNEG(a)
+ Step1: /* Three cases. */
+ 	if (a == 0)
+ 	   b = 0;
+-	else if (FFSIZE & 1 == 1)
++	else if ((FFSIZE & 1) == 1)
+ 	   b = a;
+ 	else {
+ 	   q2 = FFSIZE >> 1;
+--- ./src/IPVCHTP.c.orig	2010-06-14 12:30:25.000000000 -0600
++++ ./src/IPVCHTP.c	2013-08-27 11:00:00.000000000 -0600
+@@ -83,7 +83,7 @@ Step3: /* Count sign variations while ap
+ 	     P[i + g] = a1; }
+ 	  s = 0;
+ 	  i = m + g;
+-	  while (s == 0 & i > m) {
++	  while (s == 0 && i > m) {
+ 	     if (P[i] != 0)
+ 		s = P[i];
+ 	     i = i - 1; }
+--- ./src/MPGCDC.c.orig	2010-06-14 12:30:47.000000000 -0600
++++ ./src/MPGCDC.c	2013-08-27 11:00:00.000000000 -0600
+@@ -125,7 +125,7 @@ Step13: /* Conditional initialization of
+          }
+ 
+ Step14: /* Test for unlucky element. */
+-       if (t == 1 || t == 3 || t == 0 && PDEG(Q) > g)
++       if (t == 1 || t == 3 || (t == 0 && PDEG(Q) > g))
+          goto Step8;
+ 
+ Step15: /* Interpolate. */

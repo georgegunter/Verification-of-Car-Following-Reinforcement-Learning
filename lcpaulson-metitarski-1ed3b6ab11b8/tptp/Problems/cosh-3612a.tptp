@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : cosh-3612a.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(cosh_3612, conjecture, ![X] : ((0 < X & X < 5) => (3 + X^2/11)*sinh(X) / (2 + cosh(X) + X^2/11) < X )).
+
+% Analytic Inequalities, D.S.Mitrinovic, 3.6.12, page 270.
+% Apparently valid for 0 < X < 5.178611617, but it gives up for 0<X<2.5
+% 2011-10-20: widened the limits on X. Now impossible with our our bounds.
+% The expanded version, exp-hyperbolic-1, is easy.
+
+include('Axioms/general.ax').
+include('Axioms/cosh-lower.ax').
+include('Axioms/cosh-upper.ax').
+include('Axioms/sinh-lower.ax').
+include('Axioms/sinh-upper.ax').

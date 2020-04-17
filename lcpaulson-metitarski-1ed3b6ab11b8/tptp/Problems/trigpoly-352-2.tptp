@@ -1,0 +1,25 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-352-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_352,conjecture, ![X] : ((0 < X & X < 6.28) => abs(1/2 + cos(X) + cos(2*X)) <= 0.05 + 1 / abs(2*sin(X/2)))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.2, page 247. (n=2)
+% abs(1/2 + \sum_{k=1}^n cos(k*x)) <= abs(cosec(x/2) / 2)
+
+% Cannot be proved exactly because the inequality is sharp away from zero.
+% NOT PROVABLE: Our existing bounds for cos(x) are only accurate when -12 < x < 12.
+
+% Additional comments
+% The inequality is exact at X = Pi/5 as well as at X = Pi
+% NB the left hand abs is not needed
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos-extended2.ax').

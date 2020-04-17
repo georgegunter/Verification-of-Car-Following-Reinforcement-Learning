@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-357-5-sqrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_357,conjecture, ![X] : ((abs(X) < 2.7) => abs(- sin(X) + sin(2*X)/2 - sin(3*X)/3 + sin(4*X)/4 - sin(5*X)/5) <= sqrt(2) * abs(X))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.7, page 249. (n=5)
+% for all real x, |\sum_{k=1}^n ((-1)^k/ k)*sin(kx)| < sqrt(2)*|X|
+
+% Naturally, we can only prove it for X confined to a small interval.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sin-extended2.ax').

@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_1,conjecture, ! [X] : ((0 < X & X < 1/2) => cos(pi*X) > 1 - 2*X) ).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, page 237
+% 3.4.9 If 0 < r < 1/2, then cos (pi r) > 1 - 2r
+
+% NOT PROVABLE except using the exact value of pi.
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').

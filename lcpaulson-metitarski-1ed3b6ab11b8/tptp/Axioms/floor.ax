@@ -1,0 +1,14 @@
+cnf(floor_upper_bound,axiom,
+    ( ~ lgen(R, X, Y)
+    | lgen(R,floor(X),Y) )).
+
+cnf(floor_lower_bound,axiom,
+    ( X-1 < Y
+    | lgen(R,Y,floor(X)) )).
+
+%---- Monotonicity
+
+cnf(floor_monotone,axiom,
+    ( ~ X <= Y
+    | floor(X) <= floor(Y) )).
+

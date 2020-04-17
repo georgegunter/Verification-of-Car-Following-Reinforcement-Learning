@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-9.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_9,conjecture, ! [X] : (X > 0 => (X + 1/X) * arctan(X) > 1) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.15 Establish the following inequalities: (a) (x + 1/x) * arctan(x) > 1 for x > 0.
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+

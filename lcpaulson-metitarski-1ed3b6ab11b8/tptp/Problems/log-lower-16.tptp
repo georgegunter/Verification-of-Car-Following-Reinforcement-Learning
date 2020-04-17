@@ -1,0 +1,25 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-16.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_16,conjecture, ! [X] : (0 <= X => (2*X)/(2+X) <= ln(1+X))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (d) If x > -1, then 2 |x| / (2 + x) <= |log (1+x)| <= |x| / sqrt (1+x)
+
+% Related to log-upper-16
+
+% By a change of variables, equivalent to 1 <= Y <= 4 ==> (2Y-2)/(1+Y) <= ln Y 
+% Checked via gnuplot, 19-12-2007. Graphs say that none of our lower bounds are tight enough.
+% Proved 2008-01-07 using new lower bounds.
+
+% bounds relaxed 2008-01-07
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

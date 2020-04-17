@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : atan-error-analysis-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arctan Error Analysis
+
+fof(atan_error_analysis_2,conjecture, ! [X] : (abs(X) <= 1 => abs(arctan(X) - (0.9998660 * X - 0.3302995 * X^3 + 0.1801410 * X^5 - 0.0851330 * X^7 + 0.0208351 * X^9)) <= 1.4e-5)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.4.47 -1 <= x <= 1 arctan(x) = a1 x + a3 x^3 + a5 x^5 + a7 x^7 + a9 x^9 + epsilon (x)
+% |epsilon(x)| <= 10^-5
+% a1 = 0.9998660 a3 = - 0.3302995 a5 = 0.1801410 a7 = - 0.0851330 a9 = 0.0208351
+% According to Maple, the absolute difference is actually slightly larger: 1.15e-5
+
+include('Axioms/general.ax').
+include('Axioms/arctan-extended2.ax').
+include('Axioms/abs.ax').

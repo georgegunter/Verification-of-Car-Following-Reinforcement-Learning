@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : asin-6.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arcsin Problem
+
+fof(asin_6,conjecture, ! [X] : ((0 < X & X < 0.875) => 3*X / (2+sqrt(1-X^2)) < arcsin(X) )).
+
+% Our bounds are unfortunately not accurate enough to prove this for the full interval (0,1).
+
+% Mentioned below; credited to D. S. Mitrinovic, Analytic Inequalities, Springer, 1970.
+% Ling Zhu. New Inequalities of Shafer-Fink Type for Arc Hyperbolic Sine.
+% Journal of Inequalities and Applications (2008). doi:10.1155/2008/368275
+
+include('Axioms/general.ax').
+include('Axioms/arcsin-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').

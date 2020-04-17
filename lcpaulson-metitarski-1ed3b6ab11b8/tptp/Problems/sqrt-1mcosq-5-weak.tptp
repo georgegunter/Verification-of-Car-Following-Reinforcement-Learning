@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-1mcosq-5-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Derived from sin-problem-5
+
+fof(sqrt_1mcosq_5,conjecture, ! [X] : ((0 < X & X < 0.6) => sqrt(1 - cos(3.1416*X)^2) / (X*(1-X)) <= 4.2)).
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').

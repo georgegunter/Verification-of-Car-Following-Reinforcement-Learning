@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : log-fun-ineq-b2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities, (b)
+
+fof(lfi_a,conjecture, ! [N] : (2 <= N => 1 + 1/(12*N + 1/4) - 1/(12*(N+1) + 1/4) < (N + 1/2) * ln(1 + 1/N))).
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

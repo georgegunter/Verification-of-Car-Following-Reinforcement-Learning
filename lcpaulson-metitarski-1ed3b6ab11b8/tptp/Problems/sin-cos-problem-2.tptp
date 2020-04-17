@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine (Tan) Problem
+
+fof(sin_cos_problem_2,conjecture, ![X] : ((0 <= X & X < 3.14159/2) => X <= sin(X)/cos(X)) ).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.3.80 sin x <= x <= tan x (0 <= x < pi/2)
+% Must avoid pi/2, else division by zero.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+

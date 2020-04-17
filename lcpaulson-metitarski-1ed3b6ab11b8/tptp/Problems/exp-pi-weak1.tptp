@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : exp-pi-weak1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(exp_pi,conjecture, 23.5 > exp(ln(pi) * 2.718) ).
+% SLOW, Processor time: 126s = 122 (Metis) + 4 (RCF) [2011-12-16]
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.16 (a) e^pi > pi^e
+% The lhs is 23.14069263, the rhs is 22.45915772
+% Derived from ground-problem-19, but avoiding the easy step of monotonicity.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/pi.ax').

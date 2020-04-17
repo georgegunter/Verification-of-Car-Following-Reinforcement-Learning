@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-23.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_23,conjecture, ! [X,Y] : ((0 < X & X <= 1500 & Y^3 = X) => ln(X) <= 3*(Y-1)) ).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.1.37 ln x <= n (x^1/n - 1) for any positive n (x > 0).
+% n = 3.
+
+% proved in 0.4 seconds on 04-01-2008, after widening the ranges of the log upper bounds.
+% bounds relaxed 2008-09-12
+% 2011-05-31: extended the range of X
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').

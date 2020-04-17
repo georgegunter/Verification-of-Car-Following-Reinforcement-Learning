@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : cbrt-problem-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cube Root Problem
+
+fof(cbrt_problem_2,conjecture, ![X,Y] : ((0 < X & 0 < Y) => cbrt(X+Y) <= cbrt(X) + cbrt(Y)) ).
+
+% Our bounds are not adequate to prove this result for arbitrarily large X
+
+include('Axioms/general.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

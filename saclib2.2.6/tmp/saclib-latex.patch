@@ -1,0 +1,80 @@
+--- ./doc/user_guide/cPAsPIO.tex.orig	2010-06-14 12:34:36.000000000 -0600
++++ ./doc/user_guide/cPAsPIO.tex	2013-08-27 11:00:00.000000000 -0600
+@@ -152,8 +152,9 @@ in external canonical form from the inpu
+ variables in \verb@V@ is significant and the variables in each term of
+ the polynomial that is read must appear in the same order that they
+ appear in \verb@V@ and the terms must be ordered in descending degree
+-in $v_r$.  For example, if\space \verb@V@ = \verb@(x,y,z)@ then \verb@(4 z^5
+-- y^2 z^4 + 9 x y z)@ is valid but \verb@(4 z^5 + 9 y x z - y^2 z^4)@
++in $v_r$.  For example, if\space \verb@V@ = \verb@(x,y,z)@ then
++\verb@(4 z^5 - y^2 z^4 + 9 x y z)@ is valid but
++\verb@(4 z^5 + 9 y x z - y^2 z^4)@
+ is not for two reasons---first, \verb@y@ appears before \verb@x@ in
+ the term \verb@9 y x z@ and second, the term \verb@9 y x z@ appears
+ before \verb@- y^2 z^4@ which violates the rule that terms must appear
+@@ -163,10 +164,9 @@ according to descending degree in $v_{r-
+ may be separated from the variables by an arbitrary number of spaces
+ (including no space at all).  Variables must be separated by at least
+ one space if there is no exponent explicitly given, otherwise an
+-arbitrary number of spaces may separate them.  For example \verb@(4z^5
+-- y^2z^4 + 9x y z)@ is valid but \verb@(4z^5 - y^2z^4 + 9xyz)@ is not
+-since
+-\verb@xyz@ will be treated as a single variable.  
++arbitrary number of spaces may separate them.  For example
++\verb@(4z^5 - y^2z^4 + 9x y z)@ is valid but \verb@(4z^5 - y^2z^4 + 9xyz)@
++is not since \verb@xyz@ will be treated as a single variable.  
+ 
+ 
+ \subsection{Distributive polynomials over $\BbbQ$}
+--- ./doc/user_guide/saclib.tex.orig	2010-06-14 12:34:33.000000000 -0600
++++ ./doc/user_guide/saclib.tex	2013-08-27 11:00:00.000000000 -0600
+@@ -1,4 +1,6 @@
+-\documentstyle[saclib,makeidx,DinA4]{report}
++\documentclass{report}
++\usepackage{saclib}
++\usepackage{makeidx}
+ 
+ \makeindex
+ 
+@@ -169,7 +171,7 @@ workings of the list processing and garb
+ \label{c:LA}
+ 
+ \input{cLA.tex}
+- 
++
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \chapter{Polynomial GCD and Resultants}
+@@ -240,7 +242,7 @@ workings of the list processing and garb
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %
+-% Here we should have an extensive bibliography of Symbolic Algebraic 
++% Here we should have an extensive bibliography of Symbolic Algebraic
+ % Computation literature. Any volunteers?
+ %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+--- ./doc/user_guide/saclocal.tex.orig	2010-06-14 12:34:35.000000000 -0600
++++ ./doc/user_guide/saclocal.tex	2013-08-27 11:00:00.000000000 -0600
+@@ -1,4 +1,5 @@
+-\documentstyle[saclib]{article}
++\documentclass{article}
++\usepackage{saclib}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+--- ./doc/user_guide/sackwic.tex.orig	2010-06-14 12:34:35.000000000 -0600
++++ ./doc/user_guide/sackwic.tex	2013-08-27 11:00:00.000000000 -0600
+@@ -1,5 +1,5 @@
+-\documentstyle[saclib,DinA4]{article}
+-
++\documentclass{article}
++\usepackage{saclib}
+ 
+ \newcommand{\desclabel}[1]{\hspace\labelsep \bf #1}
+ \renewenvironment{description}{
+@@ -45,4 +45,3 @@ index of all functions provided by \sacl
+ \normalsize
+ 
+ \end{document}
+-

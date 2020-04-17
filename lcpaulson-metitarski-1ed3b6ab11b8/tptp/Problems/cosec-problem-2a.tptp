@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : cosec-problem-2a.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosec Problem
+
+fof(cosec_problem_2a,conjecture, ! [X] : ((abs(X) < pi/2 & X != 0) => 1/sin(X)^2 - 1/5 <= 1/(X+2*pi)^2 + 1/(X+pi)^2 + 1/X^2 + 1/(X-pi)^2 + 1/(X-2*pi)^2)).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities. 
+% (p) cosec^2(x) - 1/(2n+1) < \sum_{i=-n}^{n} 1/(x-i\pi)^2
+% n = 2
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin.ax').
+include('Axioms/pi.ax').
+

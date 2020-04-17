@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-2var1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_2var1,conjecture, ! [X,Y] : ((0 < X & 0 < Y & X+Y < 2) => sin(X-Y) <= 2*sin(X)*cos(Y)) ).
+
+%Should hold for all X and Y such that 0 <= X+Y & X+Y <= pi, but that's much too difficult!
+%Note: 2*sin(X)*cos(Y) = sin(X-Y) + sin(X+Y).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+
+

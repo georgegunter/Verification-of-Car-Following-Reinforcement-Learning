@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : Chua-1-IL-L-sincos.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%Chua Circuit -- Example from W Denman et al.,
+%  Formal Verification of Analog Designs using MetiTarski. FMCAD (2009), 93–100.
+
+%Ro = 0.0125, C1 = 10 F, C2 = 100F, G = 0.5355, L = 18 H, Ga=-0.7576, Gb=-0.4090 for oscillation with one path
+%Initial Conditions: VC1 = 3V, VC2 = 0V, Il= 0A.
+
+%There are three modes for Chua's diode, but when it oscillates, it only oscillates between two of them.
+
+%We want to check that the oscillation is bounded: 0 < VC1 < 5, -1 < VC2 < 1, -2 < IL < 5
+
+fof(Chua, conjecture, ! [X] : ((0 <= X & X <= 289) => 1.51 - 0.023*exp(-0.019*X) - (2.35*cos(0.019*X) + 0.42*sin(0.019*X)) * exp(0.00024*X) > -2)).
+
+% 2011-09-01: simplified the formula
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

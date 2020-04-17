@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-11.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_11,conjecture, ! [X] : (1 < X => 2*cos(1/X)/X^3 - sin(1/X)/X^4 > 0)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% This problem arises from the proof of the following claim:
+% 3.4.3: If 1 <= x, then sin 1/(x-1) - 2 sin 1/x + sin 1/(x+1) > 0
+% The proof claims that the second derivative of sin(1/x) is positive for x>1. And so we find.
+% This problem is equivalent to tan-problem-8, but sanely simplified.
+
+include('Axioms/general.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/cos-extended.ax').

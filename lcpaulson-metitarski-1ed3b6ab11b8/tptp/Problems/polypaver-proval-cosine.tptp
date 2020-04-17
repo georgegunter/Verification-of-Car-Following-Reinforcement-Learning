@@ -1,0 +1,11 @@
+%--------------------------------------------------------------------------
+% File     : polypaver-proval-cosine.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(inter,conjecture, ! [X,Y] : ((X : (= 2^-4,2^-4 =) & Y : (= -2^-5, 2^-5 =) & X-Y : (= -2^-20, 2^-20 =)) => abs(X^2/2 - Y^2/2) - abs(X-Y) <= 131201/2^41)).
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').

@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-3515-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_3515,conjecture, ![X,A] : ((-3.14159 < X & X < 3.14159 & -1 < A & A <= 1) => 1/(1+A) + cos(X)/(1+A) + cos(2*X)/(2+A) >= 0)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.15, page 252. (n=2)
+% for all real x, 1/(1+A)+ sum_{k=1}^n cos(k*X)/(k+A) is non-negative
+
+% MetiTarski cannot prove this if X gets too close to pi. This makes no sense,
+% as the inequality isn't even tight there.
+
+include('Axioms/general.ax').
+include('Axioms/cos-extended.ax').

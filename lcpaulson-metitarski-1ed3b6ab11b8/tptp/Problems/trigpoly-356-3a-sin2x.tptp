@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-356-3a-sin2x.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_356,conjecture, ![X] : ((0 < X & X < pi) => sin(X) + sin(X)*cos(X) + 2*sin(3*X/2)*cos(3*X/2)/3 > -6e-6)).
+
+% SUPER SLOW, 360s = 12 (Metis) + 348 (QEPCAD); 882-step proof
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.6, page 249. (n=3)
+% 0 < \sum_{k=1}^n sin(kx) / k < pi - x     (for 0 < x < pi)
+% ...transformed using sin 2x = 2 sin(x) cos(x)
+% Maple plots suggest that it is exact when X = pi, so "padding" is necessary.
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos-extended.ax').

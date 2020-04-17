@@ -1,0 +1,62 @@
+%--------------------------------------------------------------------------
+% File     : lotka-volterra.tptp
+% Syntax   : Number of Skolem constants	: 4
+% Source   : Bogdan Toader
+% Comments :  Extension of original problem with fixed Y0 value
+% Bogdan's original comment:
+% This basically means that r <= sqrt(1.9).
+% - use z3 to prove; qepcad returns error
+%--------------------------------------------------------------------------
+
+%2017-10: not proved, especially after restoring to "abs" its original weight of 20000
+
+% Originanal problem with fixed Y0
+% proved by Z3
+% Processor time: 0.587 = 0.053 (Metis) + 0.533 (RCF)
+% proved by Mathematica
+% Processor time: 59.198 = 0.137 (Metis) + 59.061 (RCF)
+
+%fof(lotkavolterracentre, conjecture, (![X0, Y0, S, C]:
+%(
+%    (X0>0.1 & X0 < 1 & Y0 = 0.5 &  S^2+C^2=1) =>
+%    ((-1/3*(X0^2 + X0*Y0 - Y0^2)*S^2 + 1/3*(X0^2 + X0*Y0 - Y0^2)*C^2 - 1/3*(X0^2 + X0*Y0 - Y0^2 - 3*X0)*C + 1/3*((X0^2 - 4*X0*Y0 - Y0^2)*C - X0^2 + X0*Y0 + Y0^2 - 3*Y0)*S)^2 +
+%    (1/3*(X0^2 - X0*Y0 - Y0^2)*S^2 - 1/3*(X0^2 - X0*Y0 - Y0^2)*C^2 + 1/3*(X0^2 - X0*Y0 - Y0^2 + 3*Y0)*C + 1/3*((X0^2 + 4*X0*Y0 - Y0^2)*C - X0^2 - X0*Y0 + Y0^2 + 3*X0)*S)^2)
+%    <= 1.9
+%))).
+
+% when the above is extended to a range for Y0 then it is not
+% provable. This is partly because 1.9 is too low a value - plotting with Mathematica
+% indicates the function actually reaches about 3 when Y0 is allowed to approach 1
+% But even with an increased limit of 4 it is not solved either with z3 (times out) or
+% mathematica (gives up)
+
+%fof(lotkavolterracentre, conjecture, (![X0, Y0, S, C]:
+%(
+%    (X0>0.1 & X0 < 1 & Y0>0.1 & Y0 < 1 & S >= -1 & S <= 1 & S^2+C^2=1) =>
+%    ((-1/3*(X0^2 + X0*Y0 - Y0^2)*S^2 + 1/3*(X0^2 + X0*Y0 - Y0^2)*C^2 - 1/3*(X0^2 + X0*Y0 - Y0^2 - 3*X0)*C + 1/3*((X0^2 - 4*X0*Y0 - Y0^2)*C - X0^2 + X0*Y0 + Y0^2 - 3*Y0)*S)^2 +
+%    (1/3*(X0^2 - X0*Y0 - Y0^2)*S^2 - 1/3*(X0^2 - X0*Y0 - Y0^2)*C^2 + 1/3*(X0^2 - X0*Y0 - Y0^2 + 3*Y0)*C + 1/3*((X0^2 + 4*X0*Y0 - Y0^2)*C - X0^2 - X0*Y0 + Y0^2 + 3*X0)*S)^2)
+%    <= 4
+%))).
+
+% rewritten using triangle inequality and taking square roots of both sides
+% NB 2.346896791 gives a quick solution (approx 11 secs) while
+%    2.346896790 times out after over 600 secs
+% Times
+% with Mathematica
+% Processor time: 11.401 = 0.119 (Metis) + 11.282 (RCF)
+% with Z3
+% it is not proved even after an over-night run.
+%
+% Note that 2.346896791^2 = 5.5079.. which is 1.836 x the actual limit of around 3
+% the maximum ratio that using the triangle inequality can introduce is a factor of 2.
+fof(lotkavolterracentre, conjecture, (![X0, Y0, S, C]:
+(
+    (X0>0.1 & X0 < 1 & Y0>0.1 & Y0 < 1 & S >= -1 & S <= 1 & S^2+C^2=1) =>
+    (abs(-1/3*(X0^2 + X0*Y0 - Y0^2)*S^2 + 1/3*(X0^2 + X0*Y0 - Y0^2)*C^2 - 1/3*(X0^2 + X0*Y0 - Y0^2 - 3*X0)*C + 1/3*((X0^2 - 4*X0*Y0 - Y0^2)*C - X0^2 + X0*Y0 + Y0^2 - 3*Y0)*S) +
+    abs(1/3*(X0^2 - X0*Y0 - Y0^2)*S^2 - 1/3*(X0^2 - X0*Y0 - Y0^2)*C^2 + 1/3*(X0^2 - X0*Y0 - Y0^2 + 3*Y0)*C + 1/3*((X0^2 + 4*X0*Y0 - Y0^2)*C - X0^2 - X0*Y0 + Y0^2 + 3*X0)*S))
+    <= 2.346896791
+))).
+
+
+include('Axioms/general.ax').
+include('Axioms/abs2.ax').

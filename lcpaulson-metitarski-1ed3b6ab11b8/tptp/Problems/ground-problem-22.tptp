@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-22.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_22,conjecture, ln(8) > 2 ).
+
+% The lhs is 2.079441542
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

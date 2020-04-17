@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-18.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_18,conjecture, ! [X] : ((0 <= X & X < 2) => exp(X) <= (X^2 + 2*X + 2) / (2-X))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.3-(2) Let S_n(x) = 1+x+x^2/2!+...+x^n/n!. If n is a natural number and x>=0, then e^x - S_n(x) <= e^x x/n
+% n = 2
+% See also exp-problem-5
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

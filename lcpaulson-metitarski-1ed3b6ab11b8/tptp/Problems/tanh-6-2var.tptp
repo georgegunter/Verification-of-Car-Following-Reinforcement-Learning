@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : tanh-6-2var.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tanh problem in two variables
+
+fof(tanh_6_2v,conjecture, ! [X,Y] : ((0 < X & 0 < Y) => tanh(X) + tanh(Y) <= sinh(X+Y)) ).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/tanh-upper.ax').
+include('Axioms/sinh-lower.ax').

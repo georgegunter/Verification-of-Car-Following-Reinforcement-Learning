@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : Chua-2-VC1-U-sincos.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%Chua Circuit -- Example from W Denman et al., 
+%  Formal Verification of Analog Designs using MetiTarski. FMCAD (2009), 93–100.
+
+fof(Chua, conjecture, ! [X] : ((0 <= X & X <= 75) => 0.198*exp(0.028*X) + 0.8*exp(-0.0058*X)*cos(0.021*X) - 0.882*exp(-0.0058*X)*sin(0.021*X) < 5)).
+ 
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

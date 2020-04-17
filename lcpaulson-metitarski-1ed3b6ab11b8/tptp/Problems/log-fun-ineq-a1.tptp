@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : log-fun-ineq-a1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (a) If n >= 1, then 1/(n+1) ln(1 + 1/n) < 1/n
+
+fof(lfi_a,conjecture, ! [N] : (1 <= N => ln(1 + 1/N) < 1/N)).
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').

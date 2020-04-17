@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-10-2.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    4
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_10_2,conjecture, ! [X,SM1,S,SP1] : ((1.4 < X & 0 <= SM1 & SM1^2 = X-1 & 0 <= S & S^2 = X & 0 <= SP1 & SP1^2 = X+1) => sin (1/SM1) - 2 * sin (1/S) + sin (1/SP1) > -0.02)).
+
+% Source: LCP. Related to sin_problem_10. Similarly holds by Jensen's inequality.
+% The function sin(1/sqrt(x)) is convex for x>=1.
+
+% 2011-11-03: Corrected; extended the range of X. Requires Mathematica, 36.4 seconds.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').

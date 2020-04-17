@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-9.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_9,conjecture, ! [X] : ((2 < X & X <= 3) => cos(pi/X) <= cos(pi/(X+1))^2) ).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.4.8 Let 2 < a <= 3. Then cos pi/a <= cos^2 pi/(a+1). 
+% For a >= 3, the inequality is reversed.
+
+% Not provable because the inequality is sharp and we know pi only approximately.
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/pi.ax').
+

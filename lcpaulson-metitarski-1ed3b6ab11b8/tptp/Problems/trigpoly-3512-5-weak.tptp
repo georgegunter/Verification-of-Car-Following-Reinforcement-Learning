@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-3512-5-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_3512,conjecture, ![X] : ((0 < X & X < 2.25) => (cos(X) + cos(2*X)/2 + cos(3*X)/3 + cos(4*X)/4 + cos(5*X)/5) <= - ln(sin(X/2)) + (pi - X) / 2)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.12, page 251. (n=5)
+% for 0 < x < pi, |\sum_{k=1}^n cos(kx)/k| <= - ln(sin(X/2)) + (pi-x) / 2
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos-extended.ax').

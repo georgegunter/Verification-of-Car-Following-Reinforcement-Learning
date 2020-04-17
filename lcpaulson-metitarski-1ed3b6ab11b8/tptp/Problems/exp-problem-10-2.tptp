@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-10-2.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    4
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_10_2,conjecture, ! [X,SM1,S,SP1] : ((1 < X & X < 5 & 0 < SM1 & SM1^2 = X-1 & 0 < S & S^2 = X & 0 < SP1 & SP1^2 = X+1) => exp (1/SM1) - 2 * exp (1/S) + exp (1/SP1) >= 0)).
+
+% Source: LCP. Related to exp_problem_10. Similarly holds by Jensen's inequality.
+% The function exp(1/sqrt(x)) is convex for x>=1.
+
+% Difficult, with its 4 variables. 30 seconds using Mathematica, otherwise at least 20 min!
+% 2011-10-26: Widened the range of X and FIXED A TYPO
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+
+% FIXME: Much too slow if this file is included!
+%include('Axioms/exp-upper.ax').
+
+cnf(exp_upper_bound_cf1, axiom,
+    (X < 0 | 3/2 < X |
+     ~ lgen(R, -(X+2)/(X-2), Y) | lgen(R, exp(X), Y))).

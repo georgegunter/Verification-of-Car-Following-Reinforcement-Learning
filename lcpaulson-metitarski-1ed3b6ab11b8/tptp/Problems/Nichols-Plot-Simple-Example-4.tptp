@@ -1,0 +1,38 @@
+%--------------------------------------------------------------------------
+% File     : Nichols-Plot-Simple-Example-4.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Nichols Plot Problem
+
+fof(nichols_plot_4,conjecture, ! [X] : (X = 0.776 =>
+    55 + 8 * arctan((797*X^6 + 14382*X^4 + 755*X^2 - 3194) / (800*X^8 + 4803*X^6 + 12054*X^4 - 1597*X^2 + 55)) >
+     10 * log((640000*X^16+7684800*X^14+42990418*X^12 + 136160432*X^10+338091528*X^8 - 21346562*X^6 - 87425842*X^4 - 4998610*X^2+10204661) / (X^6+5*X^4+60*X^2+16)^2) )).
+
+% This problem formulation is difficult because the argument of ln is around 9664
+%	 and our bounds become extremely inaccurate. It becomes easy with scaling.
+
+%----  0.4131452940 <= w <= 0.7764324880 ==> 55+8 X(w) > Y(w)
+
+% Source: Interactions Between PVS and Maple in Symbolic Analysis of Control Systems
+% Author: R. Hardy
+% B = x in [-1.5,0.5],[[55+8x,>],[65-12x,<]]
+% Y(w) = (10ln(p)-20ln(w^6+5w^4+60w^2+16))/ln(10)
+% X(w)=arctan((797w^6+14382w^4+755w^2-3194)/(800w^8+4803w^6+12054w^4-1597w^2+55))
+% where w>=0, and p=640000w^16+7684800w^14+42990418w^12+136160432w^10+338091528w^8-21346562w^6-87425842w^4-4998610w^2+10204661
+% w1,1=0.4231452940, w1,2=0.7664324880, w1,3=1.631039454
+% w in [w1,1-0.01,w1,2+0.01] 55+8*X(w) > Y(w).
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/log.ax').
+
+% 9.22 > ln(10000)
+cnf(log_upper_bound_scaled_cf3,axiom,
+    ( ~ 0 < X
+    | ~ lgen(R, (1/40000)*(X+50000)*(X-10000)/(X+5000) + 9.22, Y)
+    | lgen(R,ln(X),Y) )).
+

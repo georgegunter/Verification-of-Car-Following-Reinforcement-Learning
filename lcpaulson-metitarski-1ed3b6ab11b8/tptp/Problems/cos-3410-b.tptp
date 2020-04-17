@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : cos-3410-b.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(cos_problem_3410a,conjecture, ![X,Y,Z] : ((-1.5 < X & X < 1.5 & -1.5 < Y & Y < 1.5 & -1.5 < Z & Z < 1.5) => cos(X-Y) + cos(X-Z) + cos(Y-Z) >= -1.51 )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.10), page 237
+% This problem can be generalised to any number of variables.
+% Hard. Spends all its time in QEPCAD
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+
+include('Axioms/cos-constant.ax').  
+%2011-05-20: first proof, using these axioms

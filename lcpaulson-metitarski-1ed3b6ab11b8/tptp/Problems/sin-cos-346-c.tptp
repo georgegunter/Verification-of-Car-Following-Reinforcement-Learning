@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-346-c.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(sin_cos_problem_346c,conjecture, ![X] : ((0 <= X & X <= pi/2 - 10^-7) => cbrt(cos(X)) >= cos(X) / (1 - X^2/3) )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.6), page 236 
+% pi/2 would not work for us because our bounds are not exact.
+
+include('Axioms/general.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/pi.ax').

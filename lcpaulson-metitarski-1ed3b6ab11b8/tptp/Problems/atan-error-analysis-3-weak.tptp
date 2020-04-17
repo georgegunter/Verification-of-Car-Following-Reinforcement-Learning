@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : atan-error-analysis-3-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arctan Error Analysis
+
+fof(atan_error_analysis_3,conjecture, ! [X] : ((abs(X) <= 0.9) => abs(arctan(X) - (X/(1 + 0.28*X^2))) <= 0.005) ).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.4.48 -1 <= x <= 1 arctan(x) = x/(1+0.28x^2) + epsilon (x)
+% |epsilon(x)| <= 5e-3
+
+include('Axioms/general.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/abs.ax').

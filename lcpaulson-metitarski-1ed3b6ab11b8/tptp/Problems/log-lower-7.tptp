@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-7.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_7,conjecture, ! [X] : (-1/2 <= X => X - 2*X^2 <= ln(1+X))).
+
+% Source: Ln.thy
+% Author: Jeremy Avigad
+% lemma: abs_ln_one_plus_x_minus_x_bound:
+% |x| <= 1/2 ==> |ln(1+x) - x| <= 2 x^2
+
+% bounds relaxed 2008-01-07
+% Identical to log-lower-3 modulo a change of variable.
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

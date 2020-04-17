@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-7-weak2.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_7,conjecture, ! [X,A] : ((0 < X & X < A & A < pi/2) => X/A <= 0.0005 + sin(X) / sin(A) )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.4.1: If 0 <= a < b <= pi/2, then a/b <= sin a / sin b <= pi/2 a/b
+
+% 2011-11-04: Mathematica now appears to be necessary. Takes 7.7 s
+% Identical to sin-problem-7-weak, except for a variable renaming, which has a huge impact.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/pi.ax').
+

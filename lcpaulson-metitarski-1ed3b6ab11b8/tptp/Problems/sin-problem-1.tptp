@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_1,conjecture, ! [X] : ((abs(X) < pi/2 & X != 0) => 2/pi < sin(X) / X)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.3.79 sin x/x > 2/pi (-pi/2 < x < pi/2)
+
+% Cannot work due to division by zero, so we exclude that point.
+% NOT PROVABLE: pi is not known exactly, and the inequality is sharp away from zero:
+%   sin(X)/X = 2/pi when abs(X) = pi/2.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin.ax').
+include('Axioms/pi.ax').
+

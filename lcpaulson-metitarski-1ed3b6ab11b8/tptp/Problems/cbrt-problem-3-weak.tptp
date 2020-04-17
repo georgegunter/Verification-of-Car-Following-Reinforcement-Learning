@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : cbrt-problem-3-weak.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cube Root Problem (3 variables)
+% 2011-10-13: Extended ranges of variables. Requires Mathematica.
+% SLOW: 240s = 3 (Metis) + 237 (RCF)
+
+fof(cbrt_problem_3,conjecture, ![X,Y,Z] : ((0.05 < X & X < 15 & 0.05 < Y & Y < 15 & 0.05 < Z & Z < 15) => cbrt(X+Y+Z) <= cbrt(X) + cbrt(Y) + cbrt(Z))).
+
+include('Axioms/general.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : two-variable-problem-9.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Two Variable Problem
+
+fof(two_variable_problem_9,conjecture, ! [X,Y] : ((0 < Y & Y < X) => (1/2)*(Y+X) > (X-Y)/ln(X/Y)) ).
+
+% Source: D. S. Mitrinovic, J. E. Pecaric, A. M. Fink, Classical and New Inequalities in Analysis, Kluwer Academic Publishers, 1993. 
+
+% This problem is a variant of two-variable-problem-1.tptp.
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').

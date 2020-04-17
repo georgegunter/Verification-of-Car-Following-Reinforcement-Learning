@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_1,conjecture, ! [X] : ((-1.593 < X & X < 0) => exp(X) < 1 + X/2)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.37 e^(-x) < 1-x/2 (0 < x <= 1.5936)
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-extended.ax').

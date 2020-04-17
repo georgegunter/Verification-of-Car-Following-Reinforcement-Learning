@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-17-nested-fun.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+cnf(sqr,axiom,(sqr(X)=X*X)).
+cnf(inv,axiom,(inv(X)=1/X)).
+cnf(inv_sqr,axiom,(inv_sqr(X)=inv(sqr(X)))).
+
+fof(sin_problem_17,conjecture, ! [X] : ((0 < X & X < pi/2 - 10^-12) => inv_sqr(sin(X)) <= inv_sqr(X) + 1 - 4*inv_sqr(pi))).
+
+% Note that the denominator goes to 0 when X = pi/2.
+% 2011-06-26: now MUCH harder. SUPER SLOW, 229s = 1 + 228 (QEPCAD)
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.45 Prove that if x in (0,pi/2], then 1/sin^2 x <= 1/x^2 + 1 - 4/pi^2
+
+include('Axioms/general.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/pi.ax').
+
+

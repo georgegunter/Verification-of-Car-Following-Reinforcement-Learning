@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-9-div.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_9,conjecture, ! [X] : (-1 < X => exp(X/(1+X)) <= 1+X)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.34  1+x > e^(x/1+x)  (x > -1)
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

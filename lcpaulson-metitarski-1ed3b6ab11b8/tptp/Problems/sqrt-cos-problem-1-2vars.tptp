@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-cos-problem-1-2vars.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+fof(sqrt_cos_problem_1, conjecture, ! [X,S2] : ((0 < X & X < 2.5 & 0 < S2 & S2^2 = 2) => (1/2)*S2/X + (5/24)*S2*X < 1/sqrt(1-cos(X)^4))).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/cos.ax').

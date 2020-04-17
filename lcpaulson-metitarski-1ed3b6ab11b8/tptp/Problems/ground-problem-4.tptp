@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-4.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_4,conjecture, exp(1) < (1+1/2)^3 ).
+
+% Inequalities, P.P.Korovkin
+% Problem 11: (1+1/n)^n<e<(1+1/n)^(n+1)
+% n=2
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

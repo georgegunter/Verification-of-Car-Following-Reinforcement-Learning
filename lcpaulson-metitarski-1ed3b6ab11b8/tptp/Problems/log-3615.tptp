@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : log-3615.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Problem
+
+fof(log_3615,conjecture, ![X,SX] : ((3e-4 < X & X != 1 & X < 3500 & 0 <= SX & SX^2 = X) => ln(X) / (X-1) <= 1/SX)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.6.15, page 272
+% Cannot be proved right down to 0, presumably due to inaccurate ln bounds. (FIXME)
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
