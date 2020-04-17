@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-1-sqrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_1,conjecture, ! [X] : (0 < X => arctan(X) > 8*sqrt(3)*X/(3*sqrt(3) + sqrt(75+80*X^2)) )).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+% (l) If x > 0 then arctan x > 8(3)^1/2x/(3*(3)^1/2+(75+80x^2)^1/2)
+
+% Probably not provable. The square root approximation degrades for large X.
+
+include('Axioms/general.ax').
+include('Axioms/arctan-extended.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+

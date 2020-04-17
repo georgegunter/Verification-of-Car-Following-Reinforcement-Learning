@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : X1b-ln2.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists1,conjecture, ? [X] : ln(X) < -6).
+
+% Apparently very difficult and never proved (10/2010).
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+

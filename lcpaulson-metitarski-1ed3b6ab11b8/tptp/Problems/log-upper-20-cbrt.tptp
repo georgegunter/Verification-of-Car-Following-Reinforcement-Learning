@@ -1,0 +1,28 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-20-cbrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Actually requires both upper AND lower bounds, because X-1 crosses zero.
+
+fof(log_upper_bound_problem_20,conjecture, ! [X] : ((0.02 < X & X != 1 & X < 70) => ln(X)/(X-1) <= 1.005 * (1 + cbrt(X)) / (X + cbrt(X))) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (c) If x > 0, x # 1, log x / (x - 1) <= (1 + x^1/3) / (x + x^1/3)
+
+% Related to log-lower-20
+
+% Checked via gnuplot, 21-12-2007. Graphs show it to be difficult.
+% (x-1)*(1+x^(1/3)) / (x+x^(1/3)) is a very sharp upper bound on ln(x)!
+
+% Version with explicit cube roots
+% Seems impossible to prove for 0 < X & X != 1 and with no upper limit on X.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

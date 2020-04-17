@@ -1,0 +1,33 @@
+--- ./src/FAIL.c.orig	2010-06-14 12:29:48.000000000 -0600
++++ ./src/FAIL.c	2013-08-27 11:00:00.000000000 -0600
+@@ -15,6 +15,7 @@ Side effects
+ #include "saclib.h"
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <string.h>
+ 
+ #ifdef __STDC__
+ void FAIL(const char *algName, const char *msg,...)
+@@ -25,7 +26,6 @@ void FAIL(algName,msg)
+ #endif
+ {
+        va_list argPtr;
+-       extern int strcmp();
+ 
+ Step1: /* Basic message. */
+        SWRITE("\n\n");
+--- ./src/GCAFREE.c.orig	2010-06-14 12:29:56.000000000 -0600
++++ ./src/GCAFREE.c	2013-08-27 11:00:00.000000000 -0600
+@@ -10,11 +10,11 @@ Side effects
+   The array represented by A is deallocated, the cell is linked to GCAAVAIL.
+ ======================================================================*/
+ #include "saclib.h"
++#include <stdlib.h>
+ 
+ void GCAFREE(A)
+        Word A;
+ {
+-       extern void free();
+        /* hide algorithm */
+ 
+ Step1: /* Test for illegal GCA handle. */

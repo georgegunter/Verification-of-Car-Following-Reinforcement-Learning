@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-346-b-sqrt.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_346b,conjecture, ![X] : ((0 < X & X < pi/2 - 10^-7) => cos(X/sqrt(3)) >= cbrt(cos(X)) )).
+
+% 2011-06-26: slightly harder, and with pi/2
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.6), page 236 
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/cbrt-upper.ax').

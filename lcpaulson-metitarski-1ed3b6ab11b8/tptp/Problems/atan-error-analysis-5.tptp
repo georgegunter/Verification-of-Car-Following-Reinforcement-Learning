@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : atan-error-analysis-5.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arctan Error Analysis
+
+fof(atan_error_analysis_5,conjecture, ! [X] : ((abs(X) <= 1/30) => abs (arctan(X) - (X - 11184811/33554432 * X^3 - 13421773/67108864 * X^5)) <= (1/2)^8) ).
+
+% Source: M. Daumas, D. Lester, and C. Munoz, Verified Real Number Calculations: A Library for Interval Arithmetic.
+% Section V. Verified Real Number Calculations in PVS
+% B. A Simple Case Study, Page 9.
+% r(x) = x-11184811/33554432*x^3-13421773/67108864*x^5
+% x in [-1/30,1/30] |- arctan(x) - r(x) in [-2^-i,2^-i] for different values of i.
+
+include('Axioms/abs.ax').
+include('Axioms/general.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/arctan-lower.ax').
+

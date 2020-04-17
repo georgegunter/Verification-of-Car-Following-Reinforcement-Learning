@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-5.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_5,conjecture, ! [X,Y] : ((Y <= X & 0 <= Y & Y^2 = 3) => (X+1) * cos(pi/(X+1)) - X * cos(pi/X) > 1) ).
+
+% Source 2: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+% (c) If x >= (3)^(1/2), then (x+1) cos pi/(x+1) - x cos pi/x > 1
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+
+

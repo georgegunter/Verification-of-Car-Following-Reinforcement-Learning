@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-8.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_8,conjecture, ! [X] : ((-1 < X & X <= 0) => ln(1+X) <= -(3/2)*X) ).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.1.35 |ln (1-x)| <= 3 x / 2  (0 < x <= 0.5828)
+
+% bounds relaxed 2008-01-04
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').

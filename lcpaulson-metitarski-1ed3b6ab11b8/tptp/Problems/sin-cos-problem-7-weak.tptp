@@ -1,0 +1,35 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-7-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+% Outcomes for various lower bounds for X:
+% 0.875: Processor time: 426.605 = 381.170 (Metis) + 45.435 (QEPCAD)
+% 0.15: Processor time: 1962.935 = 1827.994 (Metis) + 134.941 (QEPCAD)
+% 0.1: Assertion failed: (n != 0), function ScanObjectAddress, file gc.cpp, line 448.
+fof(sin_cos_problem_7,conjecture, ![X] : ((0.15 < X & X < 1.57) => -ln(cos(X)) <= 0.55*sin(X)^2 / cos(X))).
+
+% Stricter problem formulation, outcomes for various lower bounds for X:
+% with 0.5, didn't terminate.
+% with 0.75, "assertion failed"
+% with 1.0, Processor time: 2191.399 = 2084.958 (Metis) + 106.441 (QEPCAD)
+% with 1.5, Processor time: 244.248 = 232.268 (Metis) + 11.980 (QEPCAD)
+%fof(sin_cos_problem_7,conjecture, ![X] : ((0.875 < X & X < 1.57) => -ln(cos(X)) < 0.5001*sin(X)^2 / cos(X))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities. [Corrected, with the help of Maple!]
+% (g) if |x| < pi/2 and x != 0 then ln sec x < (1/2) sin x tan x
+
+% Can't use pi/2 because, with our inexact bounds, cos(X) will pass through zero
+
+% 2012-02-29: SLOW, 139 = 76 (Metis) + 63 (RCF)
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/log.ax').

@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : log-problem-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Problem
+
+fof(log_problem_2,conjecture, ! [X] : (1 < X => ln(X) >= 0.61 + 2*ln(ln(X))) ).
+
+% Actually, ln(x)-2*ln(ln(x)) > 0.6137, reaching this minimum at x = 7.389
+% 2011-05-30: made more difficult. SLOW. Processor time: 46s = 8 (Metis) + 38 (QEPCAD)
+
+% Source: LCP.
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+
+

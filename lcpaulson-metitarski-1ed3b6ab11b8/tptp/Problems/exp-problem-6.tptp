@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-6.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_6,conjecture, ! [X] : (0 <= X => exp(X) - (1+X+X^2/2+X^3/3) <= exp(X) * X / 3)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.3-(2) Let S_n(x) = 1+x+x^2/2!+...+x^n/n!. If n is a natural number and x>=0, then e^x - S_n(x) <= e^x x/n
+% n = 3
+% See also exp-upper-19
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').

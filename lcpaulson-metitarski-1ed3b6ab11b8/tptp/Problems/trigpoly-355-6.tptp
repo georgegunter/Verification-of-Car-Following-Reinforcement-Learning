@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-355-6.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : Analytic Inequalities, D.S.Mitrinovic, 3.5.5, page 248. (n=6)
+% Comments : abs (\sum_{k=1}^n sin(kx) / k) < \int_0^\pi sin(x) / x dx = 1.8519...
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_355,conjecture, ![X] : ((abs(X) < 4) => abs(sin(X) + sin(2*X)/2 + sin(3*X)/3 + sin(4*X)/4 + sin(5*X)/5 + sin(6*X)/6) <= 1.852)).
+
+% Naturally, we can only prove it for X confined to a small interval.
+
+% SLOW e.g. 255 seconds including 115 seconds for Z3 or QEPCAD
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin-extended2.ax').
+include('Axioms/sin-constant.ax').

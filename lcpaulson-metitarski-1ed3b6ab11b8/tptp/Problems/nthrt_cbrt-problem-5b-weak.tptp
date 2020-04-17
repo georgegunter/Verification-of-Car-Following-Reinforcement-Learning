@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : nthrt_cbrt-problem-5b-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cube Root Problem
+
+fof(cbrt_problem_5,conjecture, ![X] : ((0.075 < X & X < 1) => 0.3*ln(X) >= ln(nthrt(3,X))) ).
+
+% Source: LCP. 2011-10-13: Extended the variable range, increasing the difficulty.
+
+include('Axioms/general.ax').
+include('Axioms/nthrt-lower.ax').
+include('Axioms/nthrt-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').

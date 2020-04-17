@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : polypaver-bench-sqrt-3d.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Jan Duracz and Michal Konecny
+
+fof(benchsqrt3d2, conjecture, 
+    ! [X,Y,Z] : 
+    (
+            (1 <= X & X <= 2 & 
+             1 <= Y & Y <= 2 &
+             1 <= Z & Z <= 2)
+            =>
+            (sqrt(X * Y * Z) <= (sqrt(X) * sqrt(Y) * sqrt(Z))+(2^(-2)))
+    )).
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-extended.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

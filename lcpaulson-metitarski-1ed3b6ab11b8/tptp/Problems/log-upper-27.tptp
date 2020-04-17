@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-27.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Problem (needs upper & lower bounds)
+
+fof(log_upper_bound_problem_27,conjecture, ! [X,Y] : ((0 < X & Y^2 = 1 + X^2 & 0 < Y) => ln(1+Y) <= 1/X + ln(X)) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.17 (c) ln(1+sqrt(1+x^2)) < 1/x + ln x , x > 0
+% NOT PROVABLE: gets increasingly tight as X goes to infinity, where our bounds lose accuracy.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-extended.ax').

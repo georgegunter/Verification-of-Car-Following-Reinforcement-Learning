@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : ellipse-check-3-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : W. Denman, M. H. Zaki, S. Tahar and L. Rodrigues.
+% Comments : Rudder input and response: Lower right bound of the elliptical exclusion region
+%--------------------------------------------------------------------------
+% W. Denman, M. H. Zaki, S. Tahar and L. Rodrigues.
+% Towards Flight Control Verification using Automated Theorem Proving.
+% In M. Bobaruet al., editors, Nasa Formal Methods, Springer LNCS 6617 (2011), pages 89-100.
+
+% This weaker version of the problem simplifies the arguments of both functions.
+
+fof(aeronautical,conjecture, ![X] : ((0 < X & X < 0.16) => ((10*log(.96/X^2))^2)/36 + (3.14 + arctan(2.65*X*(X^2-2.34*X+1.87)/((X+.1669)*(X-.1669)*(X-.75058)*(X-1.08896))))^2/(3.14*0.205)^2 >= 1)).
+
+% SLOW (86.7 seconds); much faster if log(X) is replaced by ln(X)/2.30
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/log.ax').

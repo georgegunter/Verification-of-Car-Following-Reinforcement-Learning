@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : HEATING.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(HEATING, conjecture, ! [X] : (0 <= X => 14 < 18.4 - 3.33*exp(-0.9*X) + 2.48*exp(-0.365*X) + 2.48*exp(-1.83*X) + 280*exp(0.735*X) - 280*exp(-0.735*X))).
+
+% Source: 
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').

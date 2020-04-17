@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : polypaver-bench-exp-3d.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Jan Duracz and Michal Konecny
+
+fof(benchexp3d3, conjecture, 
+    ! [X,Y,Z] : 
+    (
+            (0 <= X & X <= 1 & 
+             0 <= Y & Y <= 1 &
+             0 <= Z & Z <= 1)
+            =>
+            (exp(X + Y + Z) <= (exp(X) * exp(Y) * exp(Z))+(2^(-3)))
+    )).
+
+include('Axioms/general.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/exp-general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').

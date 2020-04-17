@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : log-error-analysis-2-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Error Analysis
+
+fof(log_error_analysis_2,conjecture, ! [X] : ((0 <= X & X <= 1) => abs(ln (1+X) - (0.00341764385 + X*(0.9253420772 - X*0.2390301844))) <= 0.0041)).
+
+% Source: Elementary Functions, Algorithms and Implementation, J-M. Muller, 1997.
+% Section 3.3 page 57, Table 3.3.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/abs.ax').

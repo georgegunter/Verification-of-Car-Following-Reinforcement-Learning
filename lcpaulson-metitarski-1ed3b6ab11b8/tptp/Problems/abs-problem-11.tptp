@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : abs-problem-11.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : Abramowitz & Stegun 4.2.39  |e^z-1| <= e^|z|-1 <= |z|e^|z|
+% Comments : At first sight impossible for MetiTarski, needing an upper bound for exp(X).
+%            However, if X>=0 then it collapses to exp(X)-1 <= exp(X)-1, which is trivial.
+%            Here MetiTarski can prove exp(X)-1>=0 because 1+X <= exp(X): exp_lower_taylor_1
+%            Otherwise X<0, when finding an upper bound for exp(X) isn't difficult.
+%--------------------------------------------------------------------------
+fof(abs_problem_11,conjecture, ! [X] : abs(exp(X)-1) <= exp(abs(X)) - 1 ).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/abs.ax').

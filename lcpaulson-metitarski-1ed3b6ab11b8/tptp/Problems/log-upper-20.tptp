@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-20.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Actually requires both upper AND lower bounds, because X-1 crosses zero.
+
+fof(log_upper_bound_problem_20,conjecture, ! [X,Y] : ((0.0057 < X & X != 1 & X < 176.74 & Y^3 = X) => ln(X)/(X-1) <= (1+Y) / (X+Y)) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (c) If x > 0, x # 1, log x / (x - 1) <= (1 + x^1/3) / (x + x^1/3)
+
+% The full version of log-lower-20
+
+% (x-1)*(1+x^(1/3)) / (x+x^(1/3)) is a very sharp upper bound on ln(x)!
+% 2011-05-31: rewritten for better conformity to the original problem.
+% NOT PROVABLE with current ln bounds as X. Lines cross around X = 0.0057 and X = 176.74
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').

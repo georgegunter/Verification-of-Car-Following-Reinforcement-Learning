@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-cos-problem-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+% This formulation cannot be proved beyond pi/2 for some unknown reason.
+% 645-step proof, 20s (14s in QEPCAD). 2011-06-28: slightly harder, now with pi explicit
+% SUPER SLOW (> 400s) with backtracking on.
+
+fof(sqrt_cos_problem_1, conjecture, ! [X] : ((0 < X & X < pi/2 - 10^-6) => (1/2)*sqrt(2)/X + (5/24)*sqrt(2)*X < 1.00001/sqrt(1-cos(X)^4))).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').

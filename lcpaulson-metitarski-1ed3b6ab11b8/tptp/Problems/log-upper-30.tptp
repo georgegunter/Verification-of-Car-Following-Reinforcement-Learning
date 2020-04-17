@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-30.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Problem (needs upper & lower bounds)
+
+fof(log_upper_bound_problem_30,conjecture, ! [X] : ((0 < X & X < pi) => ln (1+cos(X)) < ln(2) - X^2/4) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.19 (b) ln (1+cos x) < ln 2 - x^2/4 for x in (0,pi)
+% Impossible with our methods, e.g. since ln (1+cos(pi)) is undefined.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/pi.ax').

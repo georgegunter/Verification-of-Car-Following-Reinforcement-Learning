@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : log-fun-ineq-g.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% formerly two-variable-problem-8.tptp, but it involves three variables!
+
+fof(lfi_g,conjecture, ! [X,A,B] : ((0 < X & 0 < A & 0 < B) => ln(1+X/A) * ln(1+B/X) < B/A)).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (g) If a,b,x >= 0 then ln (1+x/a) ln (1+b/x) < b/a  [not a/b as the text says]
+% Bullen, 16 September 2010:
+% "Yes the right-hand side in (g)  should be b/a.
+%  A proof is in American Mathematical Monthly 45(1938) pp.657-664."
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').

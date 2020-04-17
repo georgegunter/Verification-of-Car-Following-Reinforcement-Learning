@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-2var7.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_2var7,conjecture, ! [X,Y] : ((-1 < X & -1 < Y & X+Y < 2) => 2*sin(X)*cos(Y) <= sin(X-Y) + sin(X+Y) + 0.01) ).
+
+%Should hold for all X and Y ...
+%ULTRA SLOW, Processor time: 638 = 8 (Metis) + 630 (Mathematica)
+
+include('Axioms/general.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/cos.ax').
+
+

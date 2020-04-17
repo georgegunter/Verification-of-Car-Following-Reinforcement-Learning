@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-351-3b.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_351,conjecture, ![X] : ((0 < X & X < 6) => 10^-2 + 1 /(2 * tan(X/4)) >= sin(X) + sin(2*X) + sin(3*X))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.1, page 247. (n=2)
+% -(1/2)tan(x/4) <= \sum_{k=1}^n sin(k*x) <= (1/2)cot(x/4), for 0 < x < 2*pi
+
+% Cannot be proved exactly: the inequality is sharp away from zero, e.g. at X = 4.488
+% sin(3*X) reaches a maximum near X = 4.71, when 3*X is about 14.1.
+% NOT PROVABLE: Our existing bounds for sin(x) are only accurate when -12 < x < 12.
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/sin-extended2.ax').

@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_1,conjecture, ! [X] : ((0 < X & X <= pi) => cos (X) <= sin (X) / X)).
+
+% Source 1: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.3.81 cos x <= sin x / x <= 1 (0 <= x <= pi)
+
+% Source 2: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+% (a) If 0 < |x| <= pi/2, then cos x < sin x / x < 1
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+
+

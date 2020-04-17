@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-10-3-weak.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_10_3,conjecture, ! [X,CM1,C] : ((1 < X & 0 < CM1 & CM1^3 = X-1 & 0 < C & C^3 = X ) => exp (1/CM1) - 2 * exp (1/C) + exp (1/CM1) >= 0)).
+
+% Source: LCP. Related to exp_problem_10. Similarly holds by Jensen's inequality.
+% The function exp(1/cbrt(x)) is convex for x>=1.
+
+% Weaker version with three variables. Needs Mathematica!!
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').

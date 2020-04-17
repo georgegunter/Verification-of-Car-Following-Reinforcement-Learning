@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : cos-power-1-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: LCP
+
+% Should be provable from 0 to pi, but we hit a brick wall around pi/2 (1.5707)
+% [possibly because cos(X) changes sign there].
+
+% SLOW: 58s, 48s (QEPCAD)
+fof(cos_power_1, conjecture, ! [X] : ((pi/2 + 10^-7 < X & X < pi - 10^-5) => ((1/2)*1.414/X+(5/24)*1.414*X)^2 <= 1/(1-cos(X)^4))).
+
+%ALSO PROVABLE:
+%fof(cos_power_1, conjecture, ! [X] : ((0 < X & X < pi/2 - 10^-6)  => ((1/2)*1.414/X+(5/24)*1.414*X)^2 < 1/(1-cos(X)^4))).
+
+include('Axioms/general.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/pi.ax').

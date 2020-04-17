@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : X1-tan.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+% The maximum numerical value of the tangent lower bound is 6.518249e5
+% from tan_lower_bound_pos2 (when X = 1.570795)
+
+fof(exists1_tan,conjecture, ? [X] : tan(X) > 6.518e5).
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+

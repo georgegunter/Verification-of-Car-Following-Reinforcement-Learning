@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : X2-exp6.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem (related to X2-exp5)
+
+fof(exists1,conjecture, ! [Y] : ? [X] : exp(X)*Y > exp(X*Y)).
+
+% Apparently very difficult and never proved (10/2010).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+

@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : asin-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arcsin Problem
+
+fof(asin_1,conjecture, ! [X,Y] : ((0 < X & X < 0.95 & 0 < Y & Y < 0.95) => arcsin(X)*arcsin(Y) >= arcsin(X*Y)/2) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities, page 251, (k)
+
+% SLOW, Processor time: 227s = 1 (Metis) + 226 (QEPCAD)
+% Much faster (one second) for X,Y < 0.93
+
+include('Axioms/general.ax').
+include('Axioms/arcsin-lower.ax').
+include('Axioms/arcsin-upper.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').
+

@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-21.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_21,conjecture, pow(2, sqrt(2)) < exp(1) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.16 (b) 2^sqrt(2) < e
+
+% The lhs is 2.665144143, the rhs is 2.718281828, the difference is only 0.05313768546.
+% Our proof is by the monotonicity of the exponential function
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/exp-general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/pow.ax').

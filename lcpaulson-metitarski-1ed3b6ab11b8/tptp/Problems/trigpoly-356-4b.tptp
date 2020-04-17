@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-356-4b.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_356,conjecture, ![X] : ((0 < X & X < pi) => sin(X) + sin(2*X)/2 + sin(3*X)/3 + sin(4*X - 6.283185)/4 < 0.0001 + pi - X)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.6, page 249. (n=4)
+% 0 < sum_{k=1}^n sin(kx) / k < pi - x     (for 0 < x < pi)
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin-extended2.ax').

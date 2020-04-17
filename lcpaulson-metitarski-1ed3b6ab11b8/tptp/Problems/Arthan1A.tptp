@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : Arthan1A.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Email Exchange, Rob Arthan <rda@lemma-one.com>
+% http://www.lemma-one.com/papers/75s.pdf
+% K = M = 1
+% Proof for all 0 <= S < pi/2 (replacing the sine and cosine functions by variables)
+
+fof(Rob_Arthan_problem_1, conjecture, ! [S,COSS,SINS] : ((0 <= S & S < pi/2 & SINS^2 + COSS^2 = 1 & SINS <= S & COSS >= 0) => (1 + S + S^2 + SINS)*((1 + S)*(2 - SINS) + 2 + 4*S + 2*COSS) - (2*(1 + S))*(1 + 2*S + COSS)^2 < 0)).
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').

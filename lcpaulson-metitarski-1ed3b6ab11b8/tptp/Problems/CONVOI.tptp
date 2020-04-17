@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : CONVOI.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% A linear collision avoidance example
+% 2011-04-14: the upper bound on X was unnecessary!
+
+fof(CONVOI, conjecture, ! [X] : (0 <= X => 0 < 12 - 14.2*exp(-0.318*X) + (3.25*cos(1.16*X) - 0.155*sin(1.16*X))*exp(-1.34*X))).
+
+% Source:
+%   Benchmarks for Safety Verification of Hybrid Systems
+%   Stefan Ratschan and Zhikun She, http://hsolver.sourceforge.net/benchmarks/
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

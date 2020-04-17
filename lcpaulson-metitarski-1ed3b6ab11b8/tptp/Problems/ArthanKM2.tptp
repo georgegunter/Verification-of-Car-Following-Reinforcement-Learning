@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : ArthanKM2.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Email Exchange, Rob Arthan <rda@lemma-one.com>
+% http://www.lemma-one.com/papers/75s.pdf
+% K = M = 2
+ 
+% Proof for all S >= 0.45 (replacing the sine and cosine functions by variables)
+
+fof(Rob_Arthan_problem_2M, conjecture, ! [S,COSS,SINS] : ((0.45 <= S & SINS^2 + COSS^2 = 1) => (1+2*S+S^2+SINS/2) * ((1+S)*(2-SINS/2)+4+4*S+2*COSS/2) - (2*(1+S))*(2+2*S+COSS/2)^2 < 0)).
+
+include('Axioms/general.ax').

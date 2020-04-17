@@ -1,0 +1,40 @@
+%--------------------------------------------------------------------------
+% File     : FlightAvoidance9VARS-2.tptp
+% Syntax   : Dimension                 	:    9
+% Syntax   : Number of Skolem constants	:    9
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+
+%WA=0.01 and WB=-0.01
+%X-Axis = 1, Y-Axis = 2
+%X10,X20,Y10,Y20 initial locations of airplanes X and Y
+%D10,D20,E10,E20 initial linear velocities
+
+%Fixed by adding Y10, now 9 vars, adjust Y20 > 1 to Y20 > 10
+
+%This was included in the ITP invited paper
+
+fof(airplane_easy,conjecture,
+  (! [T,X10,X20,Y10,Y20,D10,D20,E10,E20] :
+    (
+      (
+        T > 0 & T < 10 & X10 < -9 & X20 < -1 & Y10 > 10 & Y20 > 10 &
+        D10 > 0.1 & D10 < 0.15 & D20 > 0.1 & D20 < 0.15 &
+        E10 > 0.1 & E10 < 0.15 & E20 > 0.1 & E20 < 0.15
+      )
+      =>
+      (
+        (X10 - Y10 - 100*D20 - 100*E20 + (100*D20 + 100*E20)*cos(0.01*T)
+        + (100*D10 - 100*E10)*sin(0.01*T))^2 +
+        (X20 - Y20 + 100*D10 + 100*E10 + (-100*D10 - 100*E10)*cos(0.01*T)
+        + (100*D20 - 100*E20)*sin(0.01*T))^2
+      )
+      > 2
+    )
+  )
+).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

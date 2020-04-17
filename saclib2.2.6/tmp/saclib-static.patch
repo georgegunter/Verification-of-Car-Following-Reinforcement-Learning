@@ -1,0 +1,22 @@
+--- ./include/hfloats.h.orig	2010-06-14 12:30:52.000000000 -0600
++++ ./include/hfloats.h	2013-08-27 11:00:00.000000000 -0600
+@@ -92,6 +92,7 @@ typedef struct {
+   double left, right;
+ } interval;
+ 
++/*
+ static interval izero = { 0.0, 0.0 };
+ static interval ione  = { 1.0, 1.0 };
+-
++*/
+--- ./src/IUPHIP.c.orig	2010-06-14 12:30:00.000000000 -0600
++++ ./src/IUPHIP.c	2013-08-27 11:00:00.000000000 -0600
+@@ -32,7 +32,7 @@ Step2: /* /* Convert coefficients. */
+         Ap = A;
+         for (i = n; i >= 0; i--) {
+            if (Ap == NIL || FIRST(Ap) < i)
+-              B[i] = izero;
++              B[i].left = B[i].right = 0.0;
+            else {
+               Ap = RED(Ap);
+               ADV(Ap,&a,&Ap);

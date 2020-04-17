@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-10-2-sqrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_10_2,conjecture, ! [X] : (2 <= X => exp (1/sqrt(X-1)) - 2 * exp (1/sqrt(X)) + exp (1/sqrt(X+1)) > 0)).
+
+% Source: LCP. Related to exp_problem_10. Similarly holds by Jensen's inequality.
+% The function exp(1/sqrt(x)) is convex for x>=1.
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-extended.ax').

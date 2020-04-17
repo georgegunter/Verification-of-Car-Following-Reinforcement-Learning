@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-8.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_8,conjecture, ! [X,Y] : ((0 < X & X < Y & Y < pi/2) => sin(X) / sin(Y) <= pi/2 * X/Y)).
+
+% Not provable because pi is not known exactly.
+% Has three variables (X, Y, pi)
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.4.1: If 0 <= a < b <= pi/2, then a/b <= sin a / sin b <= pi/2 a/b
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/pi.ax').
+

@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : X3-exp2.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists3,conjecture, ? [Y] : ! [X] : (X <= 1 => X < exp(Y)) ).
+
+% Apparently very difficult and never proved (10/2010).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+

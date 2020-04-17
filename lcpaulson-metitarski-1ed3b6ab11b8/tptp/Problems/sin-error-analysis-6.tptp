@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-error-analysis-6.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Error Analysis
+
+fof(sin_error_analysis_6,conjecture, ! [X] : ((0 < X & X <= pi/2) => abs(sin(X)/X - (1 - 0.16605 * X^2 + 0.00761 * X^4)) <= 2e-4)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.3.96 0 <= x <= pi/2 sin(x)/x = 1 + a2 x^2 + a4 x^4 + epsilon (x)
+% |epsilon(x)| <= 2e-4
+% a2 = - 0.16605 a4 = 0.00761
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/pi.ax').
+include('Axioms/abs.ax').
+

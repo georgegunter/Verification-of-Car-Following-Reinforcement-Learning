@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-12.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_12,conjecture, ! [X] : ((0 <= X & X <= 0.582811643) => -3*X/2 <= ln(1-X))).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.1.35 |ln (1-x)| <= 3 x / 2 (0 < x <= 0.5828116439)
+
+% Identical to log-lower-4 modulo a change of variable.
+% 2011-05-29: increased the upper bound of X, making the problem slightly harder
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-extended.ax').

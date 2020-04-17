@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-14.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_14,conjecture, ! [X] : (X < 1 => exp(X) <= 1/(1-X))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.3-(3) 0 <= e^x - (1+x/n)^n <= e^x x^2/n, n>=1, 0<=x<=n
+% We simplify the right-hand inequality, obtaining e^x <= (1+x/n)^n / (1 - x^2/n)
+% n = 1 ==> 0 <= x <= 1 ==> e^x <= 1/(1-x)
+% See also exp-problem-1
+
+% Limits relaxed 2008-08-13
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+

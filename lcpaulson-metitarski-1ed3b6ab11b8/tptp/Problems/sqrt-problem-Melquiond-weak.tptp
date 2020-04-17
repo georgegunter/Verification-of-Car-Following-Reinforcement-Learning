@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-Melquiond-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+% Guillaume Melquiond, Proving Bounds on Real-Valued Functions with Computations, IJCAR 2008, 2-17.
+
+fof(sqrt_problem_Melquiond, conjecture, ! [X,Y] : ((3/2 < X & X < 2 & 1 < Y & Y < 33/32) => abs(sqrt(1 + X/sqrt(X+Y)) - 0.144*X - 1.18) <= 2.8*71/32768)).
+
+%2011-11-07: Now much harder. Nearly 30 seconds with QEPCAD, 16 with ICP.
+
+include('Axioms/abs.ax').
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-extended.ax').

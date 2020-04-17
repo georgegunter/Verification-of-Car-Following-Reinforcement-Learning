@@ -1,0 +1,12 @@
+%--------------------------------------------------------------------------
+% File     : Chua-2-VC1-U.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(Chua, conjecture, ! [X,S,C] : ((0 <= X & X <= 75 & S^2 + C^2 = 1) => 0.198*exp(0.028*X) + 0.8*exp(-0.0058*X)*C - 0.882*exp(-0.0058*X)*S < 5)).
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').

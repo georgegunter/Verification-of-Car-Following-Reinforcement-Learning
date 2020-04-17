@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-1-weak.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_1,conjecture, ! [X,Y,Z] : ((0 < X & X <= 1 & 0 <= Y & Y^2 = 3 & 0 <= Z & Z^2 = 75 + 80 * X^2) => arctan(X) > 8*X*Y/(3*Y + Z)) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+

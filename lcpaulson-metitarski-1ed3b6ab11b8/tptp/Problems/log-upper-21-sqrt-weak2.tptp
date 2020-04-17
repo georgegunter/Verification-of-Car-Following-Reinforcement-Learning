@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-21-sqrt-weak2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_21,conjecture, ! [X] : ((0.001 < X & X < 8) => ln(1 + 1/X) < 1/sqrt(X^2+X)) ).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.18: For x > 0, 2/(2x+1) < ln(1+1/x) < 1 / sqrt(x^2+x)
+
+% Via a change of variables, it gives an upper bound on y, where y = (1+X)/X.
+% [And thus X = 1/(y-1).]
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/sqrt-upper.ax').

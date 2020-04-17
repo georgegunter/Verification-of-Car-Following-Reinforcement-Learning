@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-1-sqrt-max.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_1,conjecture, ! [X] : (0 < X => 0.203 + arctan(X) > 8*sqrt(3)*X/(3*sqrt(3) + max(8.6, 8.9*X)) )).
+
+% We simplify the problem using the function max, since sqrt(75+80*X^2) > max(8.6, 8.9*X)
+
+include('Axioms/general.ax').
+include('Axioms/arctan-extended.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/minmax.ax').

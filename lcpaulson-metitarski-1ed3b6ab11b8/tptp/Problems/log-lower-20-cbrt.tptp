@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-20-cbrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_20,conjecture, ! [X] : ((0.015 < X & X <= 1) => (X*cbrt(X) + X - cbrt(X) - 1) / (X+cbrt(X)) <= ln(X))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (c) If x > 0, x # 1, log x / (x - 1) <= (1 + x^1/3) / (x + x^1/3)
+% Related to log-upper-20, which is the full version of the inequality above.
+
+% Version with explicit cube roots
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

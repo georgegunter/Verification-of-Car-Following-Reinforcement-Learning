@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : cos-error-analysis-6.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cos Error Analysis
+
+fof(cos_error_analysis_6,conjecture, ! [X] : ((0 <= X & X <= pi/2) => abs(cos(X) - (1 - 0.49670 * X^2 + 0.03705 * X^4)) <= 1.2e-3) ).
+
+% Upper bound corrected, 27-06-2008
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.3.98 0 <= x <= pi/2 cos (x) = 1 + a2 x^2 + a4 x^4 + epsilon (x)
+% |epsilon(x)| <= 9e-4
+% a2 = - 0.49670 a4 = 0.03705
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+include('Axioms/abs.ax').
+

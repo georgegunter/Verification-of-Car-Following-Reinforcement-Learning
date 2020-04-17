@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : keymaera-frocos-damped-pendulum.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   : Andrew Sogokon
+%            one of a series of problems automatically generated from damped pendulum problem
+% Comments : solved rapidly in about 0.2 seconds
+%   
+%--------------------------------------------------------------------------
+
+% Auto-generated MetiTarski problem.
+% Number of variables: 3
+fof(KeYmaera,conjecture, ![X2,X1] : ((((X2<=1) & (X2>=0)) & (X1=0)) => ![T] : ((T>=0) => ((((1/8)*exp(((-6/5)*T)))*((((8*X2)*cos(((8/5)*T)))+((5*X1)*sin(((8/5)*T))))+((6*X2)*sin(((8/5)*T)))))<=1)))).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/exp-upper.ax').

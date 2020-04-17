@@ -1,0 +1,83 @@
+#############################################################################
+#   METITARSKI MAKEFILE  Copyright (c) 2001-2004  University of Cambridge
+#   Distributed under the MIT license
+#############################################################################
+
+.PHONY: all build test clean
+
+all: build install test
+
+
+# Destination directory for binaries. Defaults to user's home directory.
+DESTBIN ?= $(HOME)/bin
+
+# Compiling ML programs: source files
+
+#The MetiTarski files
+MSRC = src/Portable.sig  src/PortablePolyml.sml  src/PortableSmlNJ.sml	\
+       src/Useful.sig src/Useful.sml	\
+       src/Polyhash.sig src/Polyhash.sml	\
+       src/Lazy.sig src/Lazy.sml	\
+       src/Set.sig src/Set.sml	\
+       src/Ordered.sig src/Ordered.sml	\
+       src/ElementSet.sig src/ElementSet.sml	\
+       src/Map.sig src/Map.sml	\
+       src/KeyMap.sig src/KeyMap.sml	\
+       src/Sharing.sig src/Sharing.sml	\
+       src/Stream.sig src/Stream.sml	\
+       src/Heap.sig src/Heap.sml	\
+       src/Print.sig src/Print.sml \
+       src/Parse.sig src/Parse.sml \
+       src/Options.sig src/Options.sml	\
+       src/Name.sig src/Name.sml	\
+       src/Term.sig src/Term.sml	\
+       src/Subst.sig src/Subst.sml	\
+       src/Atom.sig src/Atom.sml	\
+       src/Formula.sig src/Formula.sml	\
+       src/Literal.sig src/Literal.sml	\
+       src/Thm.sig src/Thm.sml	\
+       src/Proof.sig src/Proof.sml	\
+       src/Rule.sig src/Rule.sml	\
+       src/Normalize.sig src/Normalize.sml	\
+       src/Model.sig src/Model.sml	\
+       src/Problem.sig src/Problem.sml	\
+       src/Poly.sig  src/Poly.sml	\
+       src/TermNet.sig src/TermNet.sml	\
+       src/AtomNet.sig src/AtomNet.sml	\
+       src/LiteralNet.sig src/LiteralNet.sml	\
+       src/Subsume.sig src/Subsume.sml	\
+       src/KnuthBendixOrder.sig src/KnuthBendixOrder.sml	\
+       src/Rewrite.sig src/Rewrite.sml	\
+       src/Units.sig src/Units.sml	\
+       src/Clause.sig src/Clause.sml	\
+       src/Active.sig src/Active.sml	\
+       src/Waiting.sig src/Waiting.sml	\
+       src/SplitStack.sig src/SplitStack.sml \
+       src/Resolution.sig src/Resolution.sml	\
+       src/Tptp.sig src/Tptp.sml	\
+       src/metis.sml src/+ld.sml
+
+
+#This is correct if Poly/ML is installed centrally, with its libraries in /usr/local/lib
+POLYDIR=
+#Otherwise, you need a line such as the following, to locate those libraries:
+#POLYDIR=-L/usr/groups/theory/isabelle/polyml/x86-linux
+
+
+CD = OS.FileSys.chDir
+
+#Note that "poly" must be on the search path!!
+#Executables are stored in $(DESTBIN)/
+build: $(MSRC)
+	echo '$(CD)"src"; use"+ld.sml"; $(CD)".."; PolyML.export("metit",metis);' | poly
+	cc -o metit metit.o $(POLYDIR) -lpolymain -lpolyml
+
+install: $(DESTBIN)
+	mkdir -p $(DESTBIN)
+	mv metit $(DESTBIN)/metit; date
+
+clean:
+	rm *.o
+
+test:
+

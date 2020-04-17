@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : ArthanM2-sincos.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Email Exchange, Rob Arthan <rda@lemma-one.com>
+% http://www.lemma-one.com/papers/75s.pdf
+% K = 2, M >= 2
+
+% Proof for all 0 <= S <= 1.25
+
+fof(Rob_Arthan_problem_2, conjecture, ! [S,M] : ((0 <= S & S <= 1.25 & M >= 2) => (1+2*S+S^2+sin(S)/M) * ((1+S)*(2-sin(S)/M)+4+4*S+2*cos(S)/M) - (2*(1+S))*(2+2*S+cos(S)/M)^2 < 0)).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

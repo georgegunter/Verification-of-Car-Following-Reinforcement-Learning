@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : tanh-3611.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tanh problem
+
+fof(tanh_3611,conjecture, ![X] : ((0 < X & X < 6) => sin(X)*cos(X) < tanh(X))).
+
+% Analytic Inequalities, D.S.Mitrinovic, 3.6.101 page 270.
+% Valid for all positive X; clearly not provable for unbounded X
+
+
+include('Axioms/general.ax').
+include('Axioms/tanh-lower.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/cos-extended.ax').

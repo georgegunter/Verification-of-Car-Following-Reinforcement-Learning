@@ -1,0 +1,52 @@
+%--------------------------------------------------------------------------
+% File     : Nichols-Plot-Inverted-Pendulum-Fails-2-5.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Analysis of an Inverted Pendulum that Meets its Requirements
+
+fof(Nichols_Plot_Inverted_Pendulum_Fails_2_5, conjecture,
+  ! [X] : (X = 57/128 =>
+           20/ln(10) * ln(4250*sqrt(15132100*X^10 + 1024027285*X^8 + 21404723599*X^6 + 129098541721*X^4 + 15328072984*X^2 + 277555600) / (3783025*X^6 + 217230815*X^4 + 3120782021*X^2 + 69388900))
+           : (= (-12/pi)*(-pi - arctan((105247*X^3+3890*X^5-169932*X)/(14325*X^4+406627*X^2-16660))) - 18,
+                (12/pi)*(-pi - arctan((105247*X^3+3890*X^5-169932*X)/(14325*X^4+406627*X^2-16660))) + 18 =) )).
+
+% This problem formulation is difficult because the argument of sqrt is around 8.56e9
+%	 and our bounds become extremely inaccurate. It becomes easy with scaling.
+
+% The denominator goes to zero when u = +/- 0.202... (and two imaginary roots).
+
+% Source 1: Applications of Real Number Theorem Proving in PVS
+% Author: H. Gottliebsen, R. Hardy, O. Lightfoot, and U. Martin
+% Source 2: Formal Methods for Control Engineering: A Validated Decision Procedure for Nichols Plot Analysis
+% Author: R. Hardy (PhD. thesis, University of St. Andrews)
+% Chapter 8: Case Studies, 8.2 Inverted Pendulum, 8.2.2 Analysis of an Inverted Pendulum that Meets its Requirements
+% G = -25(2s^2-7s+2)/(11s^3+2s^2-343s-49)
+% 1. for all w. 157/128 >= w \/ w >= 129/32 ==> -5pi/4 >= argument (G) \/ argument (G) >= -pi.
+% 2. for all w. 57/128>= w \/ w >= 629/512 ==> -pi >= argument (G) \/ argument (G) >= -3pi/4.
+% 3. for all w. w >= 101/512 ==> -3 >= gain (G) \/ gain(G) >= 3.
+
+% The argument is (Email Exchange: Ruth Letham <Ruth.Letham@fife.gov.uk>, Thu, 24 Jul 2008 09:44:38 +0100):
+
+% For w in [0,0.2022677445) argument(G) = -arctan( ((105247*X^3+3890*X^5-169932*X)/(14325*X^4+406627*X^2-16660)) )
+% For w = 0.2022677445 argument(G) = -Pi
+% For w in (0.2022677445, infinity) argument(G) = -arctan( (105247*X^3+3890*X^5-169932*X)/(14325*X^4+406627*X^2-16660) ) - Pi
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/pi.ax').
+
+cnf(sqrt_upper_bound_1_scaled,axiom,
+    ( ~ 0 <= X
+    | ~ lgen(R, (1/368000)*(X^2+50784000000*X+71639296000000000000)/(X+8464000000), Y)
+    | lgen(R,sqrt(X),Y) )).
+
+cnf(sqrt_lower_bound_1_scaled,axiom,
+    ( ~ 0 <= X
+    | ~ lgen(R, Y, 368000*X*(X+8464000000)/(X^2+50784000000*X+71639296000000000000))
+    | lgen(R,Y,sqrt(X)) )).

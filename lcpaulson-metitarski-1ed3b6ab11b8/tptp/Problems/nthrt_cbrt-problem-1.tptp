@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : nthrt_cbrt-problem-1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cube Root Problem
+
+fof(cbrt_problem_1,conjecture, ![X] : ((0 < X & X < 72) => nthrt(3,X+1) < nthrt(3,X) + 1) ).
+
+% Our bounds are not adequate to prove this result for arbitrarily large X
+
+include('Axioms/general.ax').
+include('Axioms/nthrt-lower.ax').
+include('Axioms/nthrt-upper.ax').

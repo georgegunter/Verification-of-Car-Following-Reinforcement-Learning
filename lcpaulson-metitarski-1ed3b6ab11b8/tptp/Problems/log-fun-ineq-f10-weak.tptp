@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : log-fun-ineq-f10-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (f) If a, x > 0 then ln(x) <= (a/e) * x ^ (1/a); the inequality is sharp at e^a.
+
+% Our bounds are exact at 1 (for ln) and 0 (for exp) and so
+%     the problem can only be solved if we weaken the inequality.
+
+% Here, a = 10 and exp(10) is approximately 22026
+
+fof(lfi_f,conjecture, ! [X,Y] : ((0 < X & X < 25000 & 0 < Y & Y^10 = X) => ln(X) <= 190 + Y * 10/exp(1))).
+
+include('Axioms/general.ax').
+include('Axioms/exp-extended.ax').
+
+cnf(log_upper_bound_cf23, axiom,
+    (X <= 0 |
+     ~ lgen(R,
+            (1/13860)*(84866 + 7309358*X + 146066108*X^2 + 1092007808*X^3 + 3682167083*X^4 + 6097133483*X^5 + 5111022203*X^6 + 2144063483*X^7 + 424478033*X^8 + 34628133*X^9 + 839367*X^10 + 1155*X^11)*(X - 1)/(1 + 132*X + 3630*X^2 + 36300*X^3 + 163350*X^4 + 365904*X^5 + 426888*X^6 + 261360*X^7 + 81675*X^8 + 12100*X^9 + 726*X^10 + 12*X^11), Y) |
+     lgen(R, ln(X), Y))).

@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-3515-4.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_3515,conjecture, ![X,A] : ((-1.5 < X & X < 1.5 & -1 < A & A < 1) => 1/(1+A) + cos(X)/(1+A) + cos(2*X)/(2+A) + cos(3*X)/(3+A) + cos(4*X)/(4+A) >= 0)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.15, page 252. (n=4)
+% for all real x, 1/(1+A)+ sum_{k=1}^n cos(k*X)/(k+A) is non-negative
+
+include('Axioms/general.ax').
+include('Axioms/cos-extended.ax').

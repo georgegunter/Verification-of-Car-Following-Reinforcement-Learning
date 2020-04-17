@@ -1,0 +1,29 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-7.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_7,conjecture, ![X] : ((0 < X & X < 1.57) => -ln(cos(X)) <= (4/5)*sin(X)^2 / cos(X))).
+
+% SLOW, 64.9 seconds; 34.6 seconds (QEPCAD)
+%       15.7 seconds; 27.7 seconds (QEPCAD) on 2011-05-31
+
+% The filenames are misleading: each version of this problem is somehow weakened.
+% Here we have (4/5) instead of (1/2)
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities. [Corrected, with the help of Maple!]
+% (g) if |x| < pi/2 and x != 0 then ln sec x < (1/2) sin x tan x
+
+% Can't use pi/2 because, with our inexact bounds, cos(X) will pass through zero
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/sin-linear.ax').
+include('Axioms/cos-linear.ax').

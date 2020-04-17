@@ -1,0 +1,27 @@
+%--------------------------------------------------------------------------
+% File     : Tunnel-3-VC-L.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tunnel Diode Oscillator
+
+% For oscillation : R = 0.3 Ohm, L = 1 uH, C = 1 nF, Vin =0.3V
+% For no oscillation : R = 50 Ohm
+% Initial values: Inductor Current = 0.0055 A, Capacitor Voltage = 0.131 V
+% Property to check: Non Oscillation is  G(V<= 0.6) , when R=50 Ohm (this was from the FAC paper) The oscillation will die out in the first mode.
+
+% Property to check: Follow the HSolver example: http://hsolver.sourceforge.net/benchmarks/benchmarks_5.html 
+% They turn it into a reachability problem, where all trajectories reach a certain set and stay there.
+
+% Since our model is different (piecewise linear) we cannot directly use their safety constraint. We can use bounds that work from the simulated model.
+
+% This unsafety constraint should be provable for our model:  V<0 | V>0.90 | I<0 | I>0.08 over all modes.
+
+fof(Tunnel, conjecture, ! [X] : ((0 <= X & X <= 8.17e-8) => -0.1643426675*exp(-2.559889987e8 * X) + 0.3228011912 + 0.5645414763*exp(-4.211001275e6 * X) > 0)).
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').

@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : cbrt-problem-4-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cube Root Problem
+
+fof(cbrt_problem_4,conjecture, ![X] : ((0.007 < X & X < 75) => cbrt(2*X) < 2*cbrt(X)) ).
+
+include('Axioms/general.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

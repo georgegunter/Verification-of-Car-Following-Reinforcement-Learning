@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-6.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_6,conjecture, ![X] : (abs(X) <= pi/2 => tan(X/2)^2 <= 1 - cos(X)) ).
+
+% NOT PROVABLE except with exact value of pi.
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/pi.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/tan-lower.ax').

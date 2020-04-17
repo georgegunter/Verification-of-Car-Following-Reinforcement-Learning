@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-10.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_10,conjecture, ! [X,Y] : ((X < 1 & (X-1)*Y = X) => exp(Y) <= 1-X)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.29  e^(-x/(1-x)) <= 1-x <= e^(-x)  (x<1)
+% We focus on the left-hand inequality.
+% Introducing a variable in order to eliminate the quotient in the problem presentation
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-27-sqrt-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Problem (needs upper & lower bounds)
+
+fof(log_upper_bound_problem_27,conjecture, ! [X] : ((0 < X & X < 1.5) => ln(1 + sqrt(1 + X^2)) <= 1/X + ln(X)) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.17 (c) ln(1+sqrt(1+x^2)) < 1/x + ln x , x > 0
+
+% A weak version is necessary. But why must the range of X be so tightly confined?
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-extended.ax').

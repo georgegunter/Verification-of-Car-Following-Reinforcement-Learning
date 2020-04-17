@@ -1,0 +1,33 @@
+%--------------------------------------------------------------------------
+% File     : Nichols-Plot-Inverted-Pendulum-Fails-2-3.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Analysis of an Inverted Pendulum that Fails its Requirements
+
+fof(Nichols_Plot_Inverted_Pendulum_Fails_2_3, conjecture,
+  ! [X] : ((0 <= X & X <= 0.202) => arctan((105247*X^3+3890*X^5-169932*X)/(14325*X^4+406627*X^2-16660)) <= 3*pi/4 )).
+
+% The denominator goes to zero when u = +/- 0.20227... (and two imaginary roots).
+
+% Source: Formal Methods for Control Engineering: A Validated Decision Procedure for Nichols Plot Analysis
+% Author: R. Hardy (PhD. thesis, University of St. Andrews)
+% Chapter 8: Case Studies, 8.2 Inverted Pendulum, 8.2.3 Analysis of an Inverted Pendulum that Fails to Meet its Requirements
+% G = -4250(2s^2-7s+2)/(1945s^3+355s^2-55811s-8330)
+% 1. for all w. 79/64 >= w \/ w >= 517/128 ==> -5pi/4 >= argument (G) \/ argument (G) >= -pi.
+% 2. for all w. 231/512>= w \/ w >= 633/512 ==> -pi >= argument (G) \/ argument (G) >= -3pi/4.
+% 3. for all w. w >= 55/256 ==> -3 >= gain (G) \/ gain(G) >= 3.
+
+% The argument is (Email Exchange: Ruth Letham <Ruth.Letham@fife.gov.uk>, Thu, 24 Jul 2008 09:44:38 +0100):
+
+% For w in [0,0.2022677445) argument(G) = -arctan( ((105247*X^3+3890*X^5-169932*X)/(14325*X^4+406627*X^2-16660)) )
+% For w = 0.2022677445 argument(G) = -Pi
+% For w in (0.2022677445, infinity) argument(G) = -arctan( (105247*X^3+3890*X^5-169932*X)/(14325*X^4+406627*X^2-16660) ) - Pi
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/pi.ax').
+

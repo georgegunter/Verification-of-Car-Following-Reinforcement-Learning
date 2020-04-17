@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : asin-4.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   : LCP (from sin-problem-5)
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arcsin Problem
+
+fof(asin_4,conjecture, ! [X] : ((-0.2 <= X & X < 0.38) => abs(pi*X) <= abs(arcsin(4*(X*(1-X)))) )).
+
+%The problem should really be as follows, but our bounds aren't good enough.
+%fof(asin_4,conjecture, ! [X] : ((0 <= X & X <= 0.5) => pi*X <= arcsin(4*(X*(1-X))) )).
+
+%The extension to negative numbers is silly, but makes it more of a challenge.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/pi.ax').
+include('Axioms/arcsin-lower.ax').
+include('Axioms/arcsin-upper.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').

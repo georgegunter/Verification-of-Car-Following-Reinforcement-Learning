@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-Kubo.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_Kubo,conjecture, ![X] : ((0 <= X & X <= pi) => sin(X)*(1+cos(X)) <= sin((X+pi)/4)*(1+cos((X+pi)/4)))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities, page 250. (Kubo).
+
+% Not provable: the equality is exact near 1.05, but our bounds are exact only at zero.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+

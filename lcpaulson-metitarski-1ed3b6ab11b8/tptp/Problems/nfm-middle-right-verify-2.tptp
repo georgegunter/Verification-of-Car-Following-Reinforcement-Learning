@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : nfm-middle-right-verify-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Rudder input and response  ---  Lower right bound of exclusion region
+
+% W. Denman, M. H. Zaki, S. Tahar and L. Rodrigues.
+% Towards Flight Control Verification using Automated Theorem Proving.
+% In M. Bobaruet al., editors, Nasa Formal Methods, Springer LNCS 6617 (2011), pages 89-100.
+
+% X = [0.7505793297,1.088957993]
+
+fof(aeronautical,conjecture,! [X] : ((9717/12946 < X & X < 21361/19616) => -3*pi/4 < arctan(0.2*(0.49e28*X^8+0.60e29*X^6-0.10e30*X^4+0.239e30*X^2-0.161e12+0.53e13*X^10)/(X*(0.37e27*X^8+0.45e28*X^6-0.89e28*X^4+0.369e28*X^2-0.96e26))))).
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/pi.ax').
+
+
+

@@ -1,0 +1,41 @@
+%--------------------------------------------------------------------------
+% File     : cos-3411-b-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(cos_problem_3411,conjecture, ![A,T] : ((0.1 < A & A < 1.4 & 0 < T & T < 1.4) => 2*(cos(A) - sin(A))^2 <= (cos(A+T) + sin(A+T))^2 + 2.05 )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.10), page 237
+% ULTRA SLOW, Processor time: 1134 = 214 (Metis) + 920 (RCF) using --icp_cad
+% Too difficult for just QEPCAD or Mathematica.
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+
+%include('Axioms/sin.ax').
+cnf(sin_lower_bound_0_pos,axiom,
+    ( ~ 0 <= X
+    | ~ lgen(R, Y, X - (X^3)/6)
+    | lgen(R, Y, sin(X)) )).
+
+%%% include('Axioms/sin-extended.ax').
+cnf(sin_upper_bound_1_pos,axiom,
+    ( ~ 0 <= X
+    | ~ lgen(R, X - (X^3)/6 + (X^5)/120, Y)
+    | lgen(R, sin(X), Y) )).
+
+cnf(sin_lower_bound_1_pos,axiom,
+    ( ~ 0 <= X
+    | ~ lgen(R, Y, (X - (X^3)/6 + (X^5)/120 - (X^7)/5040))
+    | lgen(R, Y, sin(X)) )).
+
+%%% include('Axioms/cos-extended.ax').
+cnf(cos_upper_bound_1,axiom,
+    (~ lgen(R, 1 - (X^2)/2 + (X^4)/24 - X^6/720 + X^8/40320, Y)
+    | lgen(R, cos(X), Y) )).
+
+cnf(cos_lower_bound_1,axiom,
+    (~ lgen(R, Y, 1 - (X^2)/2 + (X^4)/24 - (X^6)/720)
+    | lgen(R, Y, cos(X)) )).

@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-fun-ineq-fneg2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (f) If a, x > 0 then -ln(x) <= 1/(e * a * x^a); the inequality is sharp at e ^ (-1/a).
+
+% Our bounds are exact at 1 (for ln) and 0 (for exp) and so
+%     the problem can only be solved if we weaken the inequality.
+
+% Here, a = 2 and exp(-1/2) = 0.6065...
+
+fof(lfi_f,conjecture, ! [X] : (0 < X => -ln(X) <= 10^-13 + 1/(exp(1)*2*X^2))).
+
+include('Axioms/general.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/ln-extended.ax').

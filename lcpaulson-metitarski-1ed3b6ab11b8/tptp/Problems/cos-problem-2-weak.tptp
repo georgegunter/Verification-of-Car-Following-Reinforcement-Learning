@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-2-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_2,conjecture, ! [X] : ((1/2 + 2.5e-8 < X & X < 1 - 10^-8) => cos(pi*X) <= 1 - 2*X) ).
+
+% Slightly reducing the interval allows a short but SLOW prooF (72 secs in QEPCAD)
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, page 237
+% 3.4.9 If 1/2 < r < 1, then cos (pi r) < 1 - 2r
+
+include('Axioms/general.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/pi.ax').

@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : tan-problem-5.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_5,conjecture, ![X] : ((-pi/2 <= X & X < pi/2) => tan(X/2) <= sqrt(1 - cos(X))) ).
+
+% Not provable because pi is not known exactly.
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/sqrt-lower.ax').

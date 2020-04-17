@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : exp-fun-ineq-c-III-6.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Exponential Function Inequalities.
+% (c) exp(x) >= (1 + x/n)^n  [n = 1, 2, ...]
+
+fof(efi_c,conjecture, ! [X] : ((0<X & X<=1) => (1 + X/6)^7 > exp(X))).
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+

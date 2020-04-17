@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : Chua.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Chua  
+
+fof(Chua, conjecture, ! [X] : ((0 <= X & X <= 2) => 1.20 + 2.79*exp(-0.0983*X) + 0.0117*exp(-0.00272*X)*cos(0.0234*X) + 0.0540*exp(-0.00272*X)*sin(0.0234*X) <= 4.07)).
+
+% Source: 
+% 1. W. Denman, M. H. Zaki, A Bond Graph Approach for Constraint based Verification of Analog Circuits
+% 2. M. P. Kennedy, Three Steps to Chaos--Part II: A Chua's Circuit Primer
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

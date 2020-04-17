@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : cos-3411-c.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(cos_problem_3411,conjecture, ![A] : ((0 <= A & A < pi/2 - 10^-7) => 2*(cos(A) - sin(A))^2 <= 2*(cos(A) + sin(A))^2)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.11), page 237
+
+include('Axioms/general.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/pi.ax').

@@ -1,0 +1,30 @@
+%--------------------------------------------------------------------------
+% File     : exp-log-nest-weak.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exp-Log Ground Problem
+
+fof(exp_log_nest,conjecture, 8.75 < exp(2*ln(3)) ).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/ln-lower.ax').
+%include('Axioms/ln-upper.ax').
+% This problem is identical to exp-log-nest.tptp, only with fewer axioms.
+
+% 2011-10-25: omitting this axiom makes the proof much faster (1 sec)
+% 2013-11-26: If this axiom is included, the theorem is not proved in 600 seconds.
+cnf(log_upper_bound_cf3, axiom,
+    (X <= 0 | ~ lgen(R, 1/2 * (X + 5) * (X - 1) / (2 * X + 1), Y) |
+     lgen(R, ln(X), Y))).
+
+% Why are upper bound axioms needed? Presumably it's due to the way exp expands.
+cnf(log_upper_bound_cf5, axiom,
+    (X <= 0 |
+     ~ lgen(R,
+            1/3 * (X ^ 2 + 19 * X + 10) * (X - 1) /
+            (3 * X ^ 2 + 6 * X + 1), Y) | lgen(R, ln(X), Y))).

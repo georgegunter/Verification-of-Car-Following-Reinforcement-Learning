@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-18.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(sin_problem_18,conjecture, ! [X,Y] : ((0 < X & 0 < Y & X+Y < 1) => X+Y - (X+Y)^3/6 + (X+Y)^4/24 * sin(1/(X+Y)) <= 0.001 + (X - X^3/6 + X^4/24 * sin (1/X)) + (Y - Y^3/6 + Y^4/24*sin(1/Y)))).
+
+% This version of the problem is probably NOT PROVABLE: the arg of sin goes to infinity.
+%   But see the very similar--and trivial--sin-problem-18-weak!
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.51. Let f be defined by setting f(x) = x-x^3/6+x^4/24*sin(1/x) for x>0.
+%         If y and z are positive and y+z < 1, then f(y+z) < f(y)+f(z).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').

@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : exp-ln-2-weak.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(exp_ln,conjecture, exp(ln(2) * 1.41421) < 10^-10 + exp(1) ).
+% SLOW, 39 secs
+% Strange: if we simplify the right-hand side, the proof is instantaneous, without using monotonicity!
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.16 (b) 2^sqrt(2) < e
+
+% The lhs is 2.665144143, the rhs is 2.718281828, the difference is only 0.05313768546.
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').

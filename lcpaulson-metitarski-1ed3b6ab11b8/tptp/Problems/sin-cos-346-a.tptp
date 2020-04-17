@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-346-a.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_346a,conjecture, ![X,S3] : ((0 < X & X <= 6 & S3 > 0 & S3^2 = 3) => sin(X)/X > cos(X/S3))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.6), page 236 
+% It is only claimed to hold for the interval (0,pi/2), but it actually holds over (0,8.345...).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+

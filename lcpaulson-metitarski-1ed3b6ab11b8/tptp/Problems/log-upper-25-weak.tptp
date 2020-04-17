@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-25-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_25,conjecture, ! [X] : (0 < X => ln(X) <= 1.04e-5 + X/exp(1)) ).
+
+% Reduced "padding" from 1/4 to 1/1200, 2008-09-12, then as above, 2011-11-01.
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.15 ln x < x/e for x>0, for x<>e. Thus ln x <= x/e. Needs a good log upper bound.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').

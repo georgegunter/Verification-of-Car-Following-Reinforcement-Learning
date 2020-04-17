@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-2var3.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_2var3,conjecture, ! [X,Y] : ((-1 < X & -1 < Y & -1 < X+Y & X+Y < 1) => cos(X-Y) <= 2*cos(X)*cos(Y)) ).
+
+%Should hold for all X and Y such that -pi/2 <= X+Y & X+Y <= pi/2, but that's much too difficult!
+%Note: 2*cos(X)*cos(Y) = cos(X-Y) + cos(X+Y).
+
+% SUPER SLOW: proved in 300-425s, nearly all QEPCAD, and needs --maxalg 75-150.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+
+

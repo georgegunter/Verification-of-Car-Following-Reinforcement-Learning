@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : cos-error-analysis-5.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cos Error Analysis
+
+fof(cos_error_analysis_5,conjecture, ! [X] : (abs(X) <= 1/32 => abs(cos(X) - 1 + 0.49999999999999999999999995425696 * X^2 - 0.0416666666666666666660027496 * X^4 + 0.001388888888888885759632 * X^6 - 0.0000248015872951505636 * X^8 + 0.000000275567182072 * X^10) <= 0.99e-30) ).
+
+% weakened to 0.99e-30 on 27-06-2008
+
+% Source: Elementary Functions, Algorithms and Implementation, J-M. Muller, 1997.
+% Section 4.2.3 page 59, Table 4.8.
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/abs.ax').
+

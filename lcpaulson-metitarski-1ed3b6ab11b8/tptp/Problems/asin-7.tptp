@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : asin-7.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arcsin Problem
+
+fof(asin_7,conjecture, ! [X] : ((0 < X & X < 0.99999) => arcsin(X) <= pi*X / (2+sqrt(1-X^2)) )).
+
+% Mentioned below; credited to A. M. Fink, “Two inequalities” (1995).
+% Ling Zhu. New Inequalities of Shafer-Fink Type for Arc Hyperbolic Sine.
+% Journal of Inequalities and Applications (2008). doi:10.1155/2008/368275
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/arcsin-upper.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').

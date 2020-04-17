@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : exp-fun-ineq-b-corrected.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Exponential Function Inequalities (as corrected by JPB)
+% (b) for x>0, x^(1/x) <= e^(1/e)  [ = 1.4447... ]
+
+fof(efi_b,conjecture, ! [X] : (0 < X => exp(ln(X)/X) <= 0.1 + exp(1/exp(1)))).
+% Some padding is needed because the problem is exact at X = e.
+% By monotonicity, it could be reduced to ln(X) <= X/exp(1).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').

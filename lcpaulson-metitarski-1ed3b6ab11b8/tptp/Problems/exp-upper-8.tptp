@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-8.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_8,conjecture, ! [X] : (0 <= X => exp(X-X^2) <= 1+X)).
+
+% Source: Ln.thy
+% Author: Jeremy Avigad
+% lemma: aux4
+% [0 <= x; x <= 1] ==> exp (x-x^2) <= 1 + x
+
+% We can actually prove a stronger form of the problem.
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

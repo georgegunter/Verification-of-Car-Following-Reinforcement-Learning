@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : X1b-ln.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists1,conjecture, ? [X] : ln(X) < -4).
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+

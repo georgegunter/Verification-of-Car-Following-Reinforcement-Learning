@@ -1,0 +1,40 @@
+%--------------------------------------------------------------------------
+% File     : Nichols-Plot-Disk-Drive-Meets-2-4.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Analysis of a Disk Drive Reader that Meets its Requirements
+
+fof(Nichols_Plot_Disk_Drive_Meets_2_4, conjecture,
+ ! [X] : (X : (=9745/512, 63357/512=) =>
+          arctan((1/1140)*(-130660000*X^2+3*X^4+2000000000000)/(X*(29*X^2-90000000)))
+            : (= -pi/4 - 2.9e-5, 3.4e-6 =) )).
+
+% This problem contains an error. The quantity above is supposed to lie between -pi/4 and 0.
+% Maple shows it exceeds its lower bound by 2.26e-5 and its upper bound by 3.36e-6.
+
+% Source: Formal Methods for Control Engineering: A Validated Decision Procedure for Nichols Plot Analysis
+% Author: R. Hardy (PhD. thesis, University of St. Andrews)
+% Chapter 8: Case Studies, 8.3 Disk Drive Read System, 8.3.2 Analysis of a Disk Drive Reader that Meets its Requirements
+% G = 280000000000*K_m/(s+1000)s(s+20)(3s^2+30000+100000000)
+% 1. for all w. 15839/128 >= w \/ w >= 354991/512 ==> -5pi/4 >= argument (G) \/ argument (G) >= -pi.
+% 2. for all w. 9745/512>= w \/ w >= 63357/512 ==> -pi >= argument (G) \/ argument (G) >= -3pi/4.
+% 3. for all w. 1347/128 >= w \/ w >= 9601/512 ==> -3 >= gain (G) \/ gain(G) >= 3.
+
+% The argument is (Email Exchange: Ruth Letham <Ruth.Letham@fife.gov.uk>, Thu, 24 Jul 2008 09:44:38 +0100):
+
+% For w in [0,1761.660...) argument(G) = - arctan ((1/1140)*(-130660000*X^2+3*X^4+2000000000000)/(X*(29*X^2-90000000))) - Pi
+% For w = 1761.660... argument(G) = -Pi
+% For w in (1761.660..., infinity) argument(G) = - arctan((1/1140)*(-130660000*X^2+3*X^4+2000000000000)/(X*(29*X^2-90000000))) - 2 * Pi
+
+% The denominator goes to zero
+%      when u = +/- 1761.660660 and 0!
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/arctan-extended.ax').
+include('Axioms/pi.ax').
+

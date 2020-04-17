@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : log-3615-sqrt.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Problem
+
+fof(log_3615,conjecture, ! [X] : ((10^-3 < X & X != 1 & X < 1000) => ln(X) / (X-1) <= 1/sqrt(X)) ).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.6.15, page 272
+% Cannot be proved right down to 0, presumably due to inaccurate bounds. (FIXME)
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-extended.ax').
+include('Axioms/sqrt-upper.ax').

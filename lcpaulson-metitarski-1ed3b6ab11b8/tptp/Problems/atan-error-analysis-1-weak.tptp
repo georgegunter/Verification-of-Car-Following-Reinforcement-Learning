@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : atan-error-analysis-1-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arctan Error Analysis
+
+fof(atan_error_analysis_1,conjecture, ! [X] : ((0 <= X & X < 1/6) => abs (arctan(X) - (-0.00245220854 + X*(1.066294780 - X*0.2759921995))) <= 0.002452221107) ).
+% Without more precise bounds for atan, we can prove this only for a narrow interval.
+
+% Source: Elementary Functions, Algorithms and Implementation, J-M. Muller, 1997.
+% Section 3.3 page 33, Table 3.3.
+
+include('Axioms/general.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/abs.ax').

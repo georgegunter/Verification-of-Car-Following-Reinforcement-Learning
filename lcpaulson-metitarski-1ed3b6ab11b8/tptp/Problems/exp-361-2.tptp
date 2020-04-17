@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : exp-361-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(a, axiom, a = 2).
+fof(exp_361,conjecture, ![X] : (0 <= X => 10^-7 + exp(X) >= (exp(1)*X/a) ^ a)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.6.1, page 266. (a=2)
+% exp(x) >= (e*x/a)^a, for x>=0 and a>0
+% We must weaken the problem slightly, because the inequality is exact when x=a.
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').
+

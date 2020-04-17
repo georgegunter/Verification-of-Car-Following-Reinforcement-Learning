@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : two-variable-problem-7.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Two Variable Problem
+
+fof(two_variable_problem_7,conjecture, ! [X,Y] : (0 < Y => X*Y <= exp(X) + Y*(ln(Y) - 1))).
+
+% Exact when X = ln(Y), since ln(Y)*Y = Y + Y*ln(Y) - Y = exp(ln(Y)) + Y*(ln(Y) - 1)
+% NOT PROVABLE because Y is unbounded and because the exp(X) bounds are only exact at 1.
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/ln-lower.ax').

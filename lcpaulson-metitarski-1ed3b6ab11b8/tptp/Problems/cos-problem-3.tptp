@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-3.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_3,conjecture, ! [X] : (abs(X) < 1 => abs(cos(X)) <= 1) ).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.3.88 |cos z| < 2, |sin z| <= 6/5 |z| (|z|<1) 
+
+% Of course, restricting this problem to the reals makes it trivial.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/cos.ax').
+

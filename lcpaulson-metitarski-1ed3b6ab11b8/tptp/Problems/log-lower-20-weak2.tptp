@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-20-weak2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(log_lower_bound_problem_20,conjecture, ! [X,Y] : ((0.0057 < X & X <= 1 & Y^3 = X) => (X*Y + X - Y - 1) / (X+Y) <= ln(X))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (c) If x > 0, x # 1, log x / (x - 1) <= (1 + x^1/3) / (x + x^1/3)
+% Related to log-upper-20, which is the full version of the inequality above.
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-extended.ax').

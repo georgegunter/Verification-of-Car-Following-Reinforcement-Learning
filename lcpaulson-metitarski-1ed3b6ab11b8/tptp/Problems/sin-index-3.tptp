@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : sin-index-3.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_index,conjecture, ! [X] : ((0 < X & X < 4) => abs(sin(X)^3) <= 0.05 + abs(sin(X)))).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').
+

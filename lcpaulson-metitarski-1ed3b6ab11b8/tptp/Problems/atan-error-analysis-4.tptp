@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : atan-error-analysis-4.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Arctan Error Analysis
+
+fof(atan_error_analysis_4,conjecture, ! [X] : ((0 < X & X <= 1) => abs((arctan(X)/X) - (1 - 0.3333314528 * X^2 + 0.1999355085 * X^4 - 0.1420889944 * X^6 + 0.1065626393 * X^8 - 0.0752896400 * X^10 + 0.0429096138 * X^12 - 0.0161657367 * X^14 + 0.0028662257 * X^16)) <= 1.8e-8) ).
+
+% Trivial, but requires extremely accurate bounds.
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.4.49 0 < x <= 1 arctan(x)/x = 1 + sum (k=1 to 8) a2k x^(2k) + epsilon (x)
+% |epsilon(x)| <= 2e-8   [1.735e-8 according to Maple]
+% a2 = -0.3333314528 a4 = 0.1999355085 a6 = - 0.1420889944 a8 = 0.1065626393 a10 = -0.0752896400 a12 = 0.0429096138 a14 = -0.0161657367 a16 = 0.0028662257
+
+include('Axioms/general.ax').
+include('Axioms/arctan-extended2.ax').
+include('Axioms/abs.ax').

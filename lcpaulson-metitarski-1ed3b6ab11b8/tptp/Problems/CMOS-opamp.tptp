@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : CMOS-opamp.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- CMOS operational amplifier
+
+% Source: "A Formal Approach to Verification of Linear Analog Circuits with Parameter Tolerances", Lars Hedrich and Erich Barke
+% The equation represents the gain of the circuit in the frequency domain.
+% We are verifying that between a frequency range of 100 Hz to 120 Hz
+% and phase margin between pi/4 and pi/3 that the circuit's actual gain will be above the specified gain.
+
+fof(OPAMP, conjecture, ! [X,Y] : ((100 <= X & X <=120 & pi/4 <= Y & Y <= pi/3) => 5.9e19/(sqrt(9.7e29 - 3.6e9*X^4*cos(Y)^2 - 1.2e5*X^4*cos(Y) - 1.2e20*X^2*cos(Y) + X^4 + 3.6e24*X^2 - 3.6e24*X^2*cos(Y)^2)) > 57000)).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/pi.ax').

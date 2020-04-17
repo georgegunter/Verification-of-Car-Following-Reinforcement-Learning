@@ -1,0 +1,13 @@
+%--------------------------------------------------------------------------
+% File     : abs-problem-7.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : A Dictionary of Inequalities, P. S. Bullen, Logarithmic Function Inequalities
+% Comments : (h) If z in C with |z| < 1 with |z|/1+|z| <= |ln (1+z)| <= |z| 1+|z|/|1+z|
+%--------------------------------------------------------------------------
+fof(abs_problem_7,conjecture, ! [X] : ((abs(X) < 1) => abs(X)/(1+abs(X)) <= abs(ln(1+X))  ) ).
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/abs.ax').

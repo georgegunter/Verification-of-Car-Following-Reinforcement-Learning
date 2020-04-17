@@ -1,0 +1,13 @@
+%--------------------------------------------------------------------------
+% File     : X2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists2,conjecture, ! [Y] : ? [X] : X > Y).
+
+include('Axioms/general.ax').
+

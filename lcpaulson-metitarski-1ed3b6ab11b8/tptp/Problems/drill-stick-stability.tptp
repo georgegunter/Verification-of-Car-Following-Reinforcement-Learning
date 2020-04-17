@@ -1,0 +1,29 @@
+%--------------------------------------------------------------------------
+% File     : drill-stick-stability.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : "Hybrid automata: An insight into the discrete abstraction of discontinuous systems",
+%            E.M. Navarro-López, R. Carter. International Journal of Systems Science.
+%            Special issue on Variable Structure Systems Methods for Control and
+%            Observation of Hybrid Systems, vol. 42(11), pp. 1883-1898, 2011.
+% Comments : Supplied by Andrew Sogokon. 
+%
+% This problem attempts to prove that while in the stuck mode of the hybrid automaton,
+% the bit of the drill will remain stuck. The differential invariant (2765000*(X1^2)/1076917+(-7500000/1076917+X2)^2) 
+% was synthesized using Mathematica's CAD algorithm. 
+%
+
+fof(Problem1358793962888,conjecture,
+	![X1, X2, T, A, CB, KT, JR, JB, RB, CT, CR, MUCB, MUSB, DELTA, GAMMAB, NUF, WOB, U]: 
+	      (CB=50 & KT=861.5336 & JR=2212 & JB=471.9698 & RB=0.155575 & 
+	       CT=172.3067 & CR=425 & MUCB=0.5 & MUSB=0.8 & DELTA=0.000001 & 
+	       GAMMAB=0.9 & NUF=1 & WOB=50000 & U=6000 & 
+	       (2765000*(X1^2)/1076917+(-7500000/1076917+X2)^2)<=A & A>=0 & T>=0 =>
+ 	       	    (((((1/4639000899556)*exp((((-(1)*(JR^-(1)))*((CR+CT)+sqrt((((CR+CT)^2)+((-(4)*JR)*KT)))))*T)))*((((CR+CT)^2)+((-(4)*JR)*KT))^-(1)))*((2977675505000*(((((((((((-(2)*U)+((2*exp((((JR^-(1))*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*T)))*U))+(CR*X1))+(CT*X1))+(((-(1)*CR)*exp((((JR^-(1))*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*T)))*X1))+(((-(1)*CT)*exp((((JR^-(1))*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*T)))*X1))+(sqrt((((CR+CT)^2)+((-(4)*JR)*KT)))*X1))+((exp((((JR^-(1))*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*T))*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*X1))+((2*KT)*X2))+(((-(2)*exp((((JR^-(1))*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*T)))*KT)*X2))^2))+((KT^-(2))*((((((-(2)*exp(((((1/2)*(JR^-(1)))*((CR+CT)+sqrt((((CR+CT)^2)+((-(4)*JR)*KT)))))*T)))*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*((7500000*KT)+(-(1076917)*U)))+(1076917*(((((((CR*U)+(CT*U))+((-(1)*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*U))+(((-(2)*JR)*KT)*X1))+(((-(1)*CR)*KT)*X2))+(((-(1)*CT)*KT)*X2))+((KT*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*X2))))+((1076917*exp((((JR^-(1))*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*T)))*((((((((-(1)*CR)*U)+((-(1)*CT)*U))+((-(1)*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*U))+(((2*JR)*KT)*X1))+((CR*KT)*X2))+((CT*KT)*X2))+((KT*sqrt((((CR+CT)^2)+((-(4)*JR)*KT))))*X2))))^2)))) <=A))).
+
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/sqrt-extended.ax').
+include('Axioms/sqrt-general.ax').

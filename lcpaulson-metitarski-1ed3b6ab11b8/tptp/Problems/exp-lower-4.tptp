@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : exp-lower-4.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Exp Lower Bound Problem
+
+fof(exp_lower_bound_problem_4,conjecture, ! [X] : 1-X <= exp(-X)).
+
+% bounds relaxed 2008-01-25
+% trivial because it coincides with a built-in bound
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.30 e^x > 1+x
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').

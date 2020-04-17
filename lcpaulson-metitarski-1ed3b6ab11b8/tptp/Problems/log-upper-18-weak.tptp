@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-18-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_18,conjecture, ! [X,Y] : ((0 <= X & X <= 3590.8 & 0 <= Y & Y^2 = 1+X) => ln(1+X) <= X/Y) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (d) If x > -1, then 2 |x| / (2 + x) <= |ln (1+x)| <= |x| / sqrt (1+x)
+
+% Related to log-lower-17
+
+% This weaker version limits the range of X (must be below 3590.845895 for log_upper_bound_cf15)
+
+include('Axioms/general.ax').
+include('Axioms/ln-extended.ax').

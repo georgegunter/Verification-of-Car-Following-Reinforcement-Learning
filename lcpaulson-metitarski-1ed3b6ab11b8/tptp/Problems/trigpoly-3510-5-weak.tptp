@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-3510-5-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_3510,conjecture, ![X] : (abs(X) < 2.4 => (sin(X) - sin(2*X)/2 + sin(3*X)/3 - sin(4*X)/4 - sin(5*X)/5) < 2 / cos(X/2))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.10, page 251. (m=0, n=5)
+% for |x| < pi, |\sum_{k=m+1}^{m+n} (-1)^{k+1} sin(kx)/k| < 2 / ((m+1) cos(x/2))
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/cos.ax').
+include('Axioms/sin-extended2.ax').

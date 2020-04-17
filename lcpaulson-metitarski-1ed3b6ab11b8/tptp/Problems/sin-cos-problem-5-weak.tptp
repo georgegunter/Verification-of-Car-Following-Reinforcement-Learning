@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-5-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_5,conjecture, ! [X] : ((0 < X & X < 6) => X*(2 + cos(X)) > 3*sin(X))).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.23. (b) Establish the following inequalities: x (2+cos x) > 3 sin x for x > 0.
+
+% No hope of proving a result for all x>0.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').

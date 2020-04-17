@@ -1,0 +1,25 @@
+%--------------------------------------------------------------------------
+% File     : exp-log-nest.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exp-Log Ground Problem
+
+fof(exp_log_nest,conjecture, 8.75 < exp(2*ln(3)) ).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').
+
+% Quickly proved with the help of the following axiom, otherwise NOT PROVED in 2000s.
+% 2011-10-25: inserted two axiom files, which apparently are essential
+% 2011-10-25: possibly the lack of negative terms below eliminates the need for ln-upper.ax
+
+%cnf(exp_lower_taylor_5,axiom,
+%    ( ~ -1 <= X
+%    | ~ lgen(R,Y,1+X+(1/2)*X^2+(1/6)*X^3+(1/24)*X^4+(1/120)*X^5)
+%    | lgen(R,Y,exp(X)) )).

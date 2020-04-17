@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : ArthanKM2-sincos.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Email Exchange, Rob Arthan <rda@lemma-one.com>
+% http://www.lemma-one.com/papers/75s.pdf
+% K = 2
+
+fof(Rob_Arthan_problem_1, conjecture, ! [S] : ((0 <= S & S <= 1.25) => (1+2*S+S^2+sin(S)/2) * ((1+S)*(2-sin(S)/2)+4+4*S+2*cos(S)/2) - (2*(1+S))*(2+2*S+cos(S)/2)^2 < 0)).
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').

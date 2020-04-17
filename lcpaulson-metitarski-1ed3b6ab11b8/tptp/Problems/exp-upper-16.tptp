@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-16.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_16,conjecture, ! [X] : ((-3 < X & X < 3) => exp(X) <= (9+X)^9 / (9^8 * (9-X^2)))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.3-(3) 0 <= e^x - (1+x/n)^n <= e^x x^2/n, n>=1, 0<=x<=n
+% n = 9
+
+% Limits relaxed 2008-08-13
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

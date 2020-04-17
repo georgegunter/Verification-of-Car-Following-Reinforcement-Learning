@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-3514-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_3514,conjecture, ![X] : ((-pi < X & X < pi) => 2*abs(sin(X)) + abs(sin(2*X)) <= 9/pi)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.14, page 252. (n=2)
+% for all real x, \sum_{k=1}^n (n-k+1)*abs(sin(kx)) <= (n+1)^2 / pi
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/pi.ax').
+include('Axioms/sin-extended.ax').

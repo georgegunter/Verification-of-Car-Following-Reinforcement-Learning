@@ -1,0 +1,164 @@
+open Useful;
+
+%%
+%name MT
+%term COMMENT of string | FOF | CNF | INCLUDE
+    | PLUS | MINUS | UNARYSIGN | AST | SLASH | CARET | COLON | COMMA
+    | LBRKT | RBRKT | LPAREN | RPAREN | LPARENQ | RPARENQ
+    | EQUALS | NEQUALS | LE | LESS | GE | GREATER | EXCLAMATION
+    | AMPERSAND | NAMPERSAND | IFF | NIFF | VLINE | NVLINE | IMPLIES | PERIOD | QUESTION | TILDE
+    | TOK_FALSE | TOK_TRUE | REAL of string | INTEGER of string
+    | SINGLE_QUOTED of string | UPPER_WORD of string | LOWER_WORD of string
+    | ILLEGAL_CHARACTER of string | EOF
+
+%nonterm mt_file of Tptp.item list | tptp_lines of Tptp.item list | tptp_line of Tptp.item | fml_line of Tptp.formula
+       | include_line of string | name of string | formula of Formula.formula | comp_fml of Formula.formula | disjunction of Tptp.literal list
+       | literal of Tptp.literal | binop of Formula.formula*Formula.formula -> Formula.formula
+       | rel of Term.term * Term.term -> Literal.literal
+       | interv of int * Term.term * int * Term.term
+       | quantbody of string list * Formula.formula
+       | vars of string list | arguments of Term.term list | term_list of Term.term list
+       | term of Term.term
+
+%pos int
+%eop EOF
+%noshift EOF
+%arg (fileName) : string
+
+%nonassoc RPAREN
+%right COMMA
+
+%nonassoc EXCLAMATION QUESTION
+%nonassoc IFF NIFF
+%right IMPLIES
+%right VLINE NVLINE
+%right AMPERSAND NAMPERSAND
+%nonassoc TILDE
+
+%nonassoc EQUALS NEQUALS LE LESS GE GREATER COLON
+
+%left	PLUS MINUS
+%left	AST SLASH
+%left	UNARYSIGN
+%right CARET
+
+%pure
+%start mt_file
+%prefer RPAREN AST PLUS
+%change RPAREN -> | ILLEGAL_CHARACTER ->
+
+%%
+
+(*
+    ml-yacc specification for MetiTarski parsing
+
+    Note that a problem consists of comments, includes and formulas
+*)
+
+mt_file : tptp_lines 	(tptp_lines)
+
+tptp_lines : tptp_line tptp_lines	(tptp_line::tptp_lines)
+           |				([])
+
+tptp_line : fml_line		(Tptp.Fml fml_line)
+	  | include_line	(Tptp.Include include_line)
+	  | COMMENT		(Tptp.Comment COMMENT)
+
+(** TPTP Elements **)
+
+fml_line : FOF LPAREN name COMMA LOWER_WORD COMMA formula RPAREN PERIOD
+		(Tptp.Formula{name = Tptp.FormulaName name,
+			      role = Tptp.fromStringRole LOWER_WORD,
+			      body = Tptp.FofFormulaBody formula,
+                              source=Tptp.NoFormulaSource})
+         | CNF LPAREN name COMMA LOWER_WORD COMMA LPAREN disjunction RPAREN RPAREN PERIOD
+		(Tptp.Formula{name = Tptp.FormulaName name,
+			      role = Tptp.fromStringRole LOWER_WORD,
+			      body = Tptp.CnfFormulaBody disjunction,
+                              source=Tptp.NoFormulaSource})
+
+include_line: INCLUDE LPAREN SINGLE_QUOTED RPAREN PERIOD	(SINGLE_QUOTED)
+
+name : LOWER_WORD	(LOWER_WORD)
+     | UPPER_WORD	(UPPER_WORD)		(*TPTP doesn't allow these!*)
+     | INTEGER		(INTEGER)
+     | SINGLE_QUOTED 	(SINGLE_QUOTED)
+
+(** Formulas **)
+
+formula : LPAREN comp_fml RPAREN (comp_fml)
+        | comp_fml 		(comp_fml)
+        | TOK_FALSE 		(Formula.False)
+        | TOK_TRUE  		(Formula.True)
+        | term			(fmOfAtom term)
+
+comp_fml: TILDE formula 	(Formula.Not formula)
+	| term rel term 	%prec EQUALS	(Literal.toFormula (rel (term1,term2)))
+ 	| term COLON interv 	%prec EQUALS	(Literal.toFormula (litOfInterval (term,interv)))
+	| formula binop formula %prec AMPERSAND	(binop (formula1,formula2))
+        | EXCLAMATION quantbody %prec QUESTION 	(Formula.listMkForall quantbody)
+        | QUESTION quantbody	%prec QUESTION 	(Formula.listMkExists quantbody)
+
+quantbody: LBRKT vars RBRKT COLON formula 			(vars,formula)
+
+disjunction : literal VLINE disjunction (literal::disjunction)
+	    | literal			([literal])
+
+(*No syntax is provided for atoms. Semantically, x<y is a negative literal.*)
+literal : term				(Tptp.Literal (Literal.fromFormula (fmOfAtom term)))
+ 	| term rel term 	%prec EQUALS	(Tptp.Literal (rel (term1,term2)))
+ 	| term COLON interv 	%prec EQUALS	(Tptp.Literal (litOfInterval (term,interv)))
+	| TILDE literal 			(Tptp.negateLiteral literal)
+	| TILDE LPAREN term rel term RPAREN  %prec EQUALS
+				(Tptp.negateLiteral (Tptp.Literal (rel (term1,term2))))
+
+(** Formula Constituents **)
+
+binop : AMPERSAND 	(Formula.And)
+      | NAMPERSAND 	(Formula.Not o Formula.And)
+      | IFF 		(Formula.Iff)
+      | NIFF 		(Formula.Not o Formula.Iff)
+      | IMPLIES 	(Formula.Imp)
+      | VLINE 		(Formula.Or)
+      | NVLINE 	(Formula.Not o Formula.Or)
+
+rel : EQUALS 	(Literal.mkEq)
+    | NEQUALS 	(Literal.mkNeq)
+    | LE 	(Literal.mkBinop (true,"<="))
+    | GE 	(Literal.mkBinop (true,"<=") o swap)
+    | LESS	(Literal.mkBinop (false,"<=") o swap)
+    | GREATER	(Literal.mkBinop (false,"<="))
+
+interv : LPAREN  term COMMA term RPAREN		((1,term1,1,term2))
+       | LPARENQ term COMMA term RPAREN		((0,term1,1,term2))
+       | LPAREN  term COMMA term RPARENQ	((1,term1,0,term2))
+       | LPARENQ term COMMA term RPARENQ	((0,term1,0,term2))
+
+vars : UPPER_WORD COMMA vars  (UPPER_WORD::vars)
+     | UPPER_WORD             ([UPPER_WORD])
+
+arguments : LPAREN term_list RPAREN 	(term_list)
+	  |				([])
+
+term_list : term COMMA term_list   (term::term_list)
+	  | term                   ([term])
+
+(*Parentheses are forbidden around atomic terms. Otherwise, reduce/reduce conflicts
+  arise involving both formulas and literals, involving the interpretation of
+  LPAREN term RPAREN  when followed by a right parenthesis.*)
+term : LPAREN term RPAREN 		(term)
+     | LOWER_WORD arguments		(Term.eval_Fn (LOWER_WORD,arguments))
+     | UPPER_WORD 			(Term.Var UPPER_WORD)
+     | INTEGER 				(termOfDecimal INTEGER)
+     | REAL 				(termOfDecimal REAL)
+     | MINUS term	%prec UNARYSIGN	(Term.eval_Fn("-",[term]))
+     | term PLUS term	%prec PLUS	(Term.eval_Fn("+",[term1,term2]))
+     | term MINUS term	%prec PLUS	(Term.eval_Fn("-",[term1,term2]))
+     | term AST term	%prec AST	(Term.eval_Fn("*",[term1,term2]))
+     | term SLASH term	%prec AST	(Term.eval_Fn("/",[term1,term2]))
+     | term CARET term	%prec CARET	(Term.Fn("^",[term1,term2]))
+
+(*If we use eval_Fn in the CARET case, an exception can be raised in Rat.exp
+  for syntactically incorrect input such as 3 <= 0.2+X). Conceivably, the parser
+  is substituting a caret character in an attempt to correct the syntax error,
+  and then exponentiation fails.*)

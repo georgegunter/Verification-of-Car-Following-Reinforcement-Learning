@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-17.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_17,conjecture, 2 > 2 / ((ln(2))^2 * exp(1))  ).
+
+% Jeremy Avigad, from a formalization of a paper by Riko Jacob.
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/exp-lower.ax').

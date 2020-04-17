@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-6.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_6,conjecture, ! [X] : ((0 < X & X < 1) => exp(X) < 1 + 7*X/4)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.38 1/4 |z| < |e^z-1| < 7/4 |z| (0 < |z| < 1)
+% We have taken the right hand inequality, for positive z.
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

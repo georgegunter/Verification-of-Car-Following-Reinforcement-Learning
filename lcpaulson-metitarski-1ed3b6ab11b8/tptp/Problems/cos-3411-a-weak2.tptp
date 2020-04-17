@@ -1,0 +1,28 @@
+%--------------------------------------------------------------------------
+% File     : cos-3411-a-weak2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(cos_problem_3411,conjecture, ![A] : ((0.05 < A & A < 1.5) => 2*(cos(A)-sin(A))^2 <= (cos(A+1) + sin(A+1))^2 + (cos(A-1) + sin(A-1))^2 )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.11), page 237
+% Incredibly difficult over the full range of A! This version takes about 56 secs.
+% NB: cos(X) + sin(X) = sqrt(2)*sin(X+pi/4). And cos(X) - sin(X) = sqrt(2)*sin(X+3*pi/4).
+
+include('Axioms/general.ax').
+include('Axioms/sin-extended.ax').
+
+% THE FULL AXIOM FILE MAKES IT TOO SLOW
+% include('Axioms/cos-extended.ax').
+
+% SO INSTEAD, JUST THESE:
+
+cnf(cos_upper_bound_1,axiom,
+    (~ lgen(R, 1 - (X^2)/2 + (X^4)/24 - X^6/720 + X^8/40320, Y)
+    | lgen(R, cos(X), Y) )).
+
+cnf(cos_lower_bound_1,axiom,
+    (~ lgen(R, Y, 1 - (X^2)/2 + (X^4)/24 - (X^6)/720)
+    | lgen(R, Y, cos(X)) )).

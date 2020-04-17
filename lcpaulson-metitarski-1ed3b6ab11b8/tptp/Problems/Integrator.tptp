@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : Integrator.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% From R. Narayanan et al.
+
+%  Formal Verification of Analog Circuits in the Presence of Noise and Process Variation.
+%  In: DATE 2010: Design, Automation and Test in Europe, 1309-1312.
+% Example A: Non-Ideal Op-Amp Integrator
+
+fof(Integrator, conjecture, ! [R,C] :  (( 9e3<=R & R<=11e3 & 80*10-12<= C & C<=120e-12) =>  (15*R*C/(-0.0015+R*0.0001001)) <= 15e-6)).
+
+include('Axioms/general.ax').
+

@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : exp-over-squared.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(exp,conjecture, ![X] : (X != 0 => exp(-1/X^2) < 5*X^8)).
+
+% Source: LCP
+% This problem is interesting for two reasons. 
+%  1. The left-hand side is a function whose Taylor series is identically zero. 
+%  2. The proof involves a complex case analysis, mediated by large polynomials.
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-extended.ax').

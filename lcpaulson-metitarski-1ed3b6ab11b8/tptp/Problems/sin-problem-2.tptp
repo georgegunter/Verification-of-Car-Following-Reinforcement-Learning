@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_2,conjecture, ! [X] : (0 <= X => sin(X) <= X)).
+
+% Trivial: it is identical to an upper bound for the sine function.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+

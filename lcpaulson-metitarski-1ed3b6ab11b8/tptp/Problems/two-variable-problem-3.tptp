@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : two-variable-problem-3.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Two Variable Problem
+
+fof(two_variable_problem_3,conjecture, ! [X,Y] : ((0 < X & 0 < Y) => (1-exp(-X-Y))/((X+Y)*(1-exp(-X))*(1-exp(-Y)))-1/(X*Y) <= 1/12)).
+
+% Extremely sharp near zero. Never proved as of 2011-11-09.
+% exp-problem-9 was obtained from two-variable-problem-3 by identifying X=Y.
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.6.13: If 0 < x and 0 < y, then (1-e^(-x-y))/(x+y)(1-e^(-x))(1-e^(-y))-1/xy <= 1/12
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-extended.ax').

@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : two-variable-problem-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Two Variable Problem
+
+fof(two_variable_problem_2,conjecture, ! [X,Y] : ((0 < X & 0 < Y) => exp((X*Y)/(X+Y)) < exp(X))).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.36 e^x > (1+x/y)^y > e^(xy/x+y) (x>0,y>0)
+
+% Trivial by monotonicity of exp. Otherwise not provable. 21-12-2007
+
+include('Axioms/general.ax').
+include('Axioms/exp-general.ax').

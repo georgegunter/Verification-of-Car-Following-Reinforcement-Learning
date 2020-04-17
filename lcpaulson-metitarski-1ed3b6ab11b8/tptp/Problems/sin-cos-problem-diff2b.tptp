@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-diff2b.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_diff,conjecture, ![X] : (X != 0 => abs(cos(X)/X - 2*sin(X)/X^2 + (2*(1-cos(X)))/X^3) <= 1/3)).
+
+% 2011-06-13: provable (for all X!) with |sin(x)| <= 1, |cos(x)| <= 1
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+% |(1 - cos(X)/X)^(n)| <= 1 / (n+1) for all X, integer n > 0
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/sin-constant.ax').
+include('Axioms/cos-constant.ax').

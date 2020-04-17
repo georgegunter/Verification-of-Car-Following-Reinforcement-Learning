@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : polypaver-bench-sqrt.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: Jan Duracz and Michal Konecny
+
+fof(benchsqrt8, conjecture,
+    ! [X,Y] :
+    (
+            (1 <= X & X <= 2 &
+             1 <= Y & Y <= 2)
+            =>
+            (sqrt(X * Y) <= (sqrt(X) * sqrt(Y))+(2^(-8)))
+    )).
+
+% 2011-12-12: needs --icp_eadm and 110 sec, 104 (RCF). Or Mathematica, 113 sec.
+% 2014-06-20: SLOW. Can be proved using Z3 in 27s using --RCFtime 1000
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-extended.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

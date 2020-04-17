@@ -1,0 +1,27 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-2-weakest31.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_2,conjecture, ! [T,S] : ((abs(T) > 0.0002 & 0 <= S & S^2 = (9+T^2)*(1+T^2)) => 0.067 + (arctan(3/T) - arctan(1/T))/T > 2/S) ).
+
+% The American Mathematical Monthly, Vol. 73, No. 4 (Apr., 1966), p. 424
+% via P. S. Bullen [The version in his Dictionary of Inequalities contains many errors]
+
+% If a<b and t<>0 then arctan(b/t)-arctan(a/t))/t > (b-a)/sqrt((a^2+t^2)*(b^2+t^2))
+
+% Here, A = 1 and B = 3
+
+% SUPER SLOW, Processor time: 845.329 = 15.375 (Metis) + 829.954 (QEPCAD)
+% 2011-08-05: now including absolute value, same as atan-problem-2-weakest21
+% 2011-10-05: Provable using MetiTarski+Mathematica.
+% 2011-12-02: Strengthened slightly. But the arctan bounds are NOT exact at infinity!
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').

@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : exp-upper-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp Upper Bound Problem
+
+fof(exp_upper_bound_problem_2,conjecture, ! [X] : ((-3.3 < X & X < 0) => exp(X) < 1 + X/4)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.2.38 1/4 |z| < |e^z-1| < 7/4 |z| (0 < |z| < 1)
+
+% We take the first inequality for negative z and remove the absolute value function.
+% We then extend the interval. Maple reports that the true lower limit is 3.920690395.
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').

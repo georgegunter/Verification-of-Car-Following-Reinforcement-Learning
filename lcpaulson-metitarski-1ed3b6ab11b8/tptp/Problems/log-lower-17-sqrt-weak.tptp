@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-17-sqrt-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_17,conjecture, ! [X] : ((-0.997 < X & X <= 0) => X/sqrt(1+X) <= ln(1+X))).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Logarithmic Function Inequalities.
+% (d) If x > -1, then 2 |x| / (2 + x) <= |ln (1+x)| <= |x| / sqrt (1+x)
+
+% Related to log-upper-18
+% Easily provable if it is weakened.
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

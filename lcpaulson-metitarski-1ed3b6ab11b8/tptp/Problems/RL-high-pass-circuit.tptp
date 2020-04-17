@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : RL-high-pass-circuit.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- RL High Pass Circuit
+
+%---- Author : Rajeev Narayanan (r_naraya@encs.concordia.ca)
+
+% We verify that for the set of parameters, there is a steadystate
+% current. The behavior in question is stated as the bounded
+% safety property, meaning for the property to be satisfied for
+% time 0.01<= X <=0.4 the current through the inductor IL has to
+% reach a steady-state value 0.11 amps.
+
+fof(Tunnel, conjecture, ! [X] : ((0.01 <= X & X <= 0.4) => (0.11 - 0.1*exp(-50*X) - 0.1*exp(-100*X)) <= 0.11 )).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').

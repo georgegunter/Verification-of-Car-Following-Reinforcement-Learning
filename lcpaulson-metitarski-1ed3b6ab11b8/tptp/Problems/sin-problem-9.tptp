@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-problem-9.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_9,conjecture, ! [X] : ((pi/3 <= X & X <= 2*pi/3) => sin(X) / 3 + sin(3*X) / 6 > 0)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic
+% 3.4.2: If n>=3 and pi/n <= x <= pi - pi/n, then sin x / 3 + sin nx / 2n > 0
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/pi.ax').
+

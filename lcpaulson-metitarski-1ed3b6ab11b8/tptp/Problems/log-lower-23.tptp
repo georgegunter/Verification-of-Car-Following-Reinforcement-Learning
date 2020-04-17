@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-23.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_23,conjecture, ! [X] : (0 < X => X - X^2/2 + X^3/3 - X^4/4 < ln(1+X))).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.3.14 (b) x-x^2/2+x^3/3-x^4/4 < ln (1+x)
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').

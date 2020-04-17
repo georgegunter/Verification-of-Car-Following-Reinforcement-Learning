@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : Melquiond1.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%from Section 5.1 of the paper
+%   Guillaume Melquiond, Proving Bounds on Real-Valued Functions with Computations
+%   In: Alessandro Armando, Peter Baumgartner, Gilles Dowek (eds)
+%   4th international joint conference on Automated Reasoning (2008), 2-17  
+
+fof(Melquiond1, conjecture, ! [X] : ((1/2 <= X & X <= 2) => abs (sqrt(X) - (((((122 / 7397 * X + (-1733) / 13547) * X + 529 / 1274) * X + (-767) / 999) * X + 407 / 334) * X + 227 / 925)) <= 5/65536) ).
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').

@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : log-lower-22.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Lower Bound Problem
+
+fof(log_lower_bound_problem_22,conjecture, ! [X] : (0 < X => ln(1+X) > 2*(X/(2+X)+X^3/(3*(2+X)^3)))).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.3.11 Prove that ln(1+x) > 2 sum(k=0 to n) 1/2k+1 (x/2+x)^(2k+1) for n=0,1,... and x > 0.
+% n = 1
+
+include('Axioms/general.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/ln-upper.ax').

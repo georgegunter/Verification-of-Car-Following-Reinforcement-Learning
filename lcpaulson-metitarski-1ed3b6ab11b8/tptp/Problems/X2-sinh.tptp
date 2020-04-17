@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : X2-sinh.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+% Processor time: 374.774 = 0.119 (Metis) + 374.655 (QEPCAD)....
+
+fof(exists2,conjecture, ! [Y] : ? [X] : sinh(X) > Y).
+
+include('Axioms/general.ax').
+include('Axioms/sinh-lower.ax').
+

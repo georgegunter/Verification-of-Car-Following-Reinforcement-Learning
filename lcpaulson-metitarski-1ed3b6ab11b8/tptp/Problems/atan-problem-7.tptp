@@ -1,0 +1,18 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-7.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_7,conjecture, ! [X] : abs(arctan(X)) <= pi/2 + 10^-5).
+% 2011-01-06: Weakened slightly to compensate for removal of pi from the atan axioms
+
+include('Axioms/general.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/pi.ax').
+include('Axioms/abs.ax').
+

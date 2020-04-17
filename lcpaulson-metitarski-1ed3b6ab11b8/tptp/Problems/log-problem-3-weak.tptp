@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : log-problem-3-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Exponential Function Inequalities.
+% (b) for x>0, x^(1/x) <= 3^(1/3).
+
+% This problem is obtained by taking the ln of both sides of the inequality.
+
+% Since bounds are exact at 1, the problem can only be solved if we weaken the inequality.
+
+fof(log_problem_3,conjecture, ! [X] : (0 < X => ln(X)/X <= 0.0017 + ln(3)/3)).
+
+include('Axioms/general.ax').
+include('Axioms/ln-extended.ax').
+

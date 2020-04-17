@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-8.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_8,conjecture, ! [X] : (0 < X => X * exp(X/2) < exp(X) - 1)).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.20. (c) For x > 0, verify the following claims: x e^x/2 < e^x - 1
+
+% Obviously impossible: it requires an upper bound for the function exp for all positive X.
+
+include('Axioms/general.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-extended.ax').

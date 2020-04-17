@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-problem-6.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_6,conjecture, ![X] : ((0 < X & X < pi/2) => cos(X) < sin(X)^2 / X^2)).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.23 (c) Establish the following inequalities: cos x < sin^2 x / x^2 for 0 < x < pi/2.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+

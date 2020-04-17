@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : CONVOI2.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    4
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+% A linear collision avoidance example in two variables
+% Claimed to be from Anuj Puri, Pravin Varaiya. Driving safely in smart cars. American Control Conference (1995).
+% Cited by Gulwani and Tiwari, Constraint-based Approach for Analysis of Hybrid Systems, CAV 2008
+% SLOW, Processor time: 155.3 secs = 0.4 (Metis) + 154.9 (RCF)
+% 2011-08-26: Weakened because formerly it was not provable, as shown in Mathematica.
+% 2011-10-05: Provable using MetiTarski+Mathematica.
+
+fof(CONVOI, conjecture, ! [T,VF,S,C] : ((0 < T & 0 < VF & VF < 3.02 & S^2 + C^2 = 1) => ((1.565 + 0.313*VF)*C + (0.01340 + 0.00268*VF)*S)*exp(-1.34*T) + (-6.55 - 1.31*VF)*exp(-0.318*T) + VF + 10 >= 0)).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').

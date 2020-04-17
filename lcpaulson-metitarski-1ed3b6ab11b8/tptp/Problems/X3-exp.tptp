@@ -1,0 +1,13 @@
+%--------------------------------------------------------------------------
+% File     : X3-exp.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists3,conjecture, ? [Y] : ! [X] : (X < 1000 => exp(X) < Y) ).
+
+include('Axioms/general.ax').
+include('Axioms/exp-general.ax').

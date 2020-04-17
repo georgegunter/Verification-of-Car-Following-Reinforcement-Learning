@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{cite}
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+\usepackage{hyperref}								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{MetiTarski Tips from the Field}
+\author{William Denman \\ \url{william.denman@gmail.com}}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+This is a short document describing some insights into using MetiTarski based on
+my experiences using it extensively during both my master's and PhD degrees.
+
+\section{Tips}
+
+\subsection{Coding Suggestions}
+
+The modified TPTP syntax that MetiTarski uses is definitely not easy on the
+eyes. My recommendation is to use Emacs along with a custom built mode
+(metit-mode) for syntax highlighting. It is available at
+\url{https://code.google.com/p/metitarski/wiki/MetiTarskiMode}. Emacs also does bracket identification and completion, which you will most surely need for complicated (and large) conjectures. 
+
+\begin{itemize}
+  \item Use the \texttt{.tptp} extension for your MetiTarski files.
+
+\item Whitespace is ignored by the parser, use it to nicely format longer formulas.
+
+\item MetiTarski variable names must be uppercase.
+\end{itemize}
+
+
+\subsection{High Variable/Dimensional Problems}
+
+Beyond 4 or 5 continuous variables, there is very little hope for MetiTarski in
+finding a proof. However, there is one critical command line argument when used
+with the z3 EADM, that has allowed for conjectures of 9 variables to be
+proved. This is the \texttt{--RCFtime} parameter. Experiments show that an RCFtime of
+1000 (ms) leads to a nice balance between conjectures proved and conjectures
+given up on.
+
+\subsection{False Implies Anything}
+
+Always be wary when a conjecture that has never been proved or usually takes a
+significant amount of time, suddenly is proved in under a second. This normally
+indicates the problem has been made trivial in some way. One example is a false
+statement in the left hand side of an implication. MetiTarski will return
+Theorem for $![X] : X<0 \; \& \; X>0 => X=0$, since false implies anything.
+
+\subsection{autoInclude}
+
+One of the most useful command line arguments is \texttt{--autoInclude}. I've used it
+extensively in my verification system QUANTUM that generates thousands of
+conjectures to be proved. Instead of having to parse the conjectures and
+manually insert \texttt{include} statements. MetiTarski takes care of this
+automatically. There are cases however where the axioms chosen by autoInclude
+are not tight enough. In a case like this, you can move on to using
+\texttt{--autoIncludeExtended} and then \texttt{--autoIncludeSuperExtended}. Finally, if
+the conjecture is still not proved, manually putting in the include statements
+will be required.
+
+\textit{Note}:  \texttt{include} statements must end with a period.
+
+
+\subsection{runmetit.pl}
+
+The easiest way to use the \texttt{runmetit} script is to place it on your \$PATH. To run
+it with \texttt{autoInclude} and \texttt{RCFtime}, type
+
+\begin{verbatim}
+  runmetit.pl --options="--autoInclude --RCFtime 1000"
+\end{verbatim}
+
+Good luck! And please contact the team with tips of your own..
+
+
+
+\end{document}  

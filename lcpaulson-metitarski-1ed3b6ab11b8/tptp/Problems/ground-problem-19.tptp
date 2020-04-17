@@ -1,0 +1,27 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-19.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_19,conjecture, exp(pi) > pow(pi, exp(1)) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.16 (a) e^pi > pi^e
+
+% Not trivial: the lhs is 23.14069263, the rhs is 22.45915772, the difference
+%    is only 0.6815349144.
+% Our proof is by the monotonicity of the exponential function
+
+% The now deleted ground-problem-exp-pi was a copy of this problem.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/exp-general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/pi.ax').
+include('Axioms/pow.ax').

@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-1mcosq-4.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Derived from sin-problem-4
+
+% QEPCAD struggles and eventually dies if we include pi in the argument of the cosine function.
+
+fof(sqrt_1mcosq_4,conjecture, ! [X] : ((0 < X & X < 0.95) => pi <= 10^-4 + sqrt(1 - cos(pi*X)^2) / (X*(1-X)))).
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').

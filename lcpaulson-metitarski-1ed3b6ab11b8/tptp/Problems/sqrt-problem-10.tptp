@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-10.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+fof(sqrt_problem_10,conjecture, ! [X] : (0 < X => 1 + X/2 - X^2/8 < sqrt(1+X))).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.3.14 (c) For x>0, establish the following inequality: 1+1/2x-1/8x^2 < sqrt(1+x) < 1+1/2x-1/8x^2+1/16x^3
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-lower.ax').
+

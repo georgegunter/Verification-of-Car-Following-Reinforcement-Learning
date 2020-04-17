@@ -1,0 +1,15 @@
+%--------------------------------------------------------------------------
+% File     : log-nest-exp-upper2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(log_nest_exp_upper2,conjecture, ! [X] : ((0 < X & X < 3) => ln(exp(X) - 1) < X+3)).
+
+% Source: LCP.
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/ln-upper.ax').

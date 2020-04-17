@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : sin-3425a.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_3425,conjecture, ! [X1,X2] : ((0 < X1 & X1 < X2 & X2^2 < 6) => (X2 - X2^3/6) / (X1 - X1^3/6) <= 10^-4 + sin(X2)/sin(X1))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.4.25, page 244:
+% S_{4n-1}(x2) / S_{4n-1}(x1) < sin(x2)/sin(x1) < S_{4n+1}(x2) / S_{4n+1}(x1)
+%     for 0 < x1 < x2 < sqrt(6)
+% where S_k(x) denotes the Taylor expansion of sin(x) of degree k.
+
+% Closedly related to the now deleted sin-problem-15!
+% 2011-10-05: Provable using MetiTarski+Mathematica, 41 seconds
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/sin-extended.ax').

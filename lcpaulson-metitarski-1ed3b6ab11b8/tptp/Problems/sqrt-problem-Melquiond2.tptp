@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-Melquiond2.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+% Guillaume Melquiond, Proving Bounds on Real-Valued Functions with Computations, IJCAR 2008, 2-17.
+% one explicit square root
+
+fof(sqrt_problem_Melquiond, conjecture, ! [X,Y,SXY] : ((3/2 < X & X < 2 & 1 < Y & Y < 33/32 & SXY > 0 & SXY^2 = X+Y) => abs(sqrt(1 + X/SXY) - 0.144*X - 1.18) <= 71/32768)).
+
+% 2011-01-18: Currently not provable, but proved in two seconds after renaming SXY to Z.
+% 2011-05-06: Provable in 1.6s using RAHD. 2011-07-11: Provable in 1.1s using --proj_ord.
+
+include('Axioms/abs.ax').
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sqrt-lower.ax').

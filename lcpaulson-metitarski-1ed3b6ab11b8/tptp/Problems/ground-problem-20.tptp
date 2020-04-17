@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-20.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_20,conjecture, sqrt(2) * ln (sqrt(2)) < 1/2 ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.16 (b) Solutions sqrt(2) ln (sqrt(2)) < 1/2
+
+% The lhs equals 0.4901290717, so the difference is about 2%.
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/ln-upper.ax').

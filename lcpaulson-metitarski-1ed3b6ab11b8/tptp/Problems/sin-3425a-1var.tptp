@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : sin-3425a-1var.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine Problem
+
+fof(sin_problem_3425,conjecture, ! [X] : ((0 < X & X < sqrt(6)) => (X - (X^3)/6)/(X/2 - (X/2)^3/6) < sin(X)/sin(X/2))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.4.25, page 244:
+% S_{4n-1}(x2) / S_{4n-1}(x1) < sin(x2)/sin(x1) < S_{4n+1}(x2) / S_{4n+1}(x1)
+%     for 0 < x1 < x2 < sqrt(6)
+% where S_k(x) denotes the Taylor expansion of sin(x) of degree k.
+
+% We eliminate a variable by setting X1 = X2/2.
+
+% 2011-10-06: Corrected misplaced parentheses. Now an easy problem.
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sin.ax').

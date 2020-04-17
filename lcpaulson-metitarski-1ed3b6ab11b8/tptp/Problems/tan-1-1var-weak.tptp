@@ -1,0 +1,24 @@
+%--------------------------------------------------------------------------
+% File     : tan-1-1var-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- tan problem in two variables [simplified to one!]
+
+fof(tan_1_1v,conjecture, ! [X] : ((0 < X & X < 1.25) => tan(X)*tan(X) <= 1.75e-7 + tan(1)*tan(X*X)) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities, page 251.
+% tan(x)tan(y) <= tan(1)tan(xy), for 0 <= x, y <= 1 or 1 <= x, y < sqrt(pi/2)
+% Note: the text incorrectly says pi/2, corrected in an e-mail from Bullen 2010/09/16
+% tan(1) = 1.5574...; sqrt(pi/2) = 1.2533...
+
+% We have set y = x
+% 2011-06-21: made a bit harder, restoring tan(1).
+
+include('Axioms/general.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/tan-lower.ax').
+

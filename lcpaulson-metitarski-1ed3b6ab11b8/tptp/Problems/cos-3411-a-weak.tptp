@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : cos-3411-a-weak.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(cos_problem_3411,conjecture, ![A] : ((0 < A & A < pi/2) => 2*(cos(A)-sin(A))^2 <= (cos(A+1) + sin(A+1))^2 + 2 )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.11), page 237
+% NB: cos(X) + sin(X) = sqrt(2)*sin(X+pi/4). And cos(X) - sin(X) = sqrt(2)*sin(X+3*pi/4).
+% This weakened version replaces the final cosine/sine term by a constant.
+
+include('Axioms/general.ax').
+include('Axioms/sin.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').

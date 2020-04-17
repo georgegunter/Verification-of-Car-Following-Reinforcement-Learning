@@ -1,0 +1,11 @@
+--- ./src/IUPHIP.c.orig	2013-08-27 11:00:00.000000000 -0600
++++ ./src/IUPHIP.c	2013-08-27 11:00:00.000000000 -0600
+@@ -28,7 +28,7 @@ Step1: /* Get array for B. */
+         n = PDEG(A);
+         B = GETHIPARRAY(n);
+ 
+-Step2: /* /* Convert coefficients. */
++Step2: /* Convert coefficients. */
+         Ap = A;
+         for (i = n; i >= 0; i--) {
+            if (Ap == NIL || FIRST(Ap) < i)

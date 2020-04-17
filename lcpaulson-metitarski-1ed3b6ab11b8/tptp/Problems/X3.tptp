@@ -1,0 +1,14 @@
+%--------------------------------------------------------------------------
+% File     : X3.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Exists Problem
+
+fof(exists3,conjecture, ? [Y] : ! [X] : (X <= 1 => X < Y) ).
+
+include('Axioms/general.ax').
+include('Axioms/trans.ax').
+

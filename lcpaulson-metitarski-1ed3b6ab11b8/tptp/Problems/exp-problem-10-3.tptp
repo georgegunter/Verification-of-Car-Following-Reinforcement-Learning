@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : exp-problem-10-3.tptp
+% Syntax   : Dimension                 	:    4
+% Syntax   : Number of Skolem constants	:    4
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%----  Exp inequality
+
+fof(exp_problem_10_3,conjecture, ! [X,CM1,C,CP1] : ((2 < X & X < 10 & 0 < CM1 & CM1^3 = X-1 & 0 < C & C^3 = X & 0 < CP1 & CP1^3 = X+1) => exp (1/CM1) - 2 * exp (1/C) + exp (1/CP1) >= -0.1)).
+
+% Source: LCP. Related to exp_problem_10. Similarly holds by Jensen's inequality.
+% The function exp(1/cbrt(x)) is convex for x>=1.
+
+% Difficult, with its 4 variables. 11 seconds using Mathematica, otherwise probably dies.
+% 2011-10-26: Widened the range of X and FIXED A TYPO
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+
+% FIXME: Much too slow if this file is included!
+%include('Axioms/exp-upper.ax').
+
+cnf(exp_upper_bound_cf1, axiom,
+    (X < 0 | 3/2 < X |
+     ~ lgen(R, -(X+2)/(X-2), Y) | lgen(R, exp(X), Y))).

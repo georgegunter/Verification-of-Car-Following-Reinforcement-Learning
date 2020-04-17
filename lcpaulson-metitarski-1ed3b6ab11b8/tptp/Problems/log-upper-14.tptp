@@ -1,0 +1,26 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-14.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_14,conjecture, ! [X] : ((-1 < X & X <= 0) => ln(1+X) <= (2*X)/(2+X)) ).
+
+% Source: A Dictionary of Inequalities, P. S. Bullen, University of British Columbia, 1998.
+% Logarithmic Function Inequalities:
+% (d) If x > -1, then 2 |x| / (2 + x) <= |ln (1+x)| <= |x| / sqrt (1+x)
+
+% Related to log-lower-16
+
+% log-upper-14 needs an upper bound for ln(Y) for 0 < Y <= 1.
+%   proved 03-01-2008 with the help of the unrestricted upper bounds.
+
+% By a change of variables, equivalent to 0 < Y <= 1 ==> ln Y <= (2Y-2)/(1+Y)
+% Checked via gnuplot, 20-12-2007. Graphs suggest that none of the Munoz-Lester lower bounds
+%   will be tight enough. But OK with our unrestricted upper bounds, even with n=2.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').

@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-14.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_14,conjecture, ln(1+1/2) < 1/2).
+
+% Inequalities, P.P.Korovkin
+% Problem 3: 1/n+1 < ln(1+1/n) < 1/n
+% n=2
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').

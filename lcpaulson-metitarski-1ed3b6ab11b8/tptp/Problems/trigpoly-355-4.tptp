@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : trigpoly-355-4.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Trigonometric Polynomials
+
+fof(trig_poly_355,conjecture, ![X] : ((abs(X) < 5) => abs(sin(X) + sin(2*X)/2 + sin(3*X)/3 + sin(4*X)/4) <= 1.852)).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.5.5, page 248. (n=4)
+% for all real x, abs (\sum_{k=1}^n sin(kx) / k) < \int_0^\pi sin(x) / x dx = 1.8519...
+
+% Naturally, we can only prove it for X confined to a small interval.
+
+include('Axioms/general.ax').
+include('Axioms/abs.ax').
+include('Axioms/sin-extended2.ax').
+include('Axioms/sin-constant.ax').

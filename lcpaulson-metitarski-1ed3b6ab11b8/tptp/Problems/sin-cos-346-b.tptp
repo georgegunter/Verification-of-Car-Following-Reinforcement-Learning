@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : sin-cos-346-b.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Sine-Cosine Problem
+
+fof(sin_cos_problem_346b,conjecture, ![X,SQ3] : ((0 < X & X < pi/2 - 10^-7 & 0 < SQ3 & SQ3^2 = 3) => cos(X/SQ3) >= cbrt(cos(X)) )).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic (3.4.6), page 236
+% The denominator goes to 0 when X = pi/2.
+
+% 2011-06-26: now with pi/2 and MUCH more difficult (three variables)
+% SUPER SLOW: 401.2 = 2.7 (Metis) + 398.5 (QEPCAD)
+% 2011-12-12: needs --icp_eadm and 437 sec, 428 (RCF); or Mathematica and 59.5s, 57.8 (RCF)
+
+include('Axioms/general.ax').
+include('Axioms/pi.ax').
+include('Axioms/cos.ax').
+include('Axioms/cos-extended.ax').
+include('Axioms/cbrt-upper.ax').

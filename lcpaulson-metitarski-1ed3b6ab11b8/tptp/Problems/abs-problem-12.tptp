@@ -1,0 +1,13 @@
+%--------------------------------------------------------------------------
+% File     : abs-problem-12.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   : Abramowitz & Stegun 4.2.39  |e^z-1| <= e^|z|-1 <= |z|e^|z|
+% Comments :
+%--------------------------------------------------------------------------
+fof(abs_problem_12,conjecture, ! [X] : exp(abs(X)) - 1 <= abs(X) * exp(abs(X)) ).
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/abs.ax').

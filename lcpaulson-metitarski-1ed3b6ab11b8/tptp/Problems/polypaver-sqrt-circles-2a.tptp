@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : polypaver-sqrt-circles-2a.tptp
+% Syntax   : Dimension                 	:    5
+% Syntax   : Number of Skolem constants	:    5
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(sqrt_circles_2,conjecture, ! [X,Y,D,S1,S2] : ((D >= 0 & S1 >= 0 & S1^2 = X^2 + (Y-1)^2 & S2 >= 0 & S2^2 = X^2 + (Y-(D+1))^2 & S1 <= 1) => S2 <= D+1)).
+
+% Based on Example 1 of
+%   Polynomial Function Intervals for Floating Point Software Verification
+%   by Jan Duracz & Michal Konecny (2011).
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').

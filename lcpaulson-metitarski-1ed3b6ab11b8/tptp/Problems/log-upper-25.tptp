@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : log-upper-25.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Upper Bound Problem
+
+fof(log_upper_bound_problem_25,conjecture, ! [X] : (0 < X => ln(X) <= X/exp(1)) ).
+
+% Source: W.J.Kaczor, M.T.Nowak, Problems in Mathematical Analysis II, Continuity and Differentiation, American Mathematical Society, 1998.
+% 2.5.15 ln x < x/e for x>0, for x<>e. Thus ln x <= x/e.
+% NOT PROVABLE because it is exact at X = e.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/exp-upper.ax').
+include('Axioms/exp-lower.ax').

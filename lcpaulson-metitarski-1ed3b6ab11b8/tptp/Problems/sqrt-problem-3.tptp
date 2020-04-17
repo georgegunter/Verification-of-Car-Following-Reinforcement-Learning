@@ -1,0 +1,20 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-problem-3.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+fof(sqrt_problem_3,conjecture, sin (6*pi / 180) + sqrt (2) < 2.11).
+
+% Source: examples.pvs
+% Interval package
+% lemma: sin6sqrt2
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/sin.ax').
+include('Axioms/pi.ax').
+

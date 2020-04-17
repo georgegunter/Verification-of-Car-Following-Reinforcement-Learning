@@ -1,0 +1,21 @@
+%--------------------------------------------------------------------------
+% File     : sqrt-cos-problem-2.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Square Root Problem
+
+% 1406-step proof, 22s (12s QEPCAD)
+
+fof(sqrt_cos_problem_2, conjecture, ! [X] : ((0 < X & X < 2.24) => (1/3)*sqrt(6)/X + (7/72)*sqrt(6)*X <= 1.1/sqrt(1-cos(X)^3))).
+
+% Source: LCP
+
+include('Axioms/general.ax').
+include('Axioms/sqrt-general.ax').
+include('Axioms/sqrt-lower.ax').
+include('Axioms/sqrt-upper.ax').
+include('Axioms/cos.ax').
+

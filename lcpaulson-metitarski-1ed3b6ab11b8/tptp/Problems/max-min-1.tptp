@@ -1,0 +1,10 @@
+%--------------------------------------------------------------------------
+% File     : max-min-1.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+fof(max_min,conjecture, ![X,Y] : max(X,Y) = -min(-X,-Y) ).
+
+include('Axioms/minmax.ax').

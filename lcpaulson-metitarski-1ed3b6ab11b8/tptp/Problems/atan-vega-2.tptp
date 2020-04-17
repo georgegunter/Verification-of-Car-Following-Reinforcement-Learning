@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : atan-vega-2.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Vega's rule: arctan(X) + arctan(Y) = arctan((X+Y) / (1 - X*Y)) for -1 < X,Y < 1
+% [A consequence of the tangent addition formula, tan(A+B) = (tan(A) + tan(B))/(1-tan(A)tan(B))]
+
+fof(atan_vega,conjecture, ! [X,Y] : ((-1 < X & X < Y & Y < 1) => arctan(X) + arctan(Y) < arctan((X+Y) / (1 - X*Y)) )).
+
+% Source: LCP
+% Possibly "difficult", as the argument of arctan rises to infinity (sharp at 1, -1)
+
+include('Axioms/general.ax').
+include('Axioms/arctan-upper.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-extended.ax').

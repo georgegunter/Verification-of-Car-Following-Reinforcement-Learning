@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : Nichols-Plot-Simple-Example-3-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Nichols Plot Problem
+
+fof(nichols_plot_3,conjecture, ! [X] : ((0.59 <= X & X <= 0.7764) => 55 + 8 * arctan((797*X^6 + 14382*X^4 + 755*X^2 - 3194) / (800*X^8 + 4803*X^6 + 12054*X^4 - 1597*X^2 + 55)) > 36) ).
+
+% Source: Interactions Between PVS and Maple in Symbolic Analysis of Control Systems
+% Author: R. Hardy
+% B = x in [-1.5,0.5],[[55+8x,>],[65-12x,<]]        
+% Y(w) = (10ln(p)-20ln(w^6+5w^4+60w^2+16))/ln(10)
+% X(w)=arctan((797w^6+14382w^4+755w^2-3194)/(800w^8+4803w^6+12054w^4-1597w^2+55))
+% where w>=0, and p=640000w^16+7684800w^14+42990418w^12+136160432w^10+338091528w^8-21346562w^6-87425842w^4-4998610w^2+10204661
+% w1,1=0.4231452940, w1,2=0.7664324880, w1,3=1.631039454
+% w in [w1,1-0.01,w1,2+0.01] 55+8*X(w) > Y(w).
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').

@@ -1,0 +1,17 @@
+%--------------------------------------------------------------------------
+% File     : ground-problem-7.tptp
+% Syntax   : Dimension                 	:    0
+% Syntax   : Number of Skolem constants	:    0
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Ground Problem
+
+fof(ground_problem_7,conjecture, 2 < exp(2)).
+
+% Inequalities, P.P.Korovkin
+% Problem 12: n^n/n!<e^n<(n+1)^(n+1)/n!
+% n=2
+
+include('Axioms/general.ax').
+include('Axioms/exp-lower.ax').

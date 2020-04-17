@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : tan-3428d.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Tan Problem
+
+fof(tan_problem_3428,conjecture, ![X] : ((0 < X & X < pi/4) => tan(X) - (tan(X)^3)/2 < 10^-9 + sin(X))).
+
+% Source: Analytic Inequalities, D.S.Mitrinovic, 3.4.28 (2), page 246.
+% SLOW: 137.1 seconds;  135.4 seconds (QEPCAD)
+
+include('Axioms/general.ax').
+include('Axioms/tan-lower.ax').
+include('Axioms/tan-upper.ax').
+include('Axioms/sin-extended.ax').
+include('Axioms/pi.ax').

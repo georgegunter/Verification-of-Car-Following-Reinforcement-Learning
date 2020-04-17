@@ -1,0 +1,16 @@
+%--------------------------------------------------------------------------
+% File     : cbrt-problem-3.tptp
+% Syntax   : Dimension                 	:    3
+% Syntax   : Number of Skolem constants	:    3
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cube Root Problem
+
+fof(cbrt_problem_3,conjecture, ![X,Y,Z] : ((0 < X & 0 < Y & 0 < Z) => cbrt(X+Y+Z) < cbrt(X) + cbrt(Y) + cbrt(Z))).
+
+% Our bounds are not adequate to prove this result for arbitrarily large X
+
+include('Axioms/general.ax').
+include('Axioms/cbrt-lower.ax').
+include('Axioms/cbrt-upper.ax').

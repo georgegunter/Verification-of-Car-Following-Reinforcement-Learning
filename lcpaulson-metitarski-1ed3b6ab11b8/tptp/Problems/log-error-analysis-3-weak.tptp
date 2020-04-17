@@ -1,0 +1,22 @@
+%--------------------------------------------------------------------------
+% File     : log-error-analysis-3-weak.tptp
+% Syntax   : Dimension                 	:    1
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Log Error Analysis
+
+fof(log_error_analysis_3,conjecture, ! [X] : ((0 <= X & X <= 0.32) => abs(ln (1+X) - (0.99949556 * X - 0.49190896 * X^2 + 0.28947478 * X^3 - 0.13606275 * X^4 + 0.03215845 * X^5)) <= 10^-5)).
+
+% Source: Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables, Milton Abramowitz and Irene A. Stegun.
+% 4.1.43 0 <= x <= 1 ln(1+x) = a1 x + a2 x^2 + a3 x^3 + a4 x^4 + a5 x^5 + e (x)
+% |e(x)| <= 1e-5
+% a1 = 0.99949556 a2 = - 0.49190896 a3 = 0.28947478 a4 = -0.13606275 a5 = 0.03215845
+
+%Validated by Maple, 27-06-2008.
+
+include('Axioms/general.ax').
+include('Axioms/ln-upper.ax').
+include('Axioms/ln-lower.ax').
+include('Axioms/abs.ax').

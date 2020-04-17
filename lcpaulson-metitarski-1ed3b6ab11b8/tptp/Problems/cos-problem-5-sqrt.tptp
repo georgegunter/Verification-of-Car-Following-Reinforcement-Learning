@@ -1,0 +1,19 @@
+%--------------------------------------------------------------------------
+% File     : cos-problem-5-sqrt.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    1
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Cosine Problem
+
+fof(cos_problem_5,conjecture, ! [X] : ((sqrt(3) < X) => (X+1) * cos(pi/(X+1)) - X * cos(pi/X) > 1) ).
+
+% Source 2: A Dictionary of Inequalities, P. S. Bullen, 1998.
+% Trigonometric Function Inequalities.
+
+include('Axioms/general.ax').
+include('Axioms/cos.ax').
+include('Axioms/pi.ax').
+include('Axioms/sqrt-lower.ax').
+

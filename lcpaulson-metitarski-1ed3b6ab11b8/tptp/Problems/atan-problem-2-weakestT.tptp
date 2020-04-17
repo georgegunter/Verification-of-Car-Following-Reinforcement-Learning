@@ -1,0 +1,23 @@
+%--------------------------------------------------------------------------
+% File     : atan-problem-2-weakestT.tptp
+% Syntax   : Dimension                 	:    2
+% Syntax   : Number of Skolem constants	:    2
+% Source   :
+% Comments :
+%--------------------------------------------------------------------------
+%---- Inverse Tangent Problem
+
+fof(atan_problem_2,conjecture, ! [X,S] : ((0 < X & 0 <= S & S^2 = (X^2+1)*(4*X^2+1)) => 10^-5 + arctan(2*X) - arctan(X) > X/S) ).
+% 2011-01-06: Weakened slightly to compensate for removal of pi from the atan axioms
+
+% The American Mathematical Monthly, Vol. 73, No. 4 (Apr., 1966), p. 424
+% via P. S. Bullen [The version in his Dictionary of Inequalities contains many errors]
+
+% If a<b and t<>0 then arctan(b/t)-arctan(a/t))/t > (b-a)/sqrt((a^2+t^2)*(b^2+t^2))
+% Here, B = 2A and T = 1
+
+% 2014-06-20: SLOW. Can be proved using Z3 in 52s using --RCFtime 1000
+
+include('Axioms/general.ax').
+include('Axioms/arctan-lower.ax').
+include('Axioms/arctan-upper.ax').
